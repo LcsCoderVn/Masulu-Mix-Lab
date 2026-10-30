@@ -394,4 +394,170 @@
                                 <div id="barSweet" class="meter-bar-fill h-full bg-[#C86D51] rounded-full" style="width: 0%"></div>
                             </div>
                             <div class="meter-explanation">
+                                <p id="expSweet" class="text-xs text-muted-custom leading-relaxed pt-1.5 border-t border-custom">--</p                <span>Phân Tích Món</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Empty State Panel -->
+        <section id="emptyStatePanel" class="culinary-card rounded-2xl p-8 sm:p-10 text-center my-4">
+            <div class="w-12 h-12 rounded-2xl culinary-subtle text-[#4A6B53] dark:text-[#7BA888] mx-auto flex items-center justify-center mb-3">
+                <i class="ph-fill ph-bowl-steam text-2xl"></i>
+            </div>
+            <h3 class="font-display text-base sm:text-lg font-bold mb-1">
+                Phòng thí nghiệm đã sẵn sàng
+            </h3>
+            <p class="text-xs sm:text-sm text-muted-custom max-w-md mx-auto leading-relaxed">
+                Hãy nhập các nguyên liệu cần kiểm tra và bấm <strong>Phân Tích Món</strong> để hệ thống phân tích theo chuẩn khoa học thực phẩm.
+            </p>
+        </section>
+
+        <!-- Alert Banner -->
+        <div id="alertBanner" class="hidden mb-6 p-4 rounded-xl bg-[#B87D32]/15 border border-[#B87D32] text-xs sm:text-sm font-medium flex items-center justify-between">
+            <div class="flex items-center gap-2.5">
+                <i class="ph-fill ph-warning-circle text-lg text-[#B87D32]"></i>
+                <span id="alertBannerText">Thông báo</span>
+            </div>
+            <button onclick="hideAlert()" class="font-bold px-2 hover:opacity-70">✕</button>
+        </div>
+
+        <!-- Loading State -->
+        <section id="loadingPanel" class="hidden culinary-card rounded-2xl p-10 text-center my-6">
+            <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl culinary-subtle text-[#C86D51] mb-3 animate-bounce">
+                <i class="ph-fill ph-cooking-pot text-3xl"></i>
+            </div>
+            <h3 class="font-display text-lg font-bold mb-1">
+                Đang đối chiếu tài liệu khoa học & phân tích...
+            </h3>
+            <p class="text-xs sm:text-sm text-muted-custom">
+                Chuyên gia hóa thực phẩm đang kiểm tra phản ứng giữa các nguyên liệu.
+            </p>
+        </section>
+
+        <!-- Result Dashboard -->
+        <section id="resultDashboard" class="hidden space-y-5">
+
+            <!-- 1. Overview Card -->
+            <div class="culinary-card rounded-2xl p-5 sm:p-6">
+                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-5">
+                    <div class="space-y-2.5 flex-1">
+                        <div class="flex flex-wrap items-center gap-2.5">
+                            <span id="resCategoryBadge" class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">
+                                ĐÁNH GIÁ
+                            </span>
+                            <span id="resSampleFormula" class="text-xs font-medium px-2.5 py-1 rounded-lg culinary-subtle text-muted-custom">
+                                Nguyên liệu: --
+                            </span>
+                        </div>
+                        <h2 id="resTitle" class="font-display text-2xl sm:text-3xl font-bold tracking-tight">
+                            Tên Món Kết Hợp
+                        </h2>
+                        <p id="resExecutiveSummary" class="text-sm sm:text-base leading-relaxed text-muted-custom">
+                            --
+                        </p>
+                    </div>
+
+                    <!-- Compatibility Score Box -->
+                    <div class="shrink-0 culinary-subtle rounded-2xl p-4 sm:px-6 sm:py-4 flex lg:flex-col items-center justify-between lg:justify-center gap-3 border border-custom min-w-[165px]">
+                        <div class="text-left lg:text-center">
+                            <span class="text-xs font-semibold uppercase tracking-wider text-muted-custom block">Độ Hợp Vị</span>
+                            <span class="text-[11px] text-muted-custom">Cơ sở khoa học</span>
+                        </div>
+                        <div class="flex items-baseline gap-0.5">
+                            <span id="resCompatibilityScore" class="font-display text-4xl font-bold">0</span>
+                            <span class="text-lg font-bold text-muted-custom">%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Middle Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+                
+                <!-- Left 5 Cols: Appearance & Texture -->
+                <div class="lg:col-span-5 culinary-card rounded-2xl p-5 sm:p-6 flex flex-col justify-between space-y-4">
+                    <div>
+                        <div class="flex items-center justify-between pb-3 mb-4 border-b border-custom">
+                            <h3 class="text-sm font-bold flex items-center gap-2">
+                                <i class="ph-fill ph-eye text-[#C86D51] text-lg"></i>
+                                <span>Hình Thức & Kết Cấu Món</span>
+                            </h3>
+                            <span id="resVisualRatingBadge" class="text-xs font-semibold px-2.5 py-0.5 rounded-md culinary-subtle">
+                                --
+                            </span>
+                        </div>
+
+                        <div class="space-y-3.5">
+                            <div>
+                                <span class="text-xs font-semibold text-muted-custom block mb-1">Ngoại hình thực tế sau khi trộn:</span>
+                                <p id="resAppearance" class="text-sm leading-relaxed culinary-subtle p-3.5 rounded-xl">
+                                    --
+                                </p>
+                            </div>
+                            <div>
+                                <span class="text-xs font-semibold text-muted-custom block mb-1">Cảm giác trong miệng (Kết cấu):</span>
+                                <p id="resTextureDetail" class="text-sm leading-relaxed culinary-subtle p-3.5 rounded-xl">
+                                    --
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-3 border-t border-custom grid grid-cols-2 gap-2.5 text-xs">
+                        <div class="culinary-subtle p-2.5 rounded-xl">
+                            <span class="text-muted-custom block text-[11px]">Trạng thái món:</span>
+                            <strong id="resPhysicalState" class="font-semibold block mt-0.5">--</strong>
+                        </div>
+                        <div class="culinary-subtle p-2.5 rounded-xl">
+                            <span class="text-muted-custom block text-[11px]">Độ ổn định:</span>
+                            <strong id="resPhaseStability" class="font-semibold block mt-0.5">--</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right 7 Cols: Taste Experience & 6 Interactive Bars -->
+                <div class="lg:col-span-7 culinary-card rounded-2xl p-5 sm:p-6">
+                    <div class="flex flex-wrap items-center justify-between gap-2 pb-3 mb-4 border-b border-custom">
+                        <div>
+                            <h3 class="text-sm font-bold flex items-center gap-2">
+                                <i class="ph-fill ph-sliders-horizontal text-[#4A6B53] dark:text-[#7BA888] text-lg"></i>
+                                <span>Mùi Vị & Bản Đồ Chỉ Số Vị Giác</span>
+                            </h3>
+                            <p class="text-[11px] text-muted-custom mt-0.5">
+                                💡 Bấm vào từng thanh chỉ số để xem cơ sở khoa học chi tiết
+                            </p>
+                        </div>
+                        <button 
+                            type="button"
+                            onclick="toggleAllExplanations()" 
+                            id="toggleAllMetersBtn"
+                            class="text-xs font-semibold px-2.5 py-1 rounded-lg culinary-subtle hover:opacity-80 transition-opacity cursor-pointer"
+                        >
+                            Mở rộng tất cả
+                        </button>
+                    </div>
+
+                    <div class="mb-4">
+                        <span class="text-xs font-semibold text-muted-custom block mb-1">Cảm nhận mùi vị khi thưởng thức:</span>
+                        <p id="resTasteProfile" class="text-sm leading-relaxed culinary-subtle p-3.5 rounded-xl">
+                            --
+                        </p>
+                    </div>
+
+                    <!-- 6 Interactive Taste Bars -->
+                    <div class="grid grid-cols-1 gap-2.5" id="metersGrid">
+                        
+                        <!-- 1. Độ ngọt -->
+                        <div class="meter-item culinary-subtle p-3.5 rounded-xl cursor-pointer select-none hover:border-[#C86D51]/50 transition-colors" onclick="toggleMeterItem(this)">
+                            <div class="flex items-center justify-between text-xs font-semibold mb-1.5">
+                                <span>🍬 Độ ngọt</span>
+                                <div class="flex items-center gap-2">
+                                    <span id="valSweet" class="font-bold text-[#C86D51]">0%</span>
+                                    <i class="ph-bold ph-caret-down text-xs text-muted-custom meter-chevron transition-transform duration-200"></i>
+                                </div>
+                            </div>
+                            <div class="h-2.5 w-full bg-black/10 dark:bg-white/10 rounded-full overflow-hidden">
+                                <div id="barSweet" class="meter-bar-fill h-full bg-[#C86D51] rounded-full" style="width: 0%"></div>
+                            </div>
+                            <div class="meter-explanation">
                                 <p id="expSweet" class="text-xs text-muted-custom leading-relaxed pt-1.5 border-t border-custom">--</p
