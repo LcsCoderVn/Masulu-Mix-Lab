@@ -852,58 +852,74 @@
 
         // --- Core Analysis Runner with Gemini AI & Nutrition ---
         async function runCulinaryAnalysis() {
-            const inputEl = document.getElementById('ingredientInput');
-            const rawInput = inputEl ? inputEl.value.trim() : '';
-            if (rawInput) {
-                const parsed = parseRawIngredientText(rawInput);
-                parsed.forEach(t => { if (!activeTags.includes(t)) activeTags.push(t); });
-                inputEl.value = '';
-                renderTags();
-            }
+    const inputEl = document.getElementById('ingredientInput');
+    const rawInput = inputEl ? inputEl.value.trim() : '';
+    if (rawInput) {
+        const parsed = parseRawIngredientText(rawInput);
+        parsed.forEach(t => {
+            if (!activeTags.includes(t)) activeTags.push(t);
+        });
+        inputEl.value = '';
+        renderTags();
+    }
 
-            if (activeTags.length === 0) {
-                showAlert('Bạn chưa nhập nguyên liệu nào cả. Hãy gõ các món định kết hợp kèm định lượng nhé!');
-                if (inputEl) inputEl.focus();
-                return;
-            }
+    if (activeTags.length === 0) {
+        showAlert('Bạn chưa nhập nguyên liệu nào cả. Hãy gõ các món định kết hợp vào ô nhé!');
+        if (inputEl) inputEl.focus();
+        return;
+    }
 
-            const queryString = activeTags.join(' + ');
-            const analyzeBtn = document.getElementById('analyzeBtn');
-            const loadingPanel = document.getElementById('loadingPanel');
-            const resultDashboard = document.getElementById('resultDashboard');
-            const emptyStatePanel = document.getElementById('emptyStatePanel');
+    const queryString = activeTags.join(' + ');
+    const analyzeBtn = document.getElementById('analyzeBtn');
+    const loadingPanel = document.getElementById('loadingPanel');
+    const resultDashboard = document.getElementById('resultDashboard');
+    const emptyStatePanel = document.getElementById('emptyStatePanel');
 
-            hideAlert();
-            if (analyzeBtn) {
-                analyzeBtn.disabled = true;
-                analyzeBtn.classList.add('opacity-60');
-            }
-            if (emptyStatePanel) emptyStatePanel.classList.add('hidden');
-            if (resultDashboard) resultDashboard.classList.add('hidden');
-            if (loadingPanel) loadingPanel.classList.remove('hidden');
+    hideAlert();
+    if (analyzeBtn) {
+        analyzeBtn.disabled = true;
+        analyzeBtn.classList.add('opacity-60');
+    }
+    if (emptyStatePanel) emptyStatePanel.classList.add('hidden');
+    if (resultDashboard) resultDashboard.classList.add('hidden');
+    if (loadingPanel) loadingPanel.classList.remove('hidden');
 
-            let finalReport = null;
-            try {
-                finalReport = await fetchGeminiCulinaryAnalysis(queryString);
-            } catch (err) {
-                finalReport = computeLocalCulinaryFallback(activeTags, queryString);
-            }
+    let finalReport = null;
+    try {
+        const verifiedMatch = matchVerifiedCase(queryString);
+        if (verifiedMatch) {
+            await new Promise(r => setTimeout(r, 220));
+            finalReport = verifiedMatch;
+        } else {
+            // Gọi API Gemini
+            finalReport = await fetchGeminiCulinaryAnalysis(queryString);
+        }
+    } catch (err) {
+        console.error("Lỗi gọi API:", err);
+        // Dùng bản dự phòng local nếu API lỗi hoặc hết hạn mức
+        finalReport = computeLocalCulinaryFallback(activeTags, queryString);
+    } finally {
+        // --- LUÔN LUÔN MỞ LẠI NÚT VÀ TẮT LOADING DÙ CÓ LỖI HAY KHÔNG ---
+        if (loadingPanel) loadingPanel.classList.add('hidden');
+        if (analyzeBtn) {
+            analyzeBtn.disabled = false;
+            analyzeBtn.classList.remove('opacity-60');
+        }
+    }
 
-            if (!finalReport) {
-                finalReport = computeLocalCulinaryFallback(activeTags, queryString);
-            }
+    if (!finalReport) {
+        finalReport = computeLocalCulinaryFallback(activeTags, queryString);
+    }
 
-            const dangers = detectDangerCombos(activeTags);
-            if (dangers.length) {
-                finalReport = applyDangerToReport(finalReport, dangers);
-            }
+    const dangers = detectDangerCombos(activeTags);
+    if (dangers.length) {
+        finalReport = applyDangerToReport(finalReport, dangers);
+    }
 
-            if (loadingPanel) loadingPanel.classList.add('hidden');
-            if (resultDashboard) resultDashboard.classList.remove('hidden');
-            if (analyzeBtn) {
-                analyzeBtn.disabled = false;
-                analyzeBtn.classList.remove('opacity-60');
-            }
+    if (resultDashboard) resultDashboard.classList.remove('hidden');
+    renderDangerPanel(dangers);
+    renderCulinaryReport(finalReport, queryString);
+}
 
             renderDangerPanel(dangers);
             renderCulinaryReport(finalReport, queryString);
