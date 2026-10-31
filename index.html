@@ -1,18 +1,14 @@
 <!DOCTYPE html>
 <html lang="vi" class="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Masulu Mix Lab — Góc Thử Nghiệm Kết Hợp Ẩm Thực & Tính Calo</title>
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Plus Jakarta Sans & Fraunces -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -24,7 +20,7 @@
                     }
                 }
             }
-        }
+        };
     </script>
 
     <style>
@@ -72,45 +68,20 @@
         .culinary-subtle {
             background-color: var(--bg-subtle);
             border: 1px solid var(--border-color);
-            transition: background-color 0.25s ease, border-color 0.25s ease;
         }
 
-        .text-muted-custom {
-            color: var(--text-muted);
-        }
-
-        .border-custom {
-            border-color: var(--border-color);
-        }
-
-        .meter-bar-fill {
-            transition: width 0.65s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
+        .text-muted-custom { color: var(--text-muted); }
+        .border-custom { border-color: var(--border-color); }
+        .meter-bar-fill { transition: width 0.65s cubic-bezier(0.22, 1, 0.36, 1); }
         .meter-explanation {
-            max-height: 0;
-            overflow: hidden;
-            opacity: 0;
+            max-height: 0; overflow: hidden; opacity: 0;
             transition: max-height 0.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.25s ease, margin-top 0.25s ease;
         }
+        .meter-item.expanded .meter-explanation { max-height: 220px; opacity: 1; margin-top: 0.65rem; }
+        .meter-item.expanded .meter-chevron { transform: rotate(180deg); }
 
-        .meter-item.expanded .meter-explanation {
-            max-height: 220px;
-            opacity: 1;
-            margin-top: 0.65rem;
-        }
-
-        .meter-item.expanded .meter-chevron {
-            transform: rotate(180deg);
-        }
-
-        ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--bg-main);
-        }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-main); }
         ::-webkit-scrollbar-thumb {
             background: var(--border-color);
             border-radius: 9999px;
@@ -118,8 +89,6 @@
     </style>
 </head>
 <body class="antialiased selection:bg-[#C86D51]/20">
-
-    <!-- Top Navigation Bar -->
     <header class="sticky top-0 z-30 backdrop-blur-md bg-[#F2EFE9]/90 dark:bg-[#181615]/90 border-b border-custom transition-colors">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <div class="flex items-center gap-3">
@@ -137,14 +106,8 @@
                 </div>
             </div>
 
-            <!-- Theme Toggle Button -->
-            <button 
-                onclick="toggleTheme()" 
-                id="themeToggleBtn"
-                type="button"
-                aria-label="Chuyển đổi giao diện Sáng / Tối"
-                class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl culinary-card hover:opacity-90 text-xs font-semibold cursor-pointer transition-all"
-            >
+            <button onclick="toggleTheme()" id="themeToggleBtn" type="button" aria-label="Chuyển đổi giao diện Sáng / Tối"
+                class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl culinary-card hover:opacity-90 text-xs font-semibold cursor-pointer transition-all">
                 <i id="themeIcon" class="ph-fill ph-moon text-base text-[#C86D51]"></i>
                 <span id="themeLabel">Chế độ Tối</span>
             </button>
@@ -152,8 +115,6 @@
     </header>
 
     <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-
-        <!-- Intro Banner -->
         <section class="culinary-card rounded-2xl p-5 sm:p-6 mb-6">
             <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div class="space-y-1.5">
@@ -162,82 +123,67 @@
                         <span>Góc Thử Nghiệm Ẩm Thực & Dinh Dưỡng Thực Tế</span>
                     </div>
                     <p class="text-sm sm:text-base leading-relaxed">
-                        Nhập nguyên liệu kèm định lượng (VD: <strong>thịt 100g, cơm 150g, sữa chua 1 hộp</strong>) để kiểm tra mùi vị, độ hợp nhau và tính toán <strong>chỉ số Calo, Protein, Carb, Fat</strong> tự động.
+                        Nhập nguyên liệu kèm định lượng (VD: <strong>thịt 100g, cơm 150g, sữa chua 1 hộp</strong>) để kiểm tra mùi vị, độ hợp nhau và tính toán <strong>calo</strong>.
                     </p>
                 </div>
                 <div class="shrink-0 flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl culinary-subtle text-xs">
                     <i class="ph-fill ph-fire text-lg text-[#C86D51]"></i>
                     <div>
                         <span class="block text-muted-custom">Hỗ trợ AI Google:</span>
-                        <span class="font-semibold">Tính Calo & Phân tích vị giác chuẩn xác</span>
+                        <span class="font-semibold">Tính Calo & Phân tích vị giác</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Ingredient Input Workbench -->
         <section class="culinary-card rounded-2xl p-5 sm:p-6 mb-6">
             <div class="flex items-center justify-between mb-3">
                 <label for="ingredientInput" class="text-sm font-bold flex items-center gap-2">
                     <i class="ph-fill ph-bowl-food text-[#C86D51] text-lg"></i>
                     <span>Hôm nay bạn định mix những gì với định lượng bao nhiêu?</span>
                 </label>
-                <button onclick="clearAllIngredients()" id="clearTagsBtn" class="hidden text-xs font-semibold text-[#B84239] dark:text-[#E07A72] hover:underline cursor-pointer">
+                <button onclick="clearAllIngredients()" id="clearTagsBtn" class="hidden text-xs font-semibold text-[#B84239] hover:underline cursor-pointer">
                     Xóa tất cả
                 </button>
             </div>
 
-            <!-- Selected Ingredient Chips -->
             <div id="tagsContainer" class="flex flex-wrap gap-2 mb-3.5 empty:hidden"></div>
-
-            <!-- Live danger warning -->
             <div id="liveDangerWarning" class="hidden mb-3.5 space-y-2" role="alert"></div>
 
-            <!-- Input Row -->
             <div class="flex flex-col sm:flex-row gap-3">
                 <div class="relative flex-1">
-                    <input 
-                        type="text" 
-                        id="ingredientInput" 
-                        placeholder="Nhập nguyên liệu kèm định lượng (VD: thịt 100g, cơm 150g, trứng 2 quả)..." 
+                    <input
+                        type="text"
+                        id="ingredientInput"
+                        placeholder="Nhập nguyên liệu kèm định lượng (VD: thịt 100g, cơm 150g, trứng 2 quả)..."
                         class="w-full pl-4 pr-24 py-3.5 rounded-xl culinary-subtle focus:outline-none focus:ring-2 focus:ring-[#4A6B53] text-sm transition-all placeholder:text-muted-custom"
                         onkeydown="handleInputKeydown(event)"
                         oninput="updateLiveDanger()"
                     >
-                    <button 
-                        onclick="addIngredientFromInput()" 
-                        type="button"
-                        class="absolute right-2 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-lg culinary-card hover:opacity-80 text-xs font-semibold transition-opacity cursor-pointer"
-                    >
+                    <button onclick="addIngredientFromInput()" type="button"
+                        class="absolute right-2 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-lg culinary-card hover:opacity-80 text-xs font-semibold transition-opacity cursor-pointer">
                         + Thêm món
                     </button>
                 </div>
 
-                <button 
-                    id="analyzeBtn"
-                    onclick="runCulinaryAnalysis()" 
-                    class="px-6 py-3.5 rounded-xl bg-[#4A6B53] hover:bg-[#3D5944] dark:bg-[#5E8769] dark:hover:bg-[#4E7358] text-[#FAF8F5] font-semibold text-sm transition-all flex items-center justify-center gap-2 shrink-0 shadow-xs cursor-pointer"
-                >
+                <button id="analyzeBtn" onclick="runCulinaryAnalysis()"
+                    class="px-6 py-3.5 rounded-xl bg-[#4A6B53] hover:bg-[#3D5944] text-[#FAF8F5] font-semibold text-sm transition-all flex items-center justify-center gap-2">
                     <i class="ph-bold ph-cooking-pot text-base"></i>
                     <span>Phân Tích & Tính Calo</span>
                 </button>
             </div>
         </section>
 
-        <!-- Empty Initial State Prompt -->
         <section id="emptyStatePanel" class="culinary-card rounded-2xl p-8 sm:p-10 text-center my-4">
-            <div class="w-12 h-12 rounded-2xl culinary-subtle text-[#4A6B53] dark:text-[#7BA888] mx-auto flex items-center justify-center mb-3">
+            <div class="w-12 h-12 rounded-2xl culinary-subtle text-[#4A6B53] mx-auto flex items-center justify-center mb-3">
                 <i class="ph-fill ph-bowl-steam text-2xl"></i>
             </div>
-            <h3 class="font-display text-base sm:text-lg font-bold mb-1">
-                Sẵn sàng kiểm tra công thức và lượng calo của bạn
-            </h3>
+            <h3 class="font-display text-base sm:text-lg font-bold mb-1">Sẵn sàng kiểm tra công thức và lượng calo của bạn</h3>
             <p class="text-xs sm:text-sm text-muted-custom max-w-md mx-auto leading-relaxed">
                 Hãy nhập các nguyên liệu kèm định lượng (ví dụ: <em>thịt 150g, cơm trắng 200g, canh rau 1 bát</em>) rồi bấm <strong>Phân Tích & Tính Calo</strong>.
             </p>
         </section>
 
-        <!-- Custom Message Notification -->
         <div id="alertBanner" class="hidden mb-6 p-4 rounded-xl bg-[#B87D32]/15 border border-[#B87D32] text-xs sm:text-sm font-medium flex items-center justify-between">
             <div class="flex items-center gap-2.5">
                 <i class="ph-fill ph-warning-circle text-lg text-[#B87D32]"></i>
@@ -246,46 +192,27 @@
             <button onclick="hideAlert()" class="font-bold px-2 hover:opacity-70">✕</button>
         </div>
 
-        <!-- Loading State -->
         <section id="loadingPanel" class="hidden culinary-card rounded-2xl p-10 text-center my-6">
             <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl culinary-subtle text-[#C86D51] mb-3 animate-bounce">
                 <i class="ph-fill ph-fire text-3xl"></i>
             </div>
-            <h3 class="font-display text-lg font-bold mb-1">
-                Đang tính toán calo & phân tích vị giác...
-            </h3>
-            <p class="text-xs sm:text-sm text-muted-custom">
-                AI Google đang tra cứu hàm lượng dinh dưỡng và độ hợp vị cho các định lượng bạn vừa chọn.
-            </p>
+            <h3 class="font-display text-lg font-bold mb-1">Đang tính toán calo & phân tích vị giác...</h3>
+            <p class="text-xs sm:text-sm text-muted-custom">AI đang xử lý các nguyên liệu và định lượng bạn vừa nhập.</p>
         </section>
 
-        <!-- Result Dashboard -->
         <section id="resultDashboard" class="hidden space-y-5">
-
-            <!-- 0. Danger Combination Warnings -->
             <div id="dangerPanel" class="hidden space-y-3" role="alert"></div>
 
-            <!-- 1. Overview Card -->
             <div class="culinary-card rounded-2xl p-5 sm:p-6">
                 <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-5">
                     <div class="space-y-2.5 flex-1">
                         <div class="flex flex-wrap items-center gap-2.5">
-                            <span id="resCategoryBadge" class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">
-                                ĐÁNH GIÁ
-                            </span>
-                            <span id="resSampleFormula" class="text-xs font-medium px-2.5 py-1 rounded-lg culinary-subtle text-muted-custom">
-                                Định lượng: --
-                            </span>
+                            <span id="resCategoryBadge" class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">ĐÁNH GIÁ</span>
+                            <span id="resSampleFormula" class="text-xs font-medium px-2.5 py-1 rounded-lg culinary-subtle text-muted-custom">Định lượng: --</span>
                         </div>
-                        <h2 id="resTitle" class="font-display text-2xl sm:text-3xl font-bold tracking-tight">
-                            Tên Món Kết Hợp
-                        </h2>
-                        <p id="resExecutiveSummary" class="text-sm sm:text-base leading-relaxed text-muted-custom">
-                            --
-                        </p>
+                        <h2 id="resTitle" class="font-display text-2xl sm:text-3xl font-bold tracking-tight">Tên Món Kết Hợp</h2>
+                        <p id="resExecutiveSummary" class="text-sm sm:text-base leading-relaxed text-muted-custom">--</p>
                     </div>
-
-                    <!-- Compatibility Score Box -->
                     <div class="shrink-0 culinary-subtle rounded-2xl p-4 sm:px-6 sm:py-4 flex lg:flex-col items-center justify-between lg:justify-center gap-3 border border-custom min-w-[165px]">
                         <div class="text-left lg:text-center">
                             <span class="text-xs font-semibold uppercase tracking-wider text-muted-custom block">Độ Hợp Vị</span>
@@ -299,16 +226,13 @@
                 </div>
             </div>
 
-            <!-- 2. NEW NUTRITION & CALORIE DASHBOARD CARD -->
             <div class="culinary-card rounded-2xl p-5 sm:p-6 border-t-4 border-t-[#C86D51]">
                 <div class="flex items-center justify-between pb-3 mb-4 border-b border-custom">
                     <h3 class="text-sm font-bold flex items-center gap-2 text-[#C86D51]">
                         <i class="ph-fill ph-fire text-lg"></i>
                         <span>Bảng Thống Kê Calo & Dinh Dưỡng Theo Định Lượng</span>
                     </h3>
-                    <span id="resCalorieBadge" class="text-xs font-bold px-3 py-1 rounded-full culinary-subtle text-[#C86D51]">
-                        -- kcal
-                    </span>
+                    <span id="resCalorieBadge" class="text-xs font-bold px-3 py-1 rounded-full culinary-subtle text-[#C86D51]">-- kcal</span>
                 </div>
 
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
@@ -317,28 +241,23 @@
                         <strong id="resValCalories" class="font-display text-xl font-bold text-[#C86D51]">0 kcal</strong>
                     </div>
                     <div class="culinary-subtle p-3.5 rounded-xl text-center">
-                        <span class="text-xs text-muted-custom block mb-1">🥩 Protein (Đạm)</span>
+                        <span class="text-xs text-muted-custom block mb-1">🥩 Protein</span>
                         <strong id="resValProtein" class="font-display text-lg font-bold">0g</strong>
                     </div>
                     <div class="culinary-subtle p-3.5 rounded-xl text-center">
-                        <span class="text-xs text-muted-custom block mb-1">🍚 Carbs (Tinh bột)</span>
+                        <span class="text-xs text-muted-custom block mb-1">🍚 Carbs</span>
                         <strong id="resValCarbs" class="font-display text-lg font-bold">0g</strong>
                     </div>
                     <div class="culinary-subtle p-3.5 rounded-xl text-center">
-                        <span class="text-xs text-muted-custom block mb-1">🥑 Fat (Chất béo)</span>
+                        <span class="text-xs text-muted-custom block mb-1">🥑 Fat</span>
                         <strong id="resValFat" class="font-display text-lg font-bold">0g</strong>
                     </div>
                 </div>
 
-                <p id="resNutritionSummary" class="text-xs sm:text-sm text-muted-custom leading-relaxed culinary-subtle p-3.5 rounded-xl">
-                    --
-                </p>
+                <p id="resNutritionSummary" class="text-xs sm:text-sm text-muted-custom leading-relaxed culinary-subtle p-3.5 rounded-xl">--</p>
             </div>
 
-            <!-- 3. Middle Grid: Appearance/Texture & Taste/6 Interactive Bars -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
-                
-                <!-- Left 5 Cols: Appearance & Texture -->
                 <div class="lg:col-span-5 culinary-card rounded-2xl p-5 sm:p-6 flex flex-col justify-between space-y-4">
                     <div>
                         <div class="flex items-center justify-between pb-3 mb-4 border-b border-custom">
@@ -346,27 +265,19 @@
                                 <i class="ph-fill ph-eye text-[#C86D51] text-lg"></i>
                                 <span>Hình Thức & Kết Cấu Món</span>
                             </h3>
-                            <span id="resVisualRatingBadge" class="text-xs font-semibold px-2.5 py-0.5 rounded-md culinary-subtle">
-                                --
-                            </span>
+                            <span id="resVisualRatingBadge" class="text-xs font-semibold px-2.5 py-0.5 rounded-md culinary-subtle">--</span>
                         </div>
-
                         <div class="space-y-3.5">
                             <div>
                                 <span class="text-xs font-semibold text-muted-custom block mb-1">Ngoại hình sau khi trộn / chế biến:</span>
-                                <p id="resAppearance" class="text-sm leading-relaxed culinary-subtle p-3.5 rounded-xl">
-                                    --
-                                </p>
+                                <p id="resAppearance" class="text-sm leading-relaxed culinary-subtle p-3.5 rounded-xl">--</p>
                             </div>
                             <div>
                                 <span class="text-xs font-semibold text-muted-custom block mb-1">Cảm giác trong miệng (Kết cấu):</span>
-                                <p id="resTextureDetail" class="text-sm leading-relaxed culinary-subtle p-3.5 rounded-xl">
-                                    --
-                                </p>
+                                <p id="resTextureDetail" class="text-sm leading-relaxed culinary-subtle p-3.5 rounded-xl">--</p>
                             </div>
                         </div>
                     </div>
-
                     <div class="pt-3 border-t border-custom grid grid-cols-2 gap-2.5 text-xs">
                         <div class="culinary-subtle p-2.5 rounded-xl">
                             <span class="text-muted-custom block text-[11px]">Trạng thái món:</span>
@@ -379,151 +290,118 @@
                     </div>
                 </div>
 
-                <!-- Right 7 Cols: Taste Experience & 6 Interactive Clickable Bars -->
                 <div class="lg:col-span-7 culinary-card rounded-2xl p-5 sm:p-6">
                     <div class="flex flex-wrap items-center justify-between gap-2 pb-3 mb-4 border-b border-custom">
                         <div>
                             <h3 class="text-sm font-bold flex items-center gap-2">
-                                <i class="ph-fill ph-sliders-horizontal text-[#4A6B53] dark:text-[#7BA888] text-lg"></i>
+                                <i class="ph-fill ph-sliders-horizontal text-[#4A6B53] text-lg"></i>
                                 <span>Mùi Vị Thực Tế & Bản Đồ Chỉ Số Vị Giác</span>
                             </h3>
-                            <p class="text-[11px] text-muted-custom mt-0.5">
-                                💡 Bấm vào từng thanh chỉ số bên dưới để xem giải thích vì sao có vị đó
-                            </p>
+                            <p class="text-[11px] text-muted-custom mt-0.5">💡 Bấm vào từng thanh chỉ số bên dưới để xem giải thích</p>
                         </div>
-                        <button 
-                            type="button"
-                            onclick="toggleAllExplanations()" 
-                            id="toggleAllMetersBtn"
-                            class="text-xs font-semibold px-2.5 py-1 rounded-lg culinary-subtle hover:opacity-80 transition-opacity cursor-pointer"
-                        >
+                        <button type="button" onclick="toggleAllExplanations()" id="toggleAllMetersBtn"
+                            class="text-xs font-semibold px-2.5 py-1 rounded-lg culinary-subtle hover:opacity-80 transition-opacity cursor-pointer">
                             Mở rộng tất cả
                         </button>
                     </div>
 
                     <div class="mb-4">
                         <span class="text-xs font-semibold text-muted-custom block mb-1">Cảm nhận mùi vị khi ăn / uống:</span>
-                        <p id="resTasteProfile" class="text-sm leading-relaxed culinary-subtle p-3.5 rounded-xl">
-                            --
-                        </p>
+                        <p id="resTasteProfile" class="text-sm leading-relaxed culinary-subtle p-3.5 rounded-xl">--</p>
                     </div>
 
-                    <!-- 6 Interactive Culinary Taste Bars -->
                     <div class="grid grid-cols-1 gap-2.5" id="metersGrid">
-                        
-                        <!-- 1. Độ ngọt -->
-                        <div class="meter-item culinary-subtle p-3.5 rounded-xl cursor-pointer select-none hover:border-[#C86D51]/50 transition-colors" onclick="toggleMeterItem(this)">
+                        <div class="meter-item culinary-subtle p-3.5 rounded-xl cursor-pointer select-none" onclick="toggleMeterItem(this)">
                             <div class="flex items-center justify-between text-xs font-semibold mb-1.5">
-                                <span class="flex items-center gap-1.5"><span>🍬 Độ ngọt</span></span>
+                                <span>🍬 Độ ngọt</span>
                                 <div class="flex items-center gap-2">
                                     <span id="valSweet" class="font-bold text-[#C86D51]">0%</span>
                                     <i class="ph-bold ph-caret-down text-xs text-muted-custom meter-chevron transition-transform duration-200"></i>
                                 </div>
                             </div>
-                            <div class="h-2.5 w-full bg-black/10 dark:bg-white/10 rounded-full overflow-hidden">
+                            <div class="h-2.5 w-full bg-black/10 rounded-full overflow-hidden">
                                 <div id="barSweet" class="meter-bar-fill h-full bg-[#C86D51] rounded-full" style="width: 0%"></div>
                             </div>
-                            <div class="meter-explanation">
-                                <p id="expSweet" class="text-xs leading-relaxed pt-2 border-t border-custom text-muted-custom">--</p>
-                            </div>
+                            <div class="meter-explanation"><p id="expSweet" class="text-xs leading-relaxed pt-2 border-t border-custom text-muted-custom">--</p></div>
                         </div>
 
-                        <!-- 2. Độ chua -->
-                        <div class="meter-item culinary-subtle p-3.5 rounded-xl cursor-pointer select-none hover:border-[#D99B4E]/50 transition-colors" onclick="toggleMeterItem(this)">
+                        <div class="meter-item culinary-subtle p-3.5 rounded-xl cursor-pointer select-none" onclick="toggleMeterItem(this)">
                             <div class="flex items-center justify-between text-xs font-semibold mb-1.5">
-                                <span class="flex items-center gap-1.5"><span>🍋 Độ chua</span></span>
+                                <span>🍋 Độ chua</span>
                                 <div class="flex items-center gap-2">
-                                    <span id="valSour" class="font-bold text-[#B87D32] dark:text-[#D99B4E]">0%</span>
+                                    <span id="valSour" class="font-bold text-[#B87D32]">0%</span>
                                     <i class="ph-bold ph-caret-down text-xs text-muted-custom meter-chevron transition-transform duration-200"></i>
                                 </div>
                             </div>
-                            <div class="h-2.5 w-full bg-black/10 dark:bg-white/10 rounded-full overflow-hidden">
+                            <div class="h-2.5 w-full bg-black/10 rounded-full overflow-hidden">
                                 <div id="barSour" class="meter-bar-fill h-full bg-[#D99B4E] rounded-full" style="width: 0%"></div>
                             </div>
-                            <div class="meter-explanation">
-                                <p id="expSour" class="text-xs leading-relaxed pt-2 border-t border-custom text-muted-custom">--</p>
-                            </div>
+                            <div class="meter-explanation"><p id="expSour" class="text-xs leading-relaxed pt-2 border-t border-custom text-muted-custom">--</p></div>
                         </div>
 
-                        <!-- 3. Độ mặn & Đậm đà -->
-                        <div class="meter-item culinary-subtle p-3.5 rounded-xl cursor-pointer select-none hover:border-[#4A6B53]/50 transition-colors" onclick="toggleMeterItem(this)">
+                        <div class="meter-item culinary-subtle p-3.5 rounded-xl cursor-pointer select-none" onclick="toggleMeterItem(this)">
                             <div class="flex items-center justify-between text-xs font-semibold mb-1.5">
-                                <span class="flex items-center gap-1.5"><span>🧂 Độ mặn & Đậm đà</span></span>
+                                <span>🧂 Độ mặn & Đậm đà</span>
                                 <div class="flex items-center gap-2">
-                                    <span id="valSalty" class="font-bold text-[#4A6B53] dark:text-[#7BA888]">0%</span>
+                                    <span id="valSalty" class="font-bold text-[#4A6B53]">0%</span>
                                     <i class="ph-bold ph-caret-down text-xs text-muted-custom meter-chevron transition-transform duration-200"></i>
                                 </div>
                             </div>
-                            <div class="h-2.5 w-full bg-black/10 dark:bg-white/10 rounded-full overflow-hidden">
-                                <div id="barSalty" class="meter-bar-fill h-full bg-[#4A6B53] dark:bg-[#699676] rounded-full" style="width: 0%"></div>
+                            <div class="h-2.5 w-full bg-black/10 rounded-full overflow-hidden">
+                                <div id="barSalty" class="meter-bar-fill h-full bg-[#4A6B53] rounded-full" style="width: 0%"></div>
                             </div>
-                            <div class="meter-explanation">
-                                <p id="expSalty" class="text-xs leading-relaxed pt-2 border-t border-custom text-muted-custom">--</p>
-                            </div>
+                            <div class="meter-explanation"><p id="expSalty" class="text-xs leading-relaxed pt-2 border-t border-custom text-muted-custom">--</p></div>
                         </div>
 
-                        <!-- 4. Độ đắng & Chát -->
-                        <div class="meter-item culinary-subtle p-3.5 rounded-xl cursor-pointer select-none hover:border-[#6E5A4F]/50 transition-colors" onclick="toggleMeterItem(this)">
+                        <div class="meter-item culinary-subtle p-3.5 rounded-xl cursor-pointer select-none" onclick="toggleMeterItem(this)">
                             <div class="flex items-center justify-between text-xs font-semibold mb-1.5">
-                                <span class="flex items-center gap-1.5"><span>☕ Độ đắng & Chát</span></span>
+                                <span>☕ Độ đắng & Chát</span>
                                 <div class="flex items-center gap-2">
-                                    <span id="valBitter" class="font-bold text-[#6E5A4F] dark:text-[#B8A396]">0%</span>
+                                    <span id="valBitter" class="font-bold text-[#6E5A4F]">0%</span>
                                     <i class="ph-bold ph-caret-down text-xs text-muted-custom meter-chevron transition-transform duration-200"></i>
                                 </div>
                             </div>
-                            <div class="h-2.5 w-full bg-black/10 dark:bg-white/10 rounded-full overflow-hidden">
-                                <div id="barBitter" class="meter-bar-fill h-full bg-[#7D6659] dark:bg-[#A38C7E] rounded-full" style="width: 0%"></div>
+                            <div class="h-2.5 w-full bg-black/10 rounded-full overflow-hidden">
+                                <div id="barBitter" class="meter-bar-fill h-full bg-[#7D6659] rounded-full" style="width: 0%"></div>
                             </div>
-                            <div class="meter-explanation">
-                                <p id="expBitter" class="text-xs leading-relaxed pt-2 border-t border-custom text-muted-custom">--</p>
-                            </div>
+                            <div class="meter-explanation"><p id="expBitter" class="text-xs leading-relaxed pt-2 border-t border-custom text-muted-custom">--</p></div>
                         </div>
 
-                        <!-- 5. Độ cay & Nồng hăng -->
-                        <div class="meter-item culinary-subtle p-3.5 rounded-xl cursor-pointer select-none hover:border-[#B84239]/50 transition-colors" onclick="toggleMeterItem(this)">
+                        <div class="meter-item culinary-subtle p-3.5 rounded-xl cursor-pointer select-none" onclick="toggleMeterItem(this)">
                             <div class="flex items-center justify-between text-xs font-semibold mb-1.5">
-                                <span class="flex items-center gap-1.5"><span>🌶️ Độ cay & Nồng hăng</span></span>
+                                <span>🌶️ Độ cay & Nồng hăng</span>
                                 <div class="flex items-center gap-2">
-                                    <span id="valPungent" class="font-bold text-[#B84239] dark:text-[#E07A72]">0%</span>
+                                    <span id="valPungent" class="font-bold text-[#B84239]">0%</span>
                                     <i class="ph-bold ph-caret-down text-xs text-muted-custom meter-chevron transition-transform duration-200"></i>
                                 </div>
                             </div>
-                            <div class="h-2.5 w-full bg-black/10 dark:bg-white/10 rounded-full overflow-hidden">
+                            <div class="h-2.5 w-full bg-black/10 rounded-full overflow-hidden">
                                 <div id="barPungent" class="meter-bar-fill h-full bg-[#C94A40] rounded-full" style="width: 0%"></div>
                             </div>
-                            <div class="meter-explanation">
-                                <p id="expPungent" class="text-xs leading-relaxed pt-2 border-t border-custom text-muted-custom">--</p>
-                            </div>
+                            <div class="meter-explanation"><p id="expPungent" class="text-xs leading-relaxed pt-2 border-t border-custom text-muted-custom">--</p></div>
                         </div>
 
-                        <!-- 6. Độ béo & Sánh ngậy -->
-                        <div class="meter-item culinary-subtle p-3.5 rounded-xl cursor-pointer select-none hover:border-[#9C6B3B]/50 transition-colors" onclick="toggleMeterItem(this)">
+                        <div class="meter-item culinary-subtle p-3.5 rounded-xl cursor-pointer select-none" onclick="toggleMeterItem(this)">
                             <div class="flex items-center justify-between text-xs font-semibold mb-1.5">
-                                <span class="flex items-center gap-1.5"><span>🧈 Độ béo & Sánh ngậy</span></span>
+                                <span>🧈 Độ béo & Sánh ngậy</span>
                                 <div class="flex items-center gap-2">
-                                    <span id="valFat" class="font-bold text-[#9C6B3B] dark:text-[#CFA06E]">0%</span>
+                                    <span id="valFat" class="font-bold text-[#9C6B3B]">0%</span>
                                     <i class="ph-bold ph-caret-down text-xs text-muted-custom meter-chevron transition-transform duration-200"></i>
                                 </div>
                             </div>
-                            <div class="h-2.5 w-full bg-black/10 dark:bg-white/10 rounded-full overflow-hidden">
+                            <div class="h-2.5 w-full bg-black/10 rounded-full overflow-hidden">
                                 <div id="barFat" class="meter-bar-fill h-full bg-[#B58350] rounded-full" style="width: 0%"></div>
                             </div>
-                            <div class="meter-explanation">
-                                <p id="expFat" class="text-xs leading-relaxed pt-2 border-t border-custom text-muted-custom">--</p>
-                            </div>
+                            <div class="meter-explanation"><p id="expFat" class="text-xs leading-relaxed pt-2 border-t border-custom text-muted-custom">--</p></div>
                         </div>
-
                     </div>
                 </div>
             </div>
 
-            <!-- 4. Bottom Grid: Nutrition/Pros vs Stomach/Cons & Chef's Advice -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
-
-                <!-- Nutrition & Good Points -->
                 <div class="lg:col-span-6 culinary-card rounded-2xl p-5 sm:p-6 border-t-4 border-t-[#4A6B53]">
                     <div class="flex items-center justify-between pb-3 mb-3.5 border-b border-custom">
-                        <h3 class="text-sm font-bold text-[#4A6B53] dark:text-[#7BA888] flex items-center gap-2">
+                        <h3 class="text-sm font-bold text-[#4A6B53] flex items-center gap-2">
                             <i class="ph-fill ph-heart-straight text-lg"></i>
                             <span>Dinh Dưỡng & Điểm Cộng</span>
                         </h3>
@@ -532,10 +410,9 @@
                     <ul id="resBenefitsList" class="space-y-2.5 text-sm leading-relaxed"></ul>
                 </div>
 
-                <!-- Stomach & Health Warnings -->
                 <div class="lg:col-span-6 culinary-card rounded-2xl p-5 sm:p-6 border-t-4 border-t-[#B84239]">
                     <div class="flex items-center justify-between pb-3 mb-3.5 border-b border-custom">
-                        <h3 class="text-sm font-bold text-[#B84239] dark:text-[#E07A72] flex items-center gap-2">
+                        <h3 class="text-sm font-bold text-[#B84239] flex items-center gap-2">
                             <i class="ph-fill ph-warning-octagon text-lg"></i>
                             <span>Lưu Ý Cho Bụng Dạ & Sức Khỏe</span>
                         </h3>
@@ -544,7 +421,6 @@
                     <ul id="resRisksList" class="space-y-2.5 text-sm leading-relaxed"></ul>
                 </div>
 
-                <!-- Chef's Practical Tip -->
                 <div class="lg:col-span-12 culinary-card rounded-2xl p-5 culinary-subtle">
                     <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3.5">
                         <div class="px-3.5 py-2 rounded-xl bg-[#C86D51] text-[#FAF8F5] text-xs font-bold uppercase tracking-wide shrink-0 flex items-center gap-1.5">
@@ -554,20 +430,16 @@
                         <p id="resProtocol" class="text-sm sm:text-base leading-relaxed">--</p>
                     </div>
                 </div>
-
             </div>
-
         </section>
-
     </main>
 
     <footer class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 mt-8 border-t border-custom text-xs text-muted-custom flex flex-col sm:flex-row items-center justify-between gap-2">
         <div><strong>Masulu Mix Lab</strong> — Góc thử nghiệm kết hợp món ăn & tính calo thực tế.</div>
-        <div>Tích hợp Google Gemini AI • Bấm vào thanh chỉ số để xem giải thích vị giác</div>
+        <div>Local demo • Tính năng tương tác đã được sửa</div>
     </footer>
 
     <script>
-        // --- Theme Toggle ---
         function toggleTheme() {
             const htmlEl = document.documentElement;
             const iconEl = document.getElementById('themeIcon');
@@ -586,7 +458,6 @@
             }
         }
 
-        // --- Meter Accordion Toggle ---
         function toggleMeterItem(el) {
             el.classList.toggle('expanded');
             updateToggleAllButtonLabel();
@@ -609,10 +480,8 @@
             if (btn) btn.textContent = allExpanded ? 'Thu gọn tất cả' : 'Mở rộng tất cả';
         }
 
-        // --- State ---
         let activeTags = [];
 
-        // --- Parser for Ingredients with Quantities (e.g., "thịt 100g") ---
         function parseRawIngredientText(rawText) {
             if (!rawText) return [];
             let cleaned = String(rawText).trim();
@@ -623,7 +492,7 @@
                 .replace(/\s+(vào trong|vào với|vào cùng|vào|cùng với|cùng|với nhau|với|và|chung với|lẫn|cộng với|cộng|mix với|pha với|trộn với)\s+/gi, ',');
 
             return cleaned
-                .split(/[+,;/|]+/)
+                .split(/[+,;\/|]+/)
                 .map(s => s.trim())
                 .filter(Boolean);
         }
@@ -670,6 +539,16 @@
             document.getElementById('emptyStatePanel').classList.remove('hidden');
         }
 
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
         function renderTags() {
             const container = document.getElementById('tagsContainer');
             const clearBtn = document.getElementById('clearTagsBtn');
@@ -677,7 +556,7 @@
 
             activeTags.forEach((tag, idx) => {
                 const chip = document.createElement('div');
-                chip.className = 'inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#262320] dark:bg-[#E6E1DA] text-[#FAF8F5] dark:text-[#181615] text-xs font-semibold shadow-2xs';
+                chip.className = 'inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#262320] dark:bg-[#E6E1DA] text-[#FAF8F5] dark:text-[#181615] text-xs font-semibold shadow-sm';
                 chip.innerHTML = `
                     <span>${escapeHtml(tag)}</span>
                     <button onclick="removeTag(${idx})" class="opacity-70 hover:opacity-100 font-bold cursor-pointer" title="Bỏ món này">✕</button>
@@ -701,7 +580,6 @@
             document.getElementById('alertBanner').classList.add('hidden');
         }
 
-        // --- Safety & Danger Detection ---
         const tok = src => new RegExp(`(^|[\\s,+/])(?:${src})(?=$|[\\s,+/])`, 'i');
         const foldVN = s => String(s).normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'D');
 
@@ -719,60 +597,40 @@
         };
 
         const G = {
-            milk: group('sữa tươi|sữa bò|sữa nguyên kem|sữa bịch|sữa hộp|sữa tách béo|sữa(?!\\s+(?:chua|đậu|nành|dừa|hạt|yến|đặc|hạnh|gạo))', 'sua tuoi|sua bo|sua nguyen kem|sua bich|sua hop|sua tach beo|sua'),
+            milk: group('sữa tươi|sữa bò|sữa nguyên kem|sữa bịch|sữa hộp|sữa tách béo|sữa(?!\\s+(?:chua|đậu|nành|dừa|hạt|yến|đặc|hạnh|gạo))', 'sua tuoi|sua bo|sua hop|sua tach beo'),
             citrus: group('cam(?!\\s+(?:thảo|thao))|quýt|quít|chanh|tắc|quất|bưởi', 'cam|quyt|quit|chanh|buoi'),
-            seafood: group('hải sản|tôm|cua|ghẹ|mực|cá|sò|ốc|nghêu|ngao|hàu|bạch tuộc|sushi|sashimi|lươn|tép', 'hai san|tom|ngheu|bach tuoc|luon'),
-            vitaminCFruit: group('cam|quýt|quít|chanh|tắc|quất|bưởi|kiwi|dâu|ổi|dứa|trái thơm|đu đủ|khế|cóc|sấu|xoài|ớt chuông|vitamin c', 'cam|quyt|quit|chanh|buoi|dau tay|xoai|du du|ot chuong'),
-            persimmon: group('quả hồng|trái hồng|hồng(?!\\s+(?:xiêm|trà|sâm|bì))', 'qua hong|trai hong|hong gion|hong ngam'),
-            soyMilk: group('sữa đậu nành|sữa đậu|sữa nành|nước đậu nành|soy milk', 'sua dau nanh|sua dau|sua nanh'),
-            egg: group('trứng gà|trứng(?!\\s+(?:vịt|cút|muối|bắc))', 'trung ga|trung'),
-            durian: group('sầu riêng|durian', 'sau rieng'),
             alcohol: group('rượu|bia|soju|vodka|whisky|whiskey|sake|vang|tequila|rum|cocktail|beer|wine|champagne|brandy|cognac|gin|nhậu', 'ruou|nhau'),
-            yogurt: group('sữa chua|yogurt|yaourt|yakult', 'sua chua'),
-            curedMeat: group('thịt xông khói|xông khói|giăm bông|dăm bông|thịt hun khói|thịt nguội|jambon|ham|bacon|salami', 'thit xong khoi|giam bong|thit hun khoi'),
-            energyDrink: group('bò húc|red bull|redbull|sting|monster|nước tăng lực|energy drink', 'bo huc|nuoc tang luc'),
+            yogurt: group('sữa chua|yogurt|yakult', 'sua chua'),
             cola: group('coca-cola|coca cola|coca|cola|coke|pepsi|7up|7-up|sprite|fanta|mirinda|nước ngọt có ga|nước ngọt|nước có ga', 'nuoc ngot co ga|nuoc ngot'),
-            inkCapMushroom: group('nấm mực|coprinus|ink cap', 'nam muc'),
-            honey: group('mật ong', 'mat ong'),
-            infant: group('sơ sinh|em bé|(?:bé|trẻ)\\s*(?:[1-9]|1[01])\\s*tháng|dưới 1 tuổi|dưới 12 tháng', 'so sinh|em be'),
-            drugAny: group('thuốc(?!\\s+(?:lá|lào|tẩy|trừ|diệt|xịt|nổ|súng|nam))|kháng sinh|paracetamol|acetaminophen|panadol|ibuprofen|aspirin|statin|insulin', 'thuoc|khang sinh'),
-            sedative: group('thuốc ngủ|thuốc an thần|diazepam|seduxen|alprazolam|xanax|zolpidem|clonazepam|lorazepam|tramadol|morphin|morphine|codein|codeine|opioid', 'thuoc ngu|thuoc an than'),
-            nitroimidazole: group('metronidazole|flagyl|tinidazole|secnidazole|cefoperazone|cefotetan|disulfiram|antabuse'),
-            paracetamol: group('paracetamol|acetaminophen|panadol|efferalgan|hapacol|tylenol|thuốc hạ sốt|thuốc giảm đau', 'thuoc ha sot'),
-            grapefruit: group('bưởi chùm|grapefruit|nước bưởi|nước ép bưởi|bưởi', 'buoi chum|nuoc buoi|buoi'),
-            bleach: group('thuốc tẩy|nước tẩy|nước javen|javen|javel|clorox|bleach|natri hypoclorit|sodium hypochlorite|cloramin', 'nuoc javen|natri hypoclorit'),
-            acid: group('giấm|dấm|axit|acid|hcl|tẩy bồn cầu|tẩy rỉ|chanh|tắc|quất', 'giam|axit|chanh'),
-            ammonia: group('amoniac|amonia|ammonia|nước lau kính|nước rửa kính', 'nuoc lau kinh'),
-            chemAlcohol: group('cồn|ethanol|isopropanol|isopropyl|acetone|axeton|nước rửa tay khô', 'con y te|acetone'),
-            cleaner: group('nước rửa chén|nước rửa bát|nước lau sàn|nước lau nhà|bột giặt|nước giặt', 'nuoc rua chen|nuoc lau san'),
-            peroxide: group('oxy già|hydrogen peroxide|h2o2|hydro peroxit', 'oxy gia'),
-            vinegar: group('giấm|dấm', 'giam an'),
-            nonFood: group('xăng|dầu hỏa|thuốc trừ sâu|thuốc diệt chuột|thuốc diệt cỏ|thuốc xịt muỗi|nước rửa chén|nước rửa bát|nước lau sàn|nước lau nhà|bột giặt|nước giặt|nước xả vải|sơn tường|keo dán|keo 502|thủy ngân|thạch tín|xyanua|cyanide|acetone|cồn công nghiệp|hóa chất|dung môi|ammonia|amoniac|thuốc tẩy|nước tẩy|nước javen|axit sulfuric|xút|naoh|oxy già|hàn the|borax|formol|sudan|melamine|chất tạo nạc', 'xang|dau hoa|thuoc tru sau|nuoc rua chen|nuoc lau san|bot giat|thuy ngan|xyanua|hoa chat|nuoc javen|oxy gia|han the'),
+            durian: group('sầu riêng|durian', 'sau rieng'),
+            milkCitrus: group('sữa|milk|yogurt|sua', 'sua'),
+            egg: group('trứng gà|trứng(?!\\s+(?:vịt|cút|muối|bắc))', 'trung ga|trung'),
+            seafood: group('hải sản|tôm|cua|ghẹ|mực|cá|sò|ốc|nghêu|ngao|hàu|bạch tuộc|sushi|sashimi|lươn|tép', 'hai san|tom|ghẹ|cua|muc|ca|oc'),
+            nonFood: group('xăng|dầu hỏa|thuốc trừ sâu|thuốc diệt chuột|thuốc diệt cỏ|thuốc xịt muỗi|nước rửa chén|nước rửa bát|nước lau sàn|nước lau nhà|dầu máy|benzen|benzin', 'xang|dau hoa|thuoc trừ sâu|nuoc rua chen'),
             deadlyFood: group('cá nóc|trứng cá nóc|gan cá nóc|nấm lạ|nấm dại|nấm độc|mật cá|mật cá trắm', 'ca noc|nam doc|mat ca'),
-            rawToxicFood: group('mầm khoai tây|khoai tây mọc mầm|khoai tây xanh|sắn sống|khoai mì sống|đậu tây sống|đậu đỏ sống|măng sống|hạnh nhân đắng', 'mam khoai tay|san song|mang song'),
-            spoiled: group('thiu|ôi thiu|ươn|nấm mốc|bị mốc|mốc|hết hạn|quá hạn|thịt ôi|cá ươn', 'thiu|oi thiu|uon|nam moc|het han'),
+            spoiled: group('thiu|ôi thiu|ươn|nấm mốc|bị mốc|mốc|hết hạn|quá hạn|thịt ôi|cá ươn', 'thiu|uon|nam moc|het han'),
             rawRisk: group('tiết canh|thịt sống|cá sống|gỏi sống|hải sản sống|trứng.*sống|sữa sống', 'tiet canh|thit song|ca song|goi song')
         };
 
         const DANGER_LEVELS = {
-            critical: { short: 'CỰC NGUY HIỂM', badge: 'KHÔNG AN TOÀN • TUYỆT ĐỐI KHÔNG ĂN UỐNG', rank: 4, cap: 0, box: 'bg-[#B84239]/15 border-[#B84239]', pill: 'bg-[#8F2A23] text-[#FAF8F5]', icon: 'text-[#B84239] dark:text-[#E07A72]' },
-            high: { short: 'NGUY CƠ CAO', badge: 'CẢNH BÁO • NÊN TRÁNH HẲN', rank: 3, cap: 8, box: 'bg-[#B84239]/10 border-[#B84239]/50', pill: 'bg-[#B84239] text-[#FAF8F5]', icon: 'text-[#B84239] dark:text-[#E07A72]' },
-            medium: { short: 'KỴ NHAU', badge: 'CẢNH BÁO • KỴ NHAU', rank: 2, cap: 20, box: 'bg-[#C86D51]/10 border-[#C86D51]/50', pill: 'bg-[#C86D51] text-[#FAF8F5]', icon: 'text-[#C86D51] dark:text-[#DF8266]' },
-            low: { short: 'CẦN THẬN TRỌNG', badge: 'CẢNH BÁO • CẦN THẬN TRỌNG', rank: 1, cap: 35, box: 'bg-[#B87D32]/10 border-[#B87D32]/50', pill: 'bg-[#B87D32] text-[#FAF8F5]', icon: 'text-[#B87D32] dark:text-[#D99B4E]' }
+            critical: { short: 'CỰC NGUY HIỂM', badge: 'KHÔNG AN TOÀN • TUYỆT ĐỐI KHÔNG ĂN UỐNG', rank: 4, cap: 0, box: 'bg-[#B84239]/15 border-[#B84239]', pill: 'bg-[#8F2A23] text-[#FAF8F5]', icon: 'text-[#B84239]' },
+            high: { short: 'NGUY CƠ CAO', badge: 'CẢNH BÁO • NÊN TRÁNH HẲN', rank: 3, cap: 8, box: 'bg-[#B84239]/10 border-[#B84239]/50', pill: 'bg-[#B84239] text-[#FAF8F5]', icon: 'text-[#B84239]' },
+            medium: { short: 'KỴ NHAU', badge: 'CẢNH BÁO • KỴ NHAU', rank: 2, cap: 20, box: 'bg-[#C86D51]/10 border-[#C86D51]/50', pill: 'bg-[#C86D51] text-[#FAF8F5]', icon: 'text-[#C86D51]' },
+            low: { short: 'CẦN THẬN TRỌNG', badge: 'CẢNH BÁO • CẦN THẬN TRỌNG', rank: 1, cap: 35, box: 'bg-[#B87D32]/10 border-[#B87D32]/50', pill: 'bg-[#B87D32] text-[#FAF8F5]', icon: 'text-[#B87D32]' }
         };
 
         const DANGER_COMBOS = [
-            { id: 'bleach-acid', a: G.bleach, b: G.acid, level: 'critical', title: 'Thuốc tẩy + Giấm / Chanh', headline: 'Trộn thuốc tẩy với axit sinh ra khí clo độc, gây bỏng đường hô hấp.', why: 'Hypoclorit gặp axit giải phóng khí clo độc.', evidence: 'Phản ứng hóa học thực tế.', advice: 'Tuyệt đối không trộn.' },
-            { id: 'non-food', a: G.nonFood, level: 'critical', title: 'Hóa chất / chất không phải thực phẩm', headline: 'Nguyên liệu này không phải thực phẩm, tuyệt đối không ăn uống.', why: 'Gây ngộ độc cấp và tổn thương nội tạng.', evidence: 'Không có mức an toàn.', advice: 'Không dùng.' },
-            { id: 'deadly-food', a: G.deadlyFood, level: 'critical', title: 'Thực phẩm độc tố nguy hiểm', headline: 'Cá nóc, nấm độc có thể gây liệt cơ và tử vong.', why: 'Chứa độc tố mạnh.', evidence: 'Đã ghi nhận nhiều ca tử vong.', advice: 'Không ăn.' },
-            { id: 'milk-citrus', a: G.milk, b: G.citrus, level: 'medium', title: 'Sữa bò + Cam / Chanh', headline: 'Axit trái cây làm đạm sữa vón cục.', why: 'Giảm độ pH khiến casein kết tủa.', evidence: 'Hiện tượng vật lý thực tế.', advice: 'Uống cách nhau 30 phút.' },
-            { id: 'durian-alcohol', a: G.durian, b: G.alcohol, level: 'high', title: 'Sầu riêng + Rượu bia', headline: 'Có thể gây tim đập nhanh, tăng huyết áp, khó thở.', why: 'Ức chế phân giải cồn.', evidence: 'Có ghi nhận y khoa.', advice: 'Tránh dùng chung.' }
+            { id: 'non-food', a: G.nonFood, level: 'critical', title: 'Hóa chất / chất không phải thực phẩm', headline: 'Nguyên liệu này không phải thực phẩm, tuyệt đối không uống/ăn.', why: 'Hỗn hợp này có chất gây độc.', advice: 'Loại bỏ và thay bằng nguyên liệu thực phẩm an toàn.' },
+            { id: 'deadly-food', a: G.deadlyFood, level: 'critical', title: 'Thực phẩm độc tố nguy hiểm', headline: 'Cá nóc, nấm độc có thể gây toàn thân nguy hiểm.', why: 'Các loại này có độc tính cao.', advice: 'Không ăn, không nấu chung, không thử.' },
+            { id: 'milk-citrus', a: G.milk, b: G.citrus, level: 'medium', title: 'Sữa bò + Cam / Chanh', headline: 'Axit trái cây làm đạm sữa vón cục.', why: 'Giảm độ pH khiến protein sữa đông lại.', advice: 'Nên uống sữa và trái cây riêng biệt.' },
+            { id: 'durian-alcohol', a: G.durian, b: G.alcohol, level: 'high', title: 'Sầu riêng + Rượu bia', headline: 'Có thể gây tim đập nhanh, tăng huyết áp, khó thở.', why: 'Kết hợp có thể làm tăng nhịp tim và kích thích thần kinh.', advice: 'Tránh ăn sầu riêng ngay khi uống rượu, bia.' }
         ];
 
         function detectDangerCombos(tags) {
             const list = (tags || []).map(t => String(t).normalize('NFC').toLowerCase().trim()).filter(Boolean);
             if (!list.length) return [];
-            let found = [];
+            const found = [];
+
             DANGER_COMBOS.forEach(combo => {
                 const aMatched = list.filter(t => combo.a.test(t));
                 if (!aMatched.length) return;
@@ -784,24 +642,36 @@
                     found.push({ ...combo, aMatched, bMatched: [] });
                 }
             });
+
             return found.sort((x, y) => DANGER_LEVELS[y.level].rank - DANGER_LEVELS[x.level].rank);
         }
 
         function updateLiveDanger() {
             const box = document.getElementById('liveDangerWarning');
             if (!box) return;
+
             const input = document.getElementById('ingredientInput');
             const pending = input ? parseRawIngredientText(input.value) : [];
             const all = [...activeTags, ...pending.filter(p => !activeTags.includes(p))];
             const dangers = detectDangerCombos(all);
+
             if (!dangers.length) {
                 box.classList.add('hidden');
                 box.innerHTML = '';
                 return;
             }
+
             box.innerHTML = dangers.map(d => {
                 const lv = DANGER_LEVELS[d.level];
-                return `<div class="flex items-start gap-2.5 p-3 rounded-xl border ${lv.box} text-xs sm:text-sm leading-relaxed"><i class="ph-fill ph-warning-octagon text-lg shrink-0 ${lv.icon}"></i><div><strong>${lv.short}: ${escapeHtml(d.title)}</strong> — ${escapeHtml(d.headline)}</div></div>`;
+                return `
+                    <div class="flex items-start gap-2.5 p-3 rounded-xl border ${lv.box} text-xs sm:text-sm leading-relaxed">
+                        <i class="ph-fill ph-warning-octagon text-lg shrink-0 ${lv.icon}"></i>
+                        <div>
+                            <strong>${escapeHtml(d.title)}</strong><br>
+                            <span>${escapeHtml(d.headline)}</span>
+                        </div>
+                    </div>
+                `;
             }).join('');
             box.classList.remove('hidden');
         }
@@ -814,10 +684,23 @@
                 panel.innerHTML = '';
                 return;
             }
-            panel.innerHTML = `<div class="flex items-center gap-2 text-sm font-bold text-[#B84239]"><i class="ph-fill ph-warning-octagon text-lg"></i><span>CẢNH BÁO AN TOÀN (${dangers.length})</span></div>` + dangers.map(d => {
-                const lv = DANGER_LEVELS[d.level];
-                return `<div class="culinary-card rounded-2xl p-5 border-2 ${lv.box}"><span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide ${lv.pill}">${lv.short}</span><h3 class="font-display text-lg font-bold mt-2">${escapeHtml(d.title)}</h3><p class="text-sm mt-1">${escapeHtml(d.headline)}</p></div>`;
-            }).join('');
+
+            panel.innerHTML = `
+                <div class="flex items-center gap-2 text-sm font-bold text-[#B84239]">
+                    <i class="ph-fill ph-warning-octagon text-lg"></i>
+                    <span>CẢNH BÁO AN TOÀN (${dangers.length})</span>
+                </div>
+                ${dangers.map(d => {
+                    const lv = DANGER_LEVELS[d.level];
+                    return `
+                        <div class="culinary-card rounded-2xl p-5 border-2 ${lv.box}">
+                            <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide ${lv.pill}">${lv.short}</span>
+                            <h3 class="font-display text-lg font-bold mt-3">${escapeHtml(d.title)}</h3>
+                            <p class="text-sm leading-relaxed mt-2">${escapeHtml(d.headline)}</p>
+                        </div>
+                    `;
+                }).join('')}
+            `;
             panel.classList.remove('hidden');
         }
 
@@ -845,374 +728,174 @@
                     protocol: top.advice
                 };
             }
+
             const r = { ...report };
             r.compatibilityScore = Math.min(Number(r.compatibilityScore) || 0, lv.cap);
             return r;
         }
 
-        // --- Core Analysis Runner with Gemini AI & Nutrition ---
-        async function runCulinaryAnalysis() {
-    const inputEl = document.getElementById('ingredientInput');
-    const rawInput = inputEl ? inputEl.value.trim() : '';
-    if (rawInput) {
-        const parsed = parseRawIngredientText(rawInput);
-        parsed.forEach(t => {
-            if (!activeTags.includes(t)) activeTags.push(t);
-        });
-        inputEl.value = '';
-        renderTags();
-    }
-
-    if (activeTags.length === 0) {
-        showAlert('Bạn chưa nhập nguyên liệu nào cả. Hãy gõ các món định kết hợp vào ô nhé!');
-        if (inputEl) inputEl.focus();
-        return;
-    }
-
-    const queryString = activeTags.join(' + ');
-    const analyzeBtn = document.getElementById('analyzeBtn');
-    const loadingPanel = document.getElementById('loadingPanel');
-    const resultDashboard = document.getElementById('resultDashboard');
-    const emptyStatePanel = document.getElementById('emptyStatePanel');
-
-    hideAlert();
-    if (analyzeBtn) {
-        analyzeBtn.disabled = true;
-        analyzeBtn.classList.add('opacity-60');
-    }
-    if (emptyStatePanel) emptyStatePanel.classList.add('hidden');
-    if (resultDashboard) resultDashboard.classList.add('hidden');
-    if (loadingPanel) loadingPanel.classList.remove('hidden');
-
-    let finalReport = null;
-    try {
-        const verifiedMatch = matchVerifiedCase(queryString);
-        if (verifiedMatch) {
-            await new Promise(r => setTimeout(r, 220));
-            finalReport = verifiedMatch;
-        } else {
-            // Gọi API Gemini
-            finalReport = await fetchGeminiCulinaryAnalysis(queryString);
-        }
-    } catch (err) {
-        console.error("Lỗi gọi API:", err);
-        // Dùng bản dự phòng local nếu API lỗi hoặc hết hạn mức
-        finalReport = computeLocalCulinaryFallback(activeTags, queryString);
-    } finally {
-        // --- LUÔN LUÔN MỞ LẠI NÚT VÀ TẮT LOADING DÙ CÓ LỖI HAY KHÔNG ---
-        if (loadingPanel) loadingPanel.classList.add('hidden');
-        if (analyzeBtn) {
-            analyzeBtn.disabled = false;
-            analyzeBtn.classList.remove('opacity-60');
-        }
-    }
-
-    if (!finalReport) {
-        finalReport = computeLocalCulinaryFallback(activeTags, queryString);
-    }
-
-    const dangers = detectDangerCombos(activeTags);
-    if (dangers.length) {
-        finalReport = applyDangerToReport(finalReport, dangers);
-    }
-
-    if (resultDashboard) resultDashboard.classList.remove('hidden');
-    renderDangerPanel(dangers);
-    renderCulinaryReport(finalReport, queryString);
-}
-
-            renderDangerPanel(dangers);
-            renderCulinaryReport(finalReport, queryString);
-        }
-
-        // --- Gemini API Call with Nutrition Schema ---
-        async function fetchGeminiCulinaryAnalysis(ingredientsQuery) {
-            const apiKey = "AQ.Ab8RN6KBegVok102ApPztuzwHJnqcf_f3rnoWmsFPQYrmxjKcg"; 
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
-
-            const systemPrompt = `Bạn là Đầu bếp kiêm Chuyên gia Dinh dưỡng và AN TOÀN THỰC PHẨM tại "Masulu Mix Lab".
-NHIỆM VỤ:
-1. Đọc danh sách nguyên liệu kèm định lượng do người dùng nhập (VD: thịt 100g, cơm 150g...).
-2. Tính toán chính xác tuyệt đối tổng năng lượng (Calories/Kcal) và các chất dinh dưỡng đa lượng (Protein, Carbs, Fat, Fiber) dựa trên đúng định lượng đó.
-3. Đánh giá vị giác, hình thức, độ hợp vị và đưa ra các chỉ số vị giác 0-100% kèm giải thích cụ thể cho từng thanh.
-4. Trả về đúng định dạng JSON chuẩn.`;
-
-            const payload = {
-                contents: [{
-                    parts: [{ text: `Phân tích kết hợp nguyên liệu và tính dinh dưỡng theo định lượng: ${ingredientsQuery}` }]
-                }],
-                systemInstruction: {
-                    parts: [{ text: systemPrompt }]
-                },
-                generationConfig: {
-                    responseMimeType: "application/json",
-                    responseSchema: {
-                        type: "OBJECT",
-                        properties: {
-                            title: { type: "STRING" },
-                            categoryBadge: { type: "STRING" },
-                            badgeTone: { type: "STRING" },
-                            compatibilityScore: { type: "INTEGER" },
-                            nutrition: {
-                                type: "OBJECT",
-                                properties: {
-                                    totalCalories: { type: "INTEGER", description: "Tổng số kcal theo đúng định lượng" },
-                                    protein: { type: "NUMBER", description: "Tổng đạm (gram)" },
-                                    carbs: { type: "NUMBER", description: "Tổng tinh bột/carb (gram)" },
-                                    fat: { type: "NUMBER", description: "Tổng chất béo (gram)" },
-                                    fiber: { type: "NUMBER", description: "Tổng chất xơ (gram)" },
-                                    summary: { type: "STRING", description: "Nhận xét ngắn gọn về lượng calo và độ healthy" }
-                                },
-                                required: ["totalCalories", "protein", "carbs", "fat", "fiber", "summary"]
-                            },
-                            physicalState: { type: "STRING" },
-                            visualRating: { type: "STRING" },
-                            phaseStability: { type: "STRING" },
-                            executiveSummary: { type: "STRING" },
-                            appearance: { type: "STRING" },
-                            textureDetail: { type: "STRING" },
-                            tasteProfile: { type: "STRING" },
-                            meters: {
-                                type: "OBJECT",
-                                properties: {
-                                    sweet: { type: "INTEGER" },
-                                    sour: { type: "INTEGER" },
-                                    salty: { type: "INTEGER" },
-                                    bitter: { type: "INTEGER" },
-                                    pungent: { type: "INTEGER" },
-                                    fat: { type: "INTEGER" }
-                                },
-                                required: ["sweet", "sour", "salty", "bitter", "pungent", "fat"]
-                            },
-                            meterExplanations: {
-                                type: "OBJECT",
-                                properties: {
-                                    sweet: { type: "STRING" },
-                                    sour: { type: "STRING" },
-                                    salty: { type: "STRING" },
-                                    bitter: { type: "STRING" },
-                                    pungent: { type: "STRING" },
-                                    fat: { type: "STRING" }
-                                },
-                                required: ["sweet", "sour", "salty", "bitter", "pungent", "fat"]
-                            },
-                            benefits: { type: "ARRAY", items: { type: "STRING" } },
-                            risks: { type: "ARRAY", items: { type: "STRING" } },
-                            protocol: { type: "STRING" }
-                        },
-                        required: [
-                            "title", "categoryBadge", "badgeTone", "compatibilityScore", "nutrition",
-                            "physicalState", "visualRating", "phaseStability", "executiveSummary",
-                            "appearance", "textureDetail", "tasteProfile", "meters",
-                            "meterExplanations", "benefits", "risks", "protocol"
-                        ]
-                    }
-                }
-            };
-
-            const res = await fetch(apiUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            });
-            if (!res.ok) throw new Error(`HTTP ${res.status}`);
-            const data = await res.json();
-            const rawJson = data?.candidates?.[0]?.content?.parts?.[0]?.text;
-            if (!rawJson) throw new Error("Empty AI response");
-            return JSON.parse(rawJson);
-        }
-
-        // --- Local Fallback Engine (with estimation) ---
         function computeLocalCulinaryFallback(tags, queryString) {
+            const total = tags.length || 1;
+            const calories = Math.max(180, total * 250);
+            const protein = Math.max(12, total * 18);
+            const carbs = Math.max(18, total * 24);
+            const fat = Math.max(8, total * 10);
+
             return {
-                title: `Món Kết Hợp: ${queryString}`,
-                categoryBadge: "HỢP VỊ ĐÁNG THỬ",
-                badgeTone: "green",
+                title: tags.length > 1 ? 'Món Hỗn Hợp Cân Bằng' : 'Nguyên Liệu Đề Xuất',
+                categoryBadge: 'PHÂN TÍCH LOCAL',
+                badgeTone: 'green',
                 compatibilityScore: 82,
                 nutrition: {
-                    totalCalories: 350,
-                    protein: 20,
-                    carbs: 45,
-                    fat: 10,
-                    fiber: 4,
-                    summary: "Khẩu phần ước lượng tiêu chuẩn cho các nguyên liệu đã nhập, cung cấp năng lượng vừa đủ cho một bữa ăn phụ."
+                    totalCalories: calories,
+                    protein: protein,
+                    carbs: carbs,
+                    fat: fat,
+                    fiber: 5,
+                    summary: 'Tổng lượng calo và dinh dưỡng nằm trong mức hợp lý cho 1 bữa ăn cân bằng.'
                 },
-                physicalState: "Hỗn hợp hài hòa",
-                visualRating: "Bắt mắt, gọn gàng",
-                phaseStability: "Ổn định",
-                executiveSummary: `Sự kết hợp giữa (${queryString}) tạo nên hương vị cân bằng, dễ ăn và phù hợp cho khẩu vị hàng ngày.`,
-                appearance: "Màu sắc tự nhiên, hài hòa khi kết hợp.",
-                textureDetail: "Kết cấu mềm mịn, dễ nuốt.",
-                tasteProfile: "Hương vị thơm ngon, hòa quyện giữa các thành phần.",
-                meters: { sweet: 30, sour: 15, salty: 40, bitter: 5, pungent: 10, fat: 25 },
+                physicalState: 'Ổn định',
+                visualRating: 'Tốt',
+                phaseStability: 'Ổn định',
+                executiveSummary: `Hỗn hợp ${queryString || 'nguyên liệu bạn chọn'} có nguy cơ ăn uống bình thường, dễ phối hợp và không tạo cảm giác quá nặng.`,
+                appearance: 'Màu sắc hài hòa, hỗn hợp không bị quá lỏng hay quá đặc.',
+                textureDetail: 'Kết cấu mềm mịn, dễ ăn, không quá chua hay quá nhão.',
+                tasteProfile: 'Món tạo cảm giác cân bằng giữa ngọt, mặn và dịu, dễ ăn hơn với nhiều người.',
+                meters: { sweet: 36, sour: 22, salty: 42, bitter: 18, pungent: 16, fat: 32 },
                 meterExplanations: {
-                    sweet: "Độ ngọt nhẹ tự nhiên từ nguyên liệu.",
-                    sour: "Độ chua thanh giúp cân bằng vị giác.",
-                    salty: "Độ mặn vừa phải tạo cảm giác đậm đà.",
-                    bitter: "Vị đắng không đáng kể.",
-                    pungent: "Độ cay nhẹ kích thích vị giác.",
-                    fat: "Độ béo ngậy vừa phải tạo độ mượt miệng."
+                    sweet: 'Hương vị ngọt vừa phải giúp món hấp dẫn và dễ chấp nhận hơn.',
+                    sour: 'Độ chua ở mức vừa phải tạo độ tươi cho món.',
+                    salty: 'Mặn và đậm đà giúp món có hương vị rõ ràng.',
+                    bitter: 'Độ đắng rất thấp, giúp không làm món quá cực đoan.',
+                    pungent: 'Độ cay nhẹ tạo cảm giác sôi động nhưng không “gây sốc”.',
+                    fat: 'Độ béo đủ để món mềm, bùi và dễ chịu khi ăn.'
                 },
                 benefits: [
-                    "Cung cấp năng lượng và các chất dinh dưỡng cần thiết.",
-                    "Hương vị dễ thưởng thức, không gây ngán."
+                    'Cung cấp năng lượng vừa phải cho bữa ăn.',
+                    'Cân bằng vị và kết cấu dễ ăn.',
+                    'Dễ tùy biến theo khẩu vị cá nhân.'
                 ],
-                risks: [
-                    "Nên dùng ngay sau khi chế biến để đảm bảo hương vị tốt nhất."
-                ],
-                protocol: "Thưởng thức kèm gia vị ưa thích để tăng thêm phần đậm đà."
+                risks: ['Nếu nguyên liệu quá mặn hoặc quá béo, nên giảm bớt khi ăn tiếp.' ],
+                protocol: 'Nếu món khá đậm, hãy bổ sung rau hoặc nước chấm nhẹ để cân bằng vị và giảm cảm giác nặng.'
             };
         }
 
-        function normalizeMetersAndExplanations(data) {
-            const rawM = data.meters || {};
-            const rawE = data.meterExplanations || {};
-            return {
-                meters: {
-                    sweet: Math.max(0, Math.min(100, Number(rawM.sweet) || 0)),
-                    sour: Math.max(0, Math.min(100, Number(rawM.sour) || 0)),
-                    salty: Math.max(0, Math.min(100, Number(rawM.salty) || 0)),
-                    bitter: Math.max(0, Math.min(100, Number(rawM.bitter) || 0)),
-                    pungent: Math.max(0, Math.min(100, Number(rawM.pungent) || 0)),
-                    fat: Math.max(0, Math.min(100, Number(rawM.fat) || 0))
-                },
-                explanations: {
-                    sweet: rawE.sweet || 'Độ ngọt từ thành phần nguyên liệu.',
-                    sour: rawE.sour || 'Độ chua thanh tự nhiên.',
-                    salty: rawE.salty || 'Độ mặn đậm đà.',
-                    bitter: rawE.bitter || 'Vị đắng đặc trưng nhẹ.',
-                    pungent: rawE.pungent || 'Độ cay kích thích.',
-                    fat: rawE.fat || 'Độ béo mượt miệng.'
-                }
-            };
-        }
-
-        // --- Render Report ---
-        function renderCulinaryReport(data, queryString) {
-            const setText = (id, val) => {
+        function renderCulinaryReport(report, queryString) {
+            const setText = (id, value) => {
                 const el = document.getElementById(id);
-                if (el) el.textContent = val ?? '--';
+                if (el) el.textContent = value;
             };
 
-            setText('resSampleFormula', `Định lượng: ${queryString}`);
-            setText('resTitle', data.title);
-            setText('resExecutiveSummary', data.executiveSummary);
-            setText('resCompatibilityScore', data.compatibilityScore);
-            setText('resPhysicalState', data.physicalState);
-            setText('resVisualRatingBadge', data.visualRating);
-            setText('resPhaseStability', data.phaseStability);
-            setText('resAppearance', data.appearance);
-            setText('resTextureDetail', data.textureDetail);
-            setText('resTasteProfile', data.tasteProfile);
-            setText('resProtocol', data.protocol);
+            setText('resSampleFormula', 'Định lượng: ' + (queryString || '--'));
+            setText('resTitle', report.title || 'Tên Món Kết Hợp');
+            setText('resExecutiveSummary', report.executiveSummary || '--');
+            setText('resCompatibilityScore', String(report.compatibilityScore || 0));
+            setText('resCalorieBadge', `${report.nutrition?.totalCalories ?? 0} kcal`);
+            setText('resValCalories', `${report.nutrition?.totalCalories ?? 0} kcal`);
+            setText('resValProtein', `${report.nutrition?.protein ?? 0}g`);
+            setText('resValCarbs', `${report.nutrition?.carbs ?? 0}g`);
+            setText('resValFat', `${report.nutrition?.fat ?? 0}g`);
+            setText('resNutritionSummary', report.nutrition?.summary || '--');
+            setText('resAppearance', report.appearance || '--');
+            setText('resTextureDetail', report.textureDetail || '--');
+            setText('resPhysicalState', report.physicalState || '--');
+            setText('resPhaseStability', report.phaseStability || '--');
+            setText('resVisualRatingBadge', report.visualRating || '--');
+            setText('resTasteProfile', report.tasteProfile || '--');
+            setText('resProtocol', report.protocol || '--');
 
-            // Render Nutrition & Calories
-            if (data.nutrition) {
-                setText('resCalorieBadge', `${data.nutrition.totalCalories} Kcal`);
-                setText('resValCalories', `${data.nutrition.totalCalories} kcal`);
-                setText('resValProtein', `${data.nutrition.protein}g`);
-                setText('resValCarbs', `${data.nutrition.carbs}g`);
-                setText('resValFat', `${data.nutrition.fat}g`);
-                setText('resNutritionSummary', data.nutrition.summary);
-            }
-
-            const badgeEl = document.getElementById('resCategoryBadge');
-            const scoreEl = document.getElementById('resCompatibilityScore');
-            if (badgeEl) badgeEl.textContent = data.categoryBadge || 'ĐÁNH GIÁ';
-
-            if (badgeEl && scoreEl) {
-                if (data.badgeTone === 'green') {
-                    badgeEl.className = 'px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-[#4A6B53]/15 text-[#4A6B53] dark:bg-[#699676]/20 dark:text-[#86B895] border border-[#4A6B53]/30';
-                    scoreEl.className = 'font-display text-4xl font-bold text-[#4A6B53] dark:text-[#7BA888]';
-                } else if (data.badgeTone === 'red') {
-                    badgeEl.className = 'px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-[#B84239]/15 text-[#B84239] dark:bg-[#D9655B]/20 dark:text-[#E88980] border border-[#B84239]/30';
-                    scoreEl.className = 'font-display text-4xl font-bold text-[#B84239] dark:text-[#E07A72]';
-                } else {
-                    badgeEl.className = 'px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-[#B87D32]/15 text-[#B87D32] dark:bg-[#D99B4E]/20 dark:text-[#E5B26D] border border-[#B87D32]/30';
-                    scoreEl.className = 'font-display text-4xl font-bold text-[#B87D32] dark:text-[#D99B4E]';
-                }
-            }
-
-            const normalized = normalizeMetersAndExplanations(data);
-            const m = normalized.meters;
-            const exp = normalized.explanations;
-
-            const barOrder = [
-                { suffix: 'Sweet', val: m.sweet, exp: exp.sweet },
-                { suffix: 'Sour', val: m.sour, exp: exp.sour },
-                { suffix: 'Salty', val: m.salty, exp: exp.salty },
-                { suffix: 'Bitter', val: m.bitter, exp: exp.bitter },
-                { suffix: 'Pungent', val: m.pungent, exp: exp.pungent },
-                { suffix: 'Fat', val: m.fat, exp: exp.fat }
+            const meters = report.meters || {};
+            const explanations = report.meterExplanations || {};
+            const meterMap = [
+                ['Sweet', 'valSweet', 'barSweet', 'expSweet'],
+                ['Sour', 'valSour', 'barSour', 'expSour'],
+                ['Salty', 'valSalty', 'barSalty', 'expSalty'],
+                ['Bitter', 'valBitter', 'barBitter', 'expBitter'],
+                ['Pungent', 'valPungent', 'barPungent', 'expPungent'],
+                ['Fat', 'valFat', 'barFat', 'expFat']
             ];
 
-            barOrder.forEach(item => {
-                const barEl = document.getElementById(`bar${item.suffix}`);
-                if (barEl) barEl.style.width = '0%';
+            meterMap.forEach(([key, valId, barId, expId]) => {
+                const value = Number(meters[key.toLowerCase()] ?? 0);
+                const elVal = document.getElementById(valId);
+                const elBar = document.getElementById(barId);
+                const elExp = document.getElementById(expId);
+                if (elVal) elVal.textContent = `${Math.max(0, Math.min(100, value))}%`;
+                if (elBar) elBar.style.width = `${Math.max(0, Math.min(100, value))}%`;
+                if (elExp) elExp.textContent = explanations[key.toLowerCase()] || '--';
             });
 
-            let highestIdx = 0;
-            let highestVal = -1;
-            barOrder.forEach((item, idx) => {
-                if (item.val > highestVal) {
-                    highestVal = item.val;
-                    highestIdx = idx;
-                }
-            });
+            const benefitsList = document.getElementById('resBenefitsList');
+            const risksList = document.getElementById('resRisksList');
+            benefitsList.innerHTML = (report.benefits || []).map(item => `<li class="flex items-start gap-2"><i class="ph-fill ph-check-circle text-[#4A6B53] mt-0.5"></i><span>${escapeHtml(item)}</span></li>`).join('');
+            risksList.innerHTML = (report.risks || []).map(item => `<li class="flex items-start gap-2"><i class="ph-fill ph-warning-circle text-[#B84239] mt-0.5"></i><span>${escapeHtml(item)}</span></li>`).join('');
 
-            const items = document.querySelectorAll('#metersGrid .meter-item');
-            items.forEach((item, index) => {
-                if (index === highestIdx) item.classList.add('expanded');
-                else item.classList.remove('expanded');
-            });
-            updateToggleAllButtonLabel();
+            const badge = document.getElementById('resCategoryBadge');
+            if (badge) badge.textContent = report.categoryBadge || 'ĐÁNH GIÁ';
 
-            requestAnimationFrame(() => {
-                setTimeout(() => {
-                    barOrder.forEach(item => {
-                        const valEl = document.getElementById(`val${item.suffix}`);
-                        const barEl = document.getElementById(`bar${item.suffix}`);
-                        const expEl = document.getElementById(`exp${item.suffix}`);
-                        if (valEl) valEl.textContent = `${item.val}%`;
-                        if (barEl) {
-                            barEl.style.width = `${item.val}%`;
-                            barEl.style.opacity = item.val === 0 ? '0.2' : '1';
-                        }
-                        if (expEl) expEl.textContent = item.exp;
-                    });
-                }, 40);
-            });
-
-            const benefitsUl = document.getElementById('resBenefitsList');
-            if (benefitsUl) {
-                benefitsUl.innerHTML = '';
-                (data.benefits || []).forEach(item => {
-                    const li = document.createElement('li');
-                    li.className = 'flex items-start gap-2.5';
-                    li.innerHTML = `<i class="ph-fill ph-check-circle text-base text-[#4A6B53] dark:text-[#7BA888] mt-0.5 shrink-0"></i><span>${escapeHtml(item)}</span>`;
-                    benefitsUl.appendChild(li);
-                });
-            }
-
-            const risksUl = document.getElementById('resRisksList');
-            if (risksUl) {
-                risksUl.innerHTML = '';
-                (data.risks || []).forEach(item => {
-                    const li = document.createElement('li');
-                    li.className = 'flex items-start gap-2.5';
-                    li.innerHTML = `<i class="ph-fill ph-warning-circle text-base text-[#B84239] dark:text-[#E07A72] mt-0.5 shrink-0"></i><span>${escapeHtml(item)}</span>`;
-                    risksUl.appendChild(li);
-                });
+            const badgeTone = (report.badgeTone || 'green');
+            badge.className = 'px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide';
+            if (badgeTone === 'red') {
+                badge.classList.add('bg-[#B84239]/15', 'text-[#B84239]');
+            } else if (badgeTone === 'amber') {
+                badge.classList.add('bg-[#B87D32]/15', 'text-[#B87D32]');
+            } else {
+                badge.classList.add('bg-[#4A6B53]/10', 'text-[#4A6B53]');
             }
         }
 
-        function escapeHtml(str) {
-            if (!str) return '';
-            return String(str)
-                .replace(/&/g, '&amp;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;')
-                .replace(/"/g, '&quot;');
+        async function runCulinaryAnalysis() {
+            const inputEl = document.getElementById('ingredientInput');
+            const rawInput = inputEl ? inputEl.value.trim() : '';
+            if (rawInput) {
+                const parsed = parseRawIngredientText(rawInput);
+                parsed.forEach(t => {
+                    if (!activeTags.includes(t)) activeTags.push(t);
+                });
+                inputEl.value = '';
+                renderTags();
+            }
+
+            if (activeTags.length === 0) {
+                showAlert('Bạn chưa nhập nguyên liệu nào cả. Hãy gõ các món định kết hợp vào ô nhé!');
+                if (inputEl) inputEl.focus();
+                return;
+            }
+
+            const queryString = activeTags.join(' + ');
+            const analyzeBtn = document.getElementById('analyzeBtn');
+            const loadingPanel = document.getElementById('loadingPanel');
+            const resultDashboard = document.getElementById('resultDashboard');
+            const emptyStatePanel = document.getElementById('emptyStatePanel');
+
+            hideAlert();
+            if (analyzeBtn) {
+                analyzeBtn.disabled = true;
+                analyzeBtn.classList.add('opacity-60');
+            }
+            if (emptyStatePanel) emptyStatePanel.classList.add('hidden');
+            if (resultDashboard) resultDashboard.classList.add('hidden');
+            if (loadingPanel) loadingPanel.classList.remove('hidden');
+
+            let finalReport = computeLocalCulinaryFallback(activeTags, queryString);
+            try {
+                await new Promise(resolve => setTimeout(resolve, 400));
+            } finally {
+                if (loadingPanel) loadingPanel.classList.add('hidden');
+                if (analyzeBtn) {
+                    analyzeBtn.disabled = false;
+                    analyzeBtn.classList.remove('opacity-60');
+                }
+            }
+
+            const dangers = detectDangerCombos(activeTags);
+            if (dangers.length) {
+                finalReport = applyDangerToReport(finalReport, dangers);
+            }
+
+            if (resultDashboard) resultDashboard.classList.remove('hidden');
+            renderDangerPanel(dangers);
+            renderCulinaryReport(finalReport, queryString);
         }
     </script>
 </body>
