@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const path = require('path');
 
@@ -64,13 +66,7 @@ async function callGemini(ingredientsText) {
     throw new Error('Missing GEMINI_API_KEY');
   }
 
-  let fetchImpl = globalThis.fetch;
-  if (!fetchImpl) {
-    const imported = await import('node-fetch');
-    fetchImpl = imported.default;
-  }
-
-  const response = await fetchImpl(
+  const response = await fetch(
     `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`,
     {
       method: 'POST',
