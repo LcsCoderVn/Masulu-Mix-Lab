@@ -436,7 +436,7 @@
 
     <footer class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 mt-8 border-t border-custom text-xs text-muted-custom flex flex-col sm:flex-row items-center justify-between gap-2">
         <div><strong>Masulu Mix Lab</strong> — Góc thử nghiệm kết hợp món ăn & tính calo thực tế.</div>
-        <div>Local demo • Tính năng tương tác đã được sửa</div>
+        <div>Local AI proxy • Gửi request tới máy chủ nội bộ</div>
     </footer>
 
     <script>
@@ -603,7 +603,6 @@
             yogurt: group('sữa chua|yogurt|yakult', 'sua chua'),
             cola: group('coca-cola|coca cola|coca|cola|coke|pepsi|7up|7-up|sprite|fanta|mirinda|nước ngọt có ga|nước ngọt|nước có ga', 'nuoc ngot co ga|nuoc ngot'),
             durian: group('sầu riêng|durian', 'sau rieng'),
-            milkCitrus: group('sữa|milk|yogurt|sua', 'sua'),
             egg: group('trứng gà|trứng(?!\\s+(?:vịt|cút|muối|bắc))', 'trung ga|trung'),
             seafood: group('hải sản|tôm|cua|ghẹ|mực|cá|sò|ốc|nghêu|ngao|hàu|bạch tuộc|sushi|sashimi|lươn|tép', 'hai san|tom|ghẹ|cua|muc|ca|oc'),
             nonFood: group('xăng|dầu hỏa|thuốc trừ sâu|thuốc diệt chuột|thuốc diệt cỏ|thuốc xịt muỗi|nước rửa chén|nước rửa bát|nước lau sàn|nước lau nhà|dầu máy|benzen|benzin', 'xang|dau hoa|thuoc trừ sâu|nuoc rua chen'),
@@ -775,7 +774,7 @@
                     'Cân bằng vị và kết cấu dễ ăn.',
                     'Dễ tùy biến theo khẩu vị cá nhân.'
                 ],
-                risks: ['Nếu nguyên liệu quá mặn hoặc quá béo, nên giảm bớt khi ăn tiếp.' ],
+                risks: ['Nếu nguyên liệu quá mặn hoặc quá béo, nên giảm bớt khi ăn tiếp.'],
                 protocol: 'Nếu món khá đậm, hãy bổ sung rau hoặc nước chấm nhẹ để cân bằng vị và giảm cảm giác nặng.'
             };
         }
@@ -877,9 +876,23 @@
             if (resultDashboard) resultDashboard.classList.add('hidden');
             if (loadingPanel) loadingPanel.classList.remove('hidden');
 
-            let finalReport = computeLocalCulinaryFallback(activeTags, queryString);
+            let finalReport = null;
             try {
-                await new Promise(resolve => setTimeout(resolve, 400));
+                const response = await fetch('/api/analyze', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ ingredients: queryString })
+                });
+
+                const data = await response.json();
+                if (!response.ok) {
+                    throw new Error(data?.error || 'AI proxy returned an error');
+                }
+
+                finalReport = data && data.title ? data : computeLocalCulinaryFallback(activeTags, queryString);
+            } catch (error) {
+                console.error('Lỗi gọi API:', error);
+                finalReport = computeLocalCulinaryFallback(activeTags, queryString);
             } finally {
                 if (loadingPanel) loadingPanel.classList.add('hidden');
                 if (analyzeBtn) {
