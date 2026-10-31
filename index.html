@@ -105,7 +105,6 @@
             transform: rotate(180deg);
         }
 
-        /* Custom subtle scrollbar */
         ::-webkit-scrollbar {
             width: 6px;
             height: 6px;
@@ -121,7 +120,6 @@
 </head>
 <body class="antialiased selection:bg-[#C86D51]/20">
 
-    <!-- Top Navigation Bar -->
     <header class="sticky top-0 z-30 backdrop-blur-md bg-[#F2EFE9]/90 dark:bg-[#181615]/90 border-b border-custom transition-colors">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <div class="flex items-center gap-3">
@@ -139,7 +137,6 @@
                 </div>
             </div>
 
-            <!-- Theme Toggle Button (Light / Dark Mode) -->
             <button 
                 onclick="toggleTheme()" 
                 id="themeToggleBtn"
@@ -155,7 +152,6 @@
 
     <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
 
-        <!-- Intro Banner (Culinary & Friendly Tone) -->
         <section class="culinary-card rounded-2xl p-5 sm:p-6 mb-6">
             <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div class="space-y-1.5">
@@ -164,7 +160,7 @@
                         <span>Góc Thử Nghiệm Ẩm Thực Thực Tế</span>
                     </div>
                     <p class="text-sm sm:text-base leading-relaxed">
-                        Góc thử nghiệm ẩm thực giúp bạn kiểm tra trước <strong>mùi vị, hình thức, chỉ số vị giác</strong> và <strong>độ hợp nhau của các nguyên liệu</strong> trước khi bắt tay vào pha chế hoặc nấu nướng.
+                        Góc thử nghiệm ẩm thực giúp bạn kiểm tra trước <strong>mùi vị, hình thức, chỉ số vị giác</strong> và <strong>độ hợp nhau của các nguyên liệu</strong> trước khi biến chúng thành món ăn hoặc đồ uống.
                     </p>
                 </div>
                 <div class="shrink-0 flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl culinary-subtle text-xs">
@@ -177,7 +173,6 @@
             </div>
         </section>
 
-        <!-- Ingredient Input Workbench -->
         <section class="culinary-card rounded-2xl p-5 sm:p-6 mb-6">
             <div class="flex items-center justify-between mb-3">
                 <label for="ingredientInput" class="text-sm font-bold flex items-center gap-2">
@@ -189,13 +184,9 @@
                 </button>
             </div>
 
-            <!-- Selected Ingredient Chips -->
             <div id="tagsContainer" class="flex flex-wrap gap-2 mb-3.5 empty:hidden"></div>
-
-            <!-- Live danger warning (shows instantly while the user is adding ingredients) -->
             <div id="liveDangerWarning" class="hidden mb-3.5 space-y-2" role="alert"></div>
 
-            <!-- Input Row (Clean, No Preset Recommendations) -->
             <div class="flex flex-col sm:flex-row gap-3">
                 <div class="relative flex-1">
                     <input 
@@ -218,7 +209,7 @@
                 <button 
                     id="analyzeBtn"
                     onclick="runCulinaryAnalysis()" 
-                    class="px-6 py-3.5 rounded-xl bg-[#4A6B53] hover:bg-[#3D5944] dark:bg-[#5E8769] dark:hover:bg-[#4E7358] text-[#FAF8F5] font-semibold text-sm transition-all flex items-center justify-center gap-2 shrink-0 shadow-xs cursor-pointer"
+                    class="px-6 py-3.5 rounded-xl bg-[#4A6B53] hover:bg-[#3D5944] dark:bg-[#5E8769] dark:hover:bg-[#4E7358] text-[#FAF8F5] font-semibold text-sm transition-all flex items-center justify-center gap-2"
                 >
                     <i class="ph-bold ph-cooking-pot text-base"></i>
                     <span>Phân Tích Món</span>
@@ -226,7 +217,6 @@
             </div>
         </section>
 
-        <!-- Empty Initial State Prompt -->
         <section id="emptyStatePanel" class="culinary-card rounded-2xl p-8 sm:p-10 text-center my-4">
             <div class="w-12 h-12 rounded-2xl culinary-subtle text-[#4A6B53] dark:text-[#7BA888] mx-auto flex items-center justify-center mb-3">
                 <i class="ph-fill ph-bowl-steam text-2xl"></i>
@@ -235,15 +225,14 @@
                 Sẵn sàng kiểm tra công thức của Masulu
             </h3>
             <p class="text-xs sm:text-sm text-muted-custom max-w-md mx-auto leading-relaxed">
-                Hãy nhập các nguyên liệu TAnh đang muốn kết hợp lên thanh phía trên và bấm <strong>Phân Tích Món</strong> để xem đánh giá mùi vị và giải thích từng chỉ số vị giác.
+                Hãy nhập các nguyên liệu đang muốn kết hợp lên thanh phía trên và bấm <strong>Phân Tích Món</strong> để xem đánh giá mùi vị và giải thích trực quan.
             </p>
             <p class="text-[11px] text-muted-custom max-w-md mx-auto leading-relaxed mt-3 inline-flex items-start gap-1.5 text-left">
                 <i class="ph-fill ph-warning-octagon text-sm text-[#B84239] dark:text-[#E07A72] mt-0.5 shrink-0"></i>
-                <span>Nếu cô trộn các cặp kỵ nhau, nguyên liệu độc hại hoặc hóa chất không phải thực phẩm, hệ thống sẽ hiện cảnh báo ngay!.</span>
+                <span>Nếu bạn trộn các cặp kỵ nhau, nguyên liệu độc hại hoặc hóa chất không phải thực phẩm, hệ thống sẽ hiện cảnh báo ngay.</span>
             </p>
         </section>
 
-        <!-- Custom Message Notification (No native alert) -->
         <div id="alertBanner" class="hidden mb-6 p-4 rounded-xl bg-[#B87D32]/15 border border-[#B87D32] text-xs sm:text-sm font-medium flex items-center justify-between">
             <div class="flex items-center gap-2.5">
                 <i class="ph-fill ph-warning-circle text-lg text-[#B87D32]"></i>
@@ -252,7 +241,6 @@
             <button onclick="hideAlert()" class="font-bold px-2 hover:opacity-70">✕</button>
         </div>
 
-        <!-- Loading State -->
         <section id="loadingPanel" class="hidden culinary-card rounded-2xl p-10 text-center my-6">
             <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl culinary-subtle text-[#C86D51] mb-3 animate-bounce">
                 <i class="ph-fill ph-cooking-pot text-3xl"></i>
@@ -265,13 +253,9 @@
             </p>
         </section>
 
-        <!-- Result Dashboard -->
         <section id="resultDashboard" class="hidden space-y-5">
-
-            <!-- 0. Danger Combination Warnings (filled by JS, hidden when safe) -->
             <div id="dangerPanel" class="hidden space-y-3" role="alert"></div>
 
-            <!-- 1. Overview Card: Dish Name, Verdict Badge & Harmony Score -->
             <div class="culinary-card rounded-2xl p-5 sm:p-6">
                 <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-5">
                     <div class="space-y-2.5 flex-1">
@@ -291,7 +275,6 @@
                         </p>
                     </div>
 
-                    <!-- Compatibility Score Box -->
                     <div class="shrink-0 culinary-subtle rounded-2xl p-4 sm:px-6 sm:py-4 flex lg:flex-col items-center justify-between lg:justify-center gap-3 border border-custom min-w-[165px]">
                         <div class="text-left lg:text-center">
                             <span class="text-xs font-semibold uppercase tracking-wider text-muted-custom block">Độ Hợp Vị</span>
@@ -305,10 +288,7 @@
                 </div>
             </div>
 
-            <!-- 2. Middle Grid: Appearance/Texture (Left 5 Cols) & Taste/6 Interactive Bars (Right 7 Cols) -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
-                
-                <!-- Left 5 Cols: Appearance & Texture -->
                 <div class="lg:col-span-5 culinary-card rounded-2xl p-5 sm:p-6 flex flex-col justify-between space-y-4">
                     <div>
                         <div class="flex items-center justify-between pb-3 mb-4 border-b border-custom">
@@ -349,7 +329,6 @@
                     </div>
                 </div>
 
-                <!-- Right 7 Cols: Taste Experience & 6 Interactive Clickable Bars -->
                 <div class="lg:col-span-7 culinary-card rounded-2xl p-5 sm:p-6">
                     <div class="flex flex-wrap items-center justify-between gap-2 pb-3 mb-4 border-b border-custom">
                         <div>
@@ -378,15 +357,10 @@
                         </p>
                     </div>
 
-                    <!-- 6 Interactive Culinary Taste & Texture Bars (Click to expand reason) -->
                     <div class="grid grid-cols-1 gap-2.5" id="metersGrid">
-                        
-                        <!-- 1. Độ ngọt -->
                         <div class="meter-item culinary-subtle p-3.5 rounded-xl cursor-pointer select-none hover:border-[#C86D51]/50 transition-colors" onclick="toggleMeterItem(this)">
                             <div class="flex items-center justify-between text-xs font-semibold mb-1.5">
-                                <span class="flex items-center gap-1.5">
-                                    <span>🍬 Độ ngọt</span>
-                                </span>
+                                <span class="flex items-center gap-1.5"><span>🍬 Độ ngọt</span></span>
                                 <div class="flex items-center gap-2">
                                     <span id="valSweet" class="font-bold text-[#C86D51]">0%</span>
                                     <i class="ph-bold ph-caret-down text-xs text-muted-custom meter-chevron transition-transform duration-200"></i>
@@ -396,18 +370,13 @@
                                 <div id="barSweet" class="meter-bar-fill h-full bg-[#C86D51] rounded-full" style="width: 0%"></div>
                             </div>
                             <div class="meter-explanation">
-                                <p id="expSweet" class="text-xs leading-relaxed pt-2 border-t border-custom text-muted-custom">
-                                    --
-                                </p>
+                                <p id="expSweet" class="text-xs leading-relaxed pt-2 border-t border-custom text-muted-custom">--</p>
                             </div>
                         </div>
 
-                        <!-- 2. Độ chua -->
                         <div class="meter-item culinary-subtle p-3.5 rounded-xl cursor-pointer select-none hover:border-[#D99B4E]/50 transition-colors" onclick="toggleMeterItem(this)">
                             <div class="flex items-center justify-between text-xs font-semibold mb-1.5">
-                                <span class="flex items-center gap-1.5">
-                                    <span>🍋 Độ chua</span>
-                                </span>
+                                <span class="flex items-center gap-1.5"><span>🍋 Độ chua</span></span>
                                 <div class="flex items-center gap-2">
                                     <span id="valSour" class="font-bold text-[#B87D32] dark:text-[#D99B4E]">0%</span>
                                     <i class="ph-bold ph-caret-down text-xs text-muted-custom meter-chevron transition-transform duration-200"></i>
@@ -417,18 +386,13 @@
                                 <div id="barSour" class="meter-bar-fill h-full bg-[#D99B4E] rounded-full" style="width: 0%"></div>
                             </div>
                             <div class="meter-explanation">
-                                <p id="expSour" class="text-xs leading-relaxed pt-2 border-t border-custom text-muted-custom">
-                                    --
-                                </p>
+                                <p id="expSour" class="text-xs leading-relaxed pt-2 border-t border-custom text-muted-custom">--</p>
                             </div>
                         </div>
 
-                        <!-- 3. Độ mặn & Đậm đà -->
                         <div class="meter-item culinary-subtle p-3.5 rounded-xl cursor-pointer select-none hover:border-[#4A6B53]/50 transition-colors" onclick="toggleMeterItem(this)">
                             <div class="flex items-center justify-between text-xs font-semibold mb-1.5">
-                                <span class="flex items-center gap-1.5">
-                                    <span>🧂 Độ mặn & Đậm đà</span>
-                                </span>
+                                <span class="flex items-center gap-1.5"><span>🧂 Độ mặn & Đậm đà</span></span>
                                 <div class="flex items-center gap-2">
                                     <span id="valSalty" class="font-bold text-[#4A6B53] dark:text-[#7BA888]">0%</span>
                                     <i class="ph-bold ph-caret-down text-xs text-muted-custom meter-chevron transition-transform duration-200"></i>
@@ -438,18 +402,13 @@
                                 <div id="barSalty" class="meter-bar-fill h-full bg-[#4A6B53] dark:bg-[#699676] rounded-full" style="width: 0%"></div>
                             </div>
                             <div class="meter-explanation">
-                                <p id="expSalty" class="text-xs leading-relaxed pt-2 border-t border-custom text-muted-custom">
-                                    --
-                                </p>
+                                <p id="expSalty" class="text-xs leading-relaxed pt-2 border-t border-custom text-muted-custom">--</p>
                             </div>
                         </div>
 
-                        <!-- 4. Độ đắng & Chát -->
                         <div class="meter-item culinary-subtle p-3.5 rounded-xl cursor-pointer select-none hover:border-[#6E5A4F]/50 transition-colors" onclick="toggleMeterItem(this)">
                             <div class="flex items-center justify-between text-xs font-semibold mb-1.5">
-                                <span class="flex items-center gap-1.5">
-                                    <span>☕ Độ đắng & Chát</span>
-                                </span>
+                                <span class="flex items-center gap-1.5"><span>☕ Độ đắng & Chát</span></span>
                                 <div class="flex items-center gap-2">
                                     <span id="valBitter" class="font-bold text-[#6E5A4F] dark:text-[#B8A396]">0%</span>
                                     <i class="ph-bold ph-caret-down text-xs text-muted-custom meter-chevron transition-transform duration-200"></i>
@@ -459,18 +418,13 @@
                                 <div id="barBitter" class="meter-bar-fill h-full bg-[#7D6659] dark:bg-[#A38C7E] rounded-full" style="width: 0%"></div>
                             </div>
                             <div class="meter-explanation">
-                                <p id="expBitter" class="text-xs leading-relaxed pt-2 border-t border-custom text-muted-custom">
-                                    --
-                                </p>
+                                <p id="expBitter" class="text-xs leading-relaxed pt-2 border-t border-custom text-muted-custom">--</p>
                             </div>
                         </div>
 
-                        <!-- 5. Độ cay & Nồng hăng -->
                         <div class="meter-item culinary-subtle p-3.5 rounded-xl cursor-pointer select-none hover:border-[#B84239]/50 transition-colors" onclick="toggleMeterItem(this)">
                             <div class="flex items-center justify-between text-xs font-semibold mb-1.5">
-                                <span class="flex items-center gap-1.5">
-                                    <span>🌶️ Độ cay & Nồng hăng</span>
-                                </span>
+                                <span class="flex items-center gap-1.5"><span>🌶️ Độ cay & Nồng hăng</span></span>
                                 <div class="flex items-center gap-2">
                                     <span id="valPungent" class="font-bold text-[#B84239] dark:text-[#E07A72]">0%</span>
                                     <i class="ph-bold ph-caret-down text-xs text-muted-custom meter-chevron transition-transform duration-200"></i>
@@ -480,18 +434,13 @@
                                 <div id="barPungent" class="meter-bar-fill h-full bg-[#C94A40] rounded-full" style="width: 0%"></div>
                             </div>
                             <div class="meter-explanation">
-                                <p id="expPungent" class="text-xs leading-relaxed pt-2 border-t border-custom text-muted-custom">
-                                    --
-                                </p>
+                                <p id="expPungent" class="text-xs leading-relaxed pt-2 border-t border-custom text-muted-custom">--</p>
                             </div>
                         </div>
 
-                        <!-- 6. Độ béo & Sánh ngậy -->
                         <div class="meter-item culinary-subtle p-3.5 rounded-xl cursor-pointer select-none hover:border-[#9C6B3B]/50 transition-colors" onclick="toggleMeterItem(this)">
                             <div class="flex items-center justify-between text-xs font-semibold mb-1.5">
-                                <span class="flex items-center gap-1.5">
-                                    <span>🧈 Độ béo & Sánh ngậy</span>
-                                </span>
+                                <span class="flex items-center gap-1.5"><span>🧈 Độ béo & Sánh ngậy</span></span>
                                 <div class="flex items-center gap-2">
                                     <span id="valFat" class="font-bold text-[#9C6B3B] dark:text-[#CFA06E]">0%</span>
                                     <i class="ph-bold ph-caret-down text-xs text-muted-custom meter-chevron transition-transform duration-200"></i>
@@ -501,20 +450,14 @@
                                 <div id="barFat" class="meter-bar-fill h-full bg-[#B58350] rounded-full" style="width: 0%"></div>
                             </div>
                             <div class="meter-explanation">
-                                <p id="expFat" class="text-xs leading-relaxed pt-2 border-t border-custom text-muted-custom">
-                                    --
-                                </p>
+                                <p id="expFat" class="text-xs leading-relaxed pt-2 border-t border-custom text-muted-custom">--</p>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
 
-            <!-- 3. Bottom Grid: Nutrition/Pros vs Stomach/Cons & Chef's Advice -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
-
-                <!-- Nutrition & Good Points (6 cols) -->
                 <div class="lg:col-span-6 culinary-card rounded-2xl p-5 sm:p-6 border-t-4 border-t-[#4A6B53]">
                     <div class="flex items-center justify-between pb-3 mb-3.5 border-b border-custom">
                         <h3 class="text-sm font-bold text-[#4A6B53] dark:text-[#7BA888] flex items-center gap-2">
@@ -526,7 +469,6 @@
                     <ul id="resBenefitsList" class="space-y-2.5 text-sm leading-relaxed"></ul>
                 </div>
 
-                <!-- Stomach & Health Warnings (6 cols) -->
                 <div class="lg:col-span-6 culinary-card rounded-2xl p-5 sm:p-6 border-t-4 border-t-[#B84239]">
                     <div class="flex items-center justify-between pb-3 mb-3.5 border-b border-custom">
                         <h3 class="text-sm font-bold text-[#B84239] dark:text-[#E07A72] flex items-center gap-2">
@@ -538,21 +480,16 @@
                     <ul id="resRisksList" class="space-y-2.5 text-sm leading-relaxed"></ul>
                 </div>
 
-                <!-- Chef's Practical Tip (12 cols) -->
                 <div class="lg:col-span-12 culinary-card rounded-2xl p-5 culinary-subtle">
                     <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3.5">
                         <div class="px-3.5 py-2 rounded-xl bg-[#C86D51] text-[#FAF8F5] text-xs font-bold uppercase tracking-wide shrink-0 flex items-center gap-1.5">
                             <i class="ph-fill ph-chef-hat text-base"></i>
                             <span>Mẹo Chữa Cháy / Nâng Tầm Từ Đầu Bếp</span>
                         </div>
-                        <p id="resProtocol" class="text-sm sm:text-base leading-relaxed">
-                            --
-                        </p>
+                        <p id="resProtocol" class="text-sm sm:text-base leading-relaxed">--</p>
                     </div>
                 </div>
-
             </div>
-
         </section>
 
     </main>
@@ -563,7 +500,6 @@
     </footer>
 
     <script>
-        // --- Theme Toggle (Warm Light / Cozy Dark) ---
         function toggleTheme() {
             const htmlEl = document.documentElement;
             const iconEl = document.getElementById('themeIcon');
@@ -582,7 +518,6 @@
             }
         }
 
-        // --- Interactive Meter Accordion Toggle ---
         function toggleMeterItem(el) {
             el.classList.toggle('expanded');
             updateToggleAllButtonLabel();
@@ -610,218 +545,70 @@
             }
         }
 
-        // --- State ---
         let activeTags = [];
 
-        // --- Curated High-Precision Culinary Cases (With Exact 0-100% Values & Per-Bar Explanations) ---
         const CULINARY_CASES = {
             'cà phê|sữa chua': {
-                title: "Cà Phê Đánh Sữa Chua",
-                categoryBadge: "HỢP VỊ ĐÁNG THỬ",
-                badgeTone: "green",
+                title: 'Cà Phê Đánh Sữa Chua',
+                categoryBadge: 'HỢP VỊ ĐÁNG THỬ',
+                badgeTone: 'green',
                 compatibilityScore: 86,
-                physicalState: "Sánh mịn, phân thành 2 tầng",
-                visualRating: "Đẹp mắt khi chưa khuấy",
-                phaseStability: "Ổn định khi uống lạnh với đá",
-                executiveSummary: "Một món đồ uống kết hợp rất hợp vị và cuốn miệng. Vị chua thanh, béo dịu của sữa chua làm mềm đi vị đắng gắt của cà phê đen mà không gây ngấy cổ như dùng sữa đặc.",
-                appearance: "Khi mới rót sẽ tách thành 2 lớp rõ rệt: sữa chua trắng mịn bên dưới và lớp cà phê nâu đen phía trên trông rất giống ngoài quán. Khi khuấy đều với đá sẽ chuyển sang màu nâu sữa nhạt.",
-                textureDetail: "Sánh mịn vừa phải nhờ lớp sữa chua đánh bông. Lưu ý: nếu đổ cà phê đang sôi nóng vào sữa chua lạnh thì sữa chua sẽ bị tách nước và hơi lợn cợn nhẹ.",
-                tasteProfile: "Ngụm đầu tiên thơm nồng mùi cà phê, đắng dịu ở đầu lưỡi rồi chuyển ngay sang vị chua thanh, ngọt nhẹ và béo mát của sữa chua ở hậu vị.",
-                meters: {
-                    sweet: 38,
-                    sour: 52,
-                    salty: 4,
-                    bitter: 58,
-                    pungent: 0,
-                    fat: 35
-                },
+                physicalState: 'Sánh mịn, phân thành 2 tầng',
+                visualRating: 'Đẹp mắt khi chưa khuấy',
+                phaseStability: 'Ổn định khi uống lạnh với đá',
+                executiveSummary: 'Một món đồ uống kết hợp rất hợp vị và cuốn miệng. Vị chua thanh, béo dịu của sữa chua làm mềm đi vị đắng gắt của cà phê.',
+                appearance: 'Khi mới rót sẽ tách thành 2 lớp rõ rệt: sữa chua trắng mịn bên dưới và lớp cà phê nâu đen phía trên trông rất giống ngoài quán.',
+                textureDetail: 'Sánh mịn vừa phải nhờ lớp sữa chua đánh bông. Lưu ý: nếu đổ cà phê đang sôi nóng vào sữa chua lạnh thì sữa chua sẽ bị tách nước.',
+                tasteProfile: 'Ngụm đầu tiên thơm nồng mùi cà phê, đắng dịu ở đầu lưỡi rồi chuyển sang vị chua thanh và béo mát của sữa chua.',
+                meters: { sweet: 38, sour: 52, salty: 4, bitter: 58, pungent: 0, fat: 35 },
                 meterExplanations: {
-                    sweet: "Độ ngọt (38%) đến từ lượng đường có sẵn trong hộp sữa chua có đường. Cà phê đen nguyên chất không có đường nên khi hòa quyện với đá sẽ tạo vị ngọt dịu vừa phải, không bị gắt cổ.",
-                    sour: "Độ chua (52%) hình thành chủ yếu từ axit lactic lên men tự nhiên trong sữa chua, cộng hưởng thêm chút vị chua thanh tự nhiên của hạt cà phê rang.",
-                    salty: "Độ mặn & đậm đà (4%) gần như không đáng kể, chỉ có một lượng muối khoáng tự nhiên cực nhỏ trong sữa chua giúp vị ngọt thanh hơn.",
-                    bitter: "Độ đắng (58%) là vị đặc trưng của caffeine và hợp chất rang trong cà phê đen, nhưng đã được chất béo và vị ngọt của sữa chua làm dịu đi khoảng một nửa so với uống cà phê đen không.",
-                    pungent: "Độ cay & nồng hăng (0%) vì cả sữa chua và cà phê đều hoàn toàn không chứa tinh dầu cay hay chất gây hăng.",
-                    fat: "Độ béo & sánh ngậy (35%) có được nhờ chất béo sữa và kết cấu đặc sánh của sữa chua đánh bông, tạo độ mượt miệng nhưng nhẹ hơn nhiều so với kem béo hay sữa đặc."
+                    sweet: 'Độ ngọt (38%) đến từ lượng đường có sẵn trong sữa chua có đường.',
+                    sour: 'Độ chua (52%) hình thành chủ yếu từ axit lactic trong sữa chua.',
+                    salty: 'Độ mặn & đậm đà (4%) gần như không đáng kể.',
+                    bitter: 'Độ đắng (58%) là vị đặc trưng của caffeine và hợp chất rang trong cà phê.',
+                    pungent: 'Độ cay & nồng hăng (0%) vì cả sữa chua và cà phê đều không chứa tinh dầu cay.',
+                    fat: 'Độ béo & sánh ngậy (35%) có được nhờ chất béo sữa và kết cấu đặc sánh của sữa chua.'
                 },
-                benefits: [
-                    "Giúp tỉnh táo, tập trung đầu óc nhờ caffeine và chất chống oxy hóa trong cà phê.",
-                    "Bổ sung lợi khuẩn tiêu hóa (men vi sinh), canxi và đạm từ sữa chua.",
-                    "Đỡ ngấy và ít đường hơn so với cà phê sữa đặc thông thường."
-                ],
-                risks: [
-                    "Cả cà phê và sữa chua đều có vị chua, uống lúc bụng đang đói cồn cào rất dễ gây xót ruột hoặc ợ chua.",
-                    "Không nên pha bằng cà phê vừa pha sôi sùng sục vì nhiệt độ cao sẽ làm chết hết men lợi khuẩn trong sữa chua.",
-                    "Uống vào buổi tối vẫn gây mất ngủ như cà phê bình thường."
-                ],
-                protocol: "Hãy đánh bông sữa chua với đá viên trước, sau đó rót cà phê đã nguội lên trên. Nhớ ăn lót dạ trước khi uống để êm bụng!"
+                benefits: ['Giúp tỉnh táo và tập trung nhờ caffeine.', 'Bổ sung lợi khuẩn, canxi và đạm từ sữa chua.', 'Đỡ ngấy và ít đường hơn so với cà phê sữa đặc.'],
+                risks: ['Uống lúc bụng đói dễ gây xót ruột hoặc ợ chua.', 'Không nên dùng cà phê vừa mới đun sôi để pha.', 'Vẫn có thể gây mất ngủ nếu uống vào buổi tối.'],
+                protocol: 'Hãy đánh bông sữa chua với đá viên trước, sau đó rót cà phê đã nguội lên trên. Nhớ ăn lót dạ trước khi uống để êm bụng!'
             },
             'tỏi|ớt': {
-                title: "Tỏi Sống Giã Ớt Tươi",
-                categoryBadge: "CHỈ DÙNG LÀM GIA VỊ • KHÔNG ĂN VÃ",
-                badgeTone: "amber",
+                title: 'Tỏi Sống Giã Ớt Tươi',
+                categoryBadge: 'CHỈ DÙNG LÀM GIA VỊ • KHÔNG ĂN VÃ',
+                badgeTone: 'amber',
                 compatibilityScore: 20,
-                physicalState: "Gia vị giã thô, khô ráo, 0% béo",
-                visualRating: "Màu đỏ trắng bắt mắt (dạng gia vị)",
-                phaseStability: "Không tách nước, giữ nguyên xác",
-                executiveSummary: "Tỏi và ớt là cặp đôi gia vị nền tảng cho các món nước chấm và ướp đồ ăn, nhưng hoàn toàn không phải món để ăn vã trực tiếp. Cả hai đều không có chất béo hay độ sánh mịn (0%), vị cay xé lưỡi và hăng nồng cực mạnh.",
-                appearance: "Hỗn hợp xác ớt đỏ tươi xen lẫn tép tỏi trắng ngà băm nhuyễn hoặc giã dập, khô ráo và rời rạc.",
-                textureDetail: "Giòn sần sật của xác tỏi ớt tươi, hoàn toàn không có độ béo ngậy hay sánh mượt (0% chất béo).",
-                tasteProfile: "Cay bùng nổ ngay đầu lưỡi từ ớt tươi kết hợp mùi hăng nồng đặc trưng của tỏi sống, xộc thẳng lên mũi và gây nóng rát khoang miệng nếu ăn không.",
-                meters: {
-                    sweet: 3,
-                    sour: 0,
-                    salty: 0,
-                    bitter: 8,
-                    pungent: 96,
-                    fat: 0
-                },
+                physicalState: 'Gia vị giã thô, khô ráo, 0% béo',
+                visualRating: 'Màu đỏ trắng bắt mắt (dạng gia vị)',
+                phaseStability: 'Không tách nước, giữ nguyên xác',
+                executiveSummary: 'Tỏi và ớt là cặp đôi gia vị nền tảng cho các món nước chấm và ướp đồ ăn, nhưng hoàn toàn không phải món để ăn vã trực tiếp.',
+                appearance: 'Hỗn hợp xác ớt đỏ tươi xen lẫn tép tỏi trắng ngà băm nhuyễn hoặc giã dập, khô ráo và rời rạc.',
+                textureDetail: 'Giòn sần sật của xác tỏi ớt tươi, hoàn toàn không có độ béo ngậy hay sánh mượt.',
+                tasteProfile: 'Cay bùng nổ ngay đầu lưỡi từ ớt tươi kết hợp mùi hăng nồng đặc trưng của tỏi sống, xộc thẳng lên mũi và gây nóng rát khoa học.',
+                meters: { sweet: 3, sour: 0, salty: 0, bitter: 8, pungent: 96, fat: 0 },
                 meterExplanations: {
-                    sweet: "Độ ngọt (3%) cực thấp, chỉ có một chút đường tự nhiên rất nhỏ trong củ tỏi tươi, hầu như bị vị cay nồng lấn át hoàn toàn.",
-                    sour: "Độ chua (0% tuyệt đối) vì cả tỏi tươi và ớt hiểm đều không chứa axit tạo chua (chỉ chua khi bạn vắt thêm chanh hoặc ngâm giấm).",
-                    salty: "Độ mặn & đậm đà (0% tuyệt đối) vì chưa hề nêm muối hay nước mắm.",
-                    bitter: "Độ đắng (8%) rất nhẹ do tinh dầu trong hạt ớt và hợp chất lưu huỳnh trong tỏi sống để lại ở hậu vị.",
-                    pungent: "Độ cay & nồng hăng (96%) gần mức tối đa! Hoạt chất Capsaicin trong ớt gây cay nóng rát lưỡi cộng hưởng với Allicin trong tỏi đập dập tạo mùi hăng nồng cực mạnh.",
-                    fat: "Độ béo & sánh ngậy (0% tuyệt đối) vì tỏi và ớt hoàn toàn không có chất béo (lipid), không có sữa hay dầu mỡ nên không thể tạo độ béo hay sánh mịn."
+                    sweet: 'Độ ngọt (3%) cực thấp, chỉ có một chút đường tự nhiên rất nhỏ trong củ tỏi tươi.',
+                    sour: 'Độ chua (0%) vì cả tỏi tươi và ớt đều không chứa axit tạo chua.',
+                    salty: 'Độ mặn & đậm đà (0%) vì chưa hề nêm muối hoặc nước mắm.',
+                    bitter: 'Độ đắng (8%) rất nhẹ do tinh dầu trong hạt ớt và hợp chất lưu huỳnh trong tỏi sống.',
+                    pungent: 'Độ cay & nồng hăng (96%) gần mức tối đa! Capsaicin và allicin cộng hưởng cực mạnh.',
+                    fat: 'Độ béo & sánh ngậy (0%) vì không có chất béo.'
                 },
-                benefits: [
-                    "Giàu Allicin (từ tỏi) và Capsaicin, Vitamin C (từ ớt) giúp kháng khuẩn tự nhiên, làm ấm người và kích thích tiêu hóa khi dùng lượng nhỏ.",
-                    "Làm dậy mùi thơm và khử mùi tanh cực tốt cho các món chấm, món xào."
-                ],
-                risks: [
-                    "Tuyệt đối không ăn vã trực tiếp vì sẽ gây bỏng rát niêm mạc miệng, xót dạ dày dữ dội và trào ngược.",
-                    "Để lại mùi hăng nồng rất lâu trong hơi thở."
-                ],
-                protocol: "Hãy thêm nước mắm, đường và nước cốt chanh tươi để tạo thành bát nước mắm tỏi ớt chua ngọt cân bằng, hoặc đem ngâm giấm trước khi ăn."
-            },
-            'chanh|sữa': {
-                title: "Sữa Tươi Vắt Chanh",
-                categoryBadge: "KẾT TỦA VÓN CỤC • KỊ NHAU",
-                badgeTone: "red",
-                compatibilityScore: 12,
-                physicalState: "Tách nước, vón cục lợn cợn",
-                visualRating: "Trông giống sữa bị hỏng / thiu",
-                phaseStability: "Bị phân lớp và đóng cặn ngay lập tức",
-                executiveSummary: "Trong pha chế đồ uống trực tiếp, vắt chanh thẳng vào sữa tươi là một pha 'tự hủy'. Axit chua trong chanh làm đạm sữa kết tủa ngay lập tức, biến ly sữa thành hỗn hợp lợn cợn tách nước rất khó uống.",
-                appearance: "Ngay khi vắt chanh vào, sữa tươi mất đi độ mịn mà đóng thành từng mảng cặn trắng lợn cợn nổi trên lớp nước đục vàng nhạt.",
-                textureDetail: "Uống vào có cảm giác lợn cợn, nhám lưỡi như ăn bã đậu vụn pha nước chua, mất hoàn toàn độ sánh mượt của sữa tươi.",
-                tasteProfile: "Vị chua gắt của chanh đâm ngang vào vị béo nhạt của sữa đã bị tách nước, tạo cảm giác giống hệt đang uống phải sữa để quên ngoài nắng bị chua thiu.",
-                meters: {
-                    sweet: 18,
-                    sour: 78,
-                    salty: 5,
-                    bitter: 14,
-                    pungent: 0,
-                    fat: 28
-                },
-                meterExplanations: {
-                    sweet: "Độ ngọt (18%) rất thấp (từ đường lactose tự nhiên trong sữa), bị vị chua gắt của nước cốt chanh lấn át gần hết.",
-                    sour: "Độ chua (78%) rất cao do axit citric trong chanh tươi làm giảm độ pH đột ngột của sữa.",
-                    salty: "Độ mặn & đậm đà (5%) chỉ là lượng khoáng tự nhiên rất nhỏ trong sữa tươi.",
-                    bitter: "Độ đắng (14%) nhẹ xuất hiện nếu bạn vắt chanh quá mạnh tay làm tinh dầu vỏ chanh và cùi chanh rơi vào sữa.",
-                    pungent: "Độ cay & nồng hăng (0% tuyệt đối) vì không có bất kỳ gia vị cay nồng nào.",
-                    fat: "Độ béo & sánh ngậy (28%) bị sụt giảm mạnh về mặt cảm giác do đạm sữa (casein) đã bị axit làm vón cục và tách khỏi nước, không còn giữ được độ sánh mịn ban đầu."
-                },
-                benefits: [
-                    "Thực tế phần cặn sữa kết tủa này không độc, đó chính là nguyên lý làm phô mai tươi (Ricotta / Paneer) trong nấu ăn.",
-                    "Vẫn giữ được canxi, đạm sữa và vitamin C nếu chế biến đúng cách."
-                ],
-                risks: [
-                    "Uống trực tiếp hỗn hợp sữa đang kết tủa dở dang với chanh rất dễ gây đầy hơi, lạnh bụng và đi ngoài với người bụng yếu.",
-                    "Trải nghiệm vị giác và thị giác cực kỳ tệ nếu mục đích ban đầu là pha đồ uống giải khát."
-                ],
-                protocol: "Tuyệt đối không pha uống trực tiếp! Nếu lỡ vắt chanh vào sữa, hãy đun sôi nhẹ cho sữa kết tủa hẳn, lọc qua khăn xô vắt ráo nước là bạn có ngay mẻ phô mai tươi tự làm cực ngon."
-            },
-            'bơ|nước mắm|đường': {
-                title: "Bơ Sáp Dầm Nước Mắm Đường",
-                categoryBadge: "LẠ MIỆNG NHƯNG CỰC CUỐN",
-                    badgeTone: "green",
-                    compatibilityScore: 84,
-                    physicalState: "Miếng bơ mềm sánh quyện sốt mặn ngọt",
-                    visualRating: "Bắt mắt, dân dã",
-                    phaseStability: "Giữ nguyên độ sánh khi ăn liền",
-                    executiveSummary: "Nghe qua tưởng kị nhau nhưng lại là món ăn vặt đặc sản cực kỳ hợp vị! Vị mặn đậm đà của nước mắm pha đường làm bật lên độ béo ngậy như kem của bơ sáp chín, ăn không hề bị ngấy.",
-                    appearance: "Những múi bơ sáp màu vàng xanh mướt mắt nằm trong chén, rưới lớp nước mắm đường sóng sánh màu nâu hổ phách lên trên.",
-                    textureDetail: "Thịt bơ mềm mịn, dẻo quánh tan ngay trên đầu lưỡi, quyện cùng nước sốt mắm đường sánh nhẹ.",
-                    tasteProfile: "Vị mặn dịu và ngọt đậm chạm lưỡi đầu tiên, ngay sau đó là vị béo ngậy thơm lừng của bơ sáp bao phủ khoang miệng, mặn ngọt béo hòa quyện rất đưa miệng.",
-                    meters: {
-                        sweet: 56,
-                        sour: 0,
-                        salty: 48,
-                        bitter: 0,
-                        pungent: 12,
-                        fat: 76
-                    },
-                    meterExplanations: {
-                        sweet: "Độ ngọt (56%) đến từ lượng đường cát đánh tan trong nước mắm, giúp cân bằng độ mặn và tôn lên hương thơm của bơ.",
-                        sour: "Độ chua (0%) vì công thức gốc bơ dầm mắm đường không vắt chanh để tránh làm bơ bị ngang vị.",
-                        salty: "Độ mặn & đậm đà (48%) do đạm cá tự nhiên và muối trong nước mắm tạo nên, giúp cắt đứt cảm giác ngấy của chất béo trong bơ.",
-                        bitter: "Độ đắng (0%) khi bạn chọn đúng bơ sáp chín tới (chỉ đắng nếu bơ còn non hoặc nạo sát vỏ).",
-                        pungent: "Độ cay nhẹ (12%) nếu bạn cắt thêm vài lát ớt hiểm vào chén mắm đường để kích thích vị giác.",
-                        fat: "Độ béo & sánh ngậy (76%) rất cao nhờ hàm lượng chất béo thực vật tự nhiên dồi dào và kết cấu thịt dẻo mịn của quả bơ sáp."
-                    },
-                    benefits: [
-                        "Quả bơ chứa lượng lớn chất béo tốt (Omega-9), Vitamin E và Kali tốt cho tim mạch và làn da.",
-                        "Cung cấp năng lượng nhanh, ăn kèm cơm nóng hoặc ăn xế đều no lâu."
-                    ],
-                    risks: [
-                        "Lượng calo và đường khá cao, nếu ăn nhiều vào đêm muộn dễ gây đầy bụng và tăng cân.",
-                        "Người cần kiêng muối hoặc cao huyết áp chỉ nên rưới một lượng nhỏ nước mắm."
-                    ],
-                    protocol: "Chọn bơ sáp chín mềm dẻo, đánh tan 2 thìa đường với 1.5 thìa nước mắm ngon và vài lát ớt cho sánh lại rồi rưới trực tiếp lên bơ."
-                },
-                'dừa|matcha': {
-                    title: "Matcha Nước Dừa Tươi",
-                    categoryBadge: "THANH MÁT • CỰC HỢP VỊ",
-                    badgeTone: "green",
-                    compatibilityScore: 91,
-                    physicalState: "Phân tầng xanh - trong đẹp mắt",
-                    visualRating: "Rất đẹp (Chuẩn quán cafe)",
-                    phaseStability: "Ổn định khi thêm đá",
-                    executiveSummary: "Sự kết hợp hoàn hảo cho ngày nóng! Vị ngọt thanh mát tự nhiên và chút khoáng nhẹ của nước dừa tươi làm dịu đi vị chát đắng của bột trà xanh matcha mà không cần dùng nhiều đường.",
-                    appearance: "Tầng nước dừa trong veo bên dưới kết hợp với lớp bọt matcha xanh ngọc bích rót nhẹ lên trên, nhìn cực kỳ mát mắt.",
-                    textureDetail: "Mượt nhẹ, sảng khoái và thanh thoát nơi cổ họng, không bị đặc dính như pha với sữa đặc.",
-                    tasteProfile: "Thơm lừng mùi trà xanh Nhật Bản, vị chát nhẹ ở đầu lưỡi nhanh chóng tan vào vị ngọt thanh, mát lạnh tự nhiên của nước dừa tươi.",
-                    meters: {
-                        sweet: 42,
-                        sour: 4,
-                        salty: 8,
-                        bitter: 46,
-                        pungent: 0,
-                        fat: 5
-                    },
-                    meterExplanations: {
-                        sweet: "Độ ngọt (42%) hoàn toàn là vị ngọt thanh tự nhiên từ đường trong nước dừa tươi, uống rất dịu cổ.",
-                        sour: "Độ chua (4%) cực nhẹ tự nhiên của nước dừa tươi (nếu chọn dừa xiêm ngon thì gần như không chua).",
-                        salty: "Độ mặn & đậm đà (8%) đến từ các chất điện giải và khoáng chất tự nhiên (Kali, Natri) có sẵn trong nước dừa.",
-                        bitter: "Độ đắng & chát (46%) đặc trưng của chất chống oxy hóa Catechin và Tannin trong bột trà xanh Matcha nguyên chất.",
-                        pungent: "Độ cay & nồng hăng (0%) vì cả nước dừa và matcha đều không có chất cay.",
-                        fat: "Độ béo & sánh ngậy (5%) gần như bằng không nếu chỉ dùng nước dừa trong (chỉ tăng lên nếu bạn cho thêm cùi dừa non hoặc kem sữa)."
-                    },
-                    benefits: [
-                        "Bù nước và chất điện giải tức thì từ nước dừa tươi kết hợp chất chống oxy hóa EGCG cực cao từ Matcha.",
-                        "Giúp tỉnh táo nhẹ nhàng mà ít calo, không gây nổi mụn hay tăng cân như trà sữa."
-                    ],
-                    risks: [
-                        "Nước dừa có tính hàn (lạnh), không nên uống quá nhiều vào buổi tối hoặc khi cơ thể đang yếu lạnh bụng.",
-                        "Matcha có chứa caffeine nên người nhạy cảm vẫn có thể khó ngủ nếu uống muộn."
-                    ],
-                    protocol: "Đánh tan bột matcha với một chút nước ấm cho không bị vón cục trước, sau đó mới rót nhẹ lên ly nước dừa tươi đã có sẵn đá viên."
-                }
-            };
+                benefits: ['Giàu allicin và capsaicin giúp kháng khuẩn và kích thích tiêu hóa mức nhỏ.', 'Làm dậy mùi thơm và khử mùi tanh cực tốt cho các món chấm, món xào.'],
+                risks: ['Tuyệt đối không ăn vã trực tiếp vì sẽ gây bỏng rát niêm mạc miệng.', 'Để lại mùi hăng nồng rất lâu trong hơi thở.'],
+                protocol: 'Hãy thêm nước mắm, đường và nước cốt chanh tươi để tạo thành bát nước mắm tỏi ớt chua ngọt cân bằng.'
+            }
+        };
 
-        // --- Helper to Update Each Taste Progress Bar & Explanation ---
         function setMetricBar(keySuffix, rawValue, explanationText) {
             const numericVal = Math.max(0, Math.min(100, Math.round(Number(rawValue) || 0)));
             const valEl = document.getElementById(`val${keySuffix}`);
             const barEl = document.getElementById(`bar${keySuffix}`);
             const expEl = document.getElementById(`exp${keySuffix}`);
 
-            if (valEl) {
-                valEl.textContent = `${numericVal}%`;
-            }
+            if (valEl) valEl.textContent = `${numericVal}%`;
             if (barEl) {
                 barEl.style.width = `${numericVal}%`;
-                // Subtle visual cue when 0% vs active >0%
                 barEl.style.opacity = numericVal === 0 ? '0.2' : '1';
             }
             if (expEl) {
@@ -833,16 +620,14 @@
             }
         }
 
-        // --- Parse Natural Vietnamese Phrase into Clean Ingredient Tags ---
         function parseRawIngredientText(rawText) {
             if (!rawText) return [];
             let cleaned = String(rawText).trim();
             if (!cleaned) return [];
 
-            // Remove conversational prefixes and split connectors cleanly
             cleaned = cleaned
                 .replace(/^(tôi muốn|mình muốn|thử|cho|bỏ|trộn|mix|pha|kết hợp|nấu|ăn|uống|lấy|đem|dầm)\s+/i, '')
-                .replace(/\s+(vào trong|vào với|vào cùng|vào|cùng với|cùng|với nhau|với|và|chung với|lẫn|cộng với|cộng|mix với|pha với|trộn với|ăn kèm|uống kèm)\s+/gi, ',');
+                .replace(/\s+(vào trong|vào với|vào cùng|vào|cùng với|cùng|với nhau|với|và|chung với|lẫn|cộng với|cộng|mix với|pha với|trộn với|ăn kèm|uống kèm|ăn cùng)\s+/gi, ' ');
 
             return cleaned
                 .split(/[+,;/|]+/)
@@ -850,7 +635,6 @@
                 .filter(Boolean);
         }
 
-        // --- Input & Tag Management ---
         function handleInputKeydown(e) {
             if (e.key === 'Enter') {
                 e.preventDefault();
@@ -900,19 +684,15 @@
 
             activeTags.forEach((tag, idx) => {
                 const chip = document.createElement('div');
-                chip.className = 'inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#262320] dark:bg-[#E6E1DA] text-[#FAF8F5] dark:text-[#181615] text-xs font-semibold shadow-2xs';
+                chip.className = 'inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#262320] dark:bg-[#E6E1DA] text-[#FAF8F5] dark:text-[#181615] text-xs font-semibold';
                 chip.innerHTML = `
-                    <span>${escapeHtml(tag)}</span>
+                    <span>${tag}</span>
                     <button onclick="removeTag(${idx})" class="opacity-70 hover:opacity-100 font-bold cursor-pointer" title="Bỏ món này">✕</button>
                 `;
                 container.appendChild(chip);
             });
 
-            if (activeTags.length > 0) {
-                clearBtn.classList.remove('hidden');
-            } else {
-                clearBtn.classList.add('hidden');
-            }
+            clearBtn.classList.toggle('hidden', activeTags.length === 0);
             updateLiveDanger();
         }
 
@@ -927,1098 +707,109 @@
             document.getElementById('alertBanner').classList.add('hidden');
         }
 
-        // --- Dangerous Food / Chemical Hazard Warnings ---
-        // tok(): matches whole words inside an ingredient text (works with Vietnamese diacritics).
-        const tok = src => new RegExp(`(^|[\\s,+/])(?:${src})(?=$|[\\s,+/])`, 'i');
-        const foldVN = s => String(s).normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'D');
-
-        // group(exact, loose):
-        //  - exact: terms matched as typed (with diacritics, or plain ASCII terms).
-        //  - loose: the same terms WITHOUT diacritics, so "sau rieng" or "sua tuoi" still match.
-        //    Only unambiguous terms are listed here (e.g. never bare "ca", "giam", "dam", "moc").
-        const group = (exact, loose = '') => {
-            const reExact = tok(exact);
-            const reLoose = loose ? tok(loose) : null;
-            return {
-                test: raw => {
-                    const s = String(raw).normalize('NFC').toLowerCase().trim();
-                    if (!s) return false;
-                    if (reExact.test(s)) return true;
-                    return reLoose ? reLoose.test(foldVN(s)) : false;
-                }
-            };
-        };
-
-        const G = {
-            // ----- Foods & drinks -----
-            milk: group(
-                'sữa tươi|sữa bò|sữa nguyên kem|sữa bịch|sữa hộp|sữa tách béo|sữa(?!\\s+(?:chua|đậu|nành|dừa|hạt|yến|đặc|hạnh|gạo))',
-                'sua tuoi|sua bo|sua nguyen kem|sua bich|sua hop|sua tach beo|sua(?!\\s+(?:chua|dau|nanh|dua|hat|yen|dac|hanh|gao))'
-            ),
-            citrus: group(
-                'cam(?!\\s+(?:thảo|thao))|quýt|quít|chanh|tắc|quất|bưởi',
-                'cam(?!\\s+thao)|quyt|quit|chanh|buoi'
-            ),
-            seafood: group(
-                'hải sản|tôm|cua|ghẹ|mực|cá|sò|ốc|nghêu|ngao|hàu|bạch tuộc|sushi|sashimi|lươn|tép',
-                'hai san|tom|ngheu|bach tuoc|luon|so diep|so huyet|oc huong|oc buou|ca (?:hoi|thu|ngu|basa|tra|loc|chep|ro|com|bong|nuc|me|chim|ngan)'
-            ),
-            vitaminCFruit: group(
-                'cam(?!\\s+(?:thảo|thao))|quýt|quít|chanh|tắc|quất|bưởi|kiwi|dâu|ổi|dứa|trái thơm|quả thơm|đu đủ|khế|cóc|sấu|xoài|ớt chuông|vitamin c',
-                'cam(?!\\s+thao)|quyt|quit|chanh|buoi|dau tay|xoai|du du|ot chuong|trai thom|qua thom'
-            ),
-            persimmon: group(
-                'quả hồng|trái hồng|hồng(?!\\s+(?:xiêm|trà|sâm|bì))',
-                'qua hong|trai hong|hong gion|hong ngam|hong treo'
-            ),
-            soyMilk: group(
-                'sữa đậu nành|sữa đậu|sữa nành|nước đậu nành|soy milk',
-                'sua dau nanh|sua dau|sua nanh|nuoc dau nanh'
-            ),
-            egg: group(
-                'trứng gà|trứng(?!\\s+(?:vịt|cút|muối|bắc))',
-                'trung ga|trung(?!\\s+(?:vit|cut|muoi|bac))'
-            ),
-            durian: group('sầu riêng|durian', 'sau rieng'),
-            alcohol: group(
-                'rượu|bia|soju|vodka|whisky|whiskey|sake|vang|tequila|rum|cocktail|beer|wine|champagne|brandy|cognac|gin|nhậu',
-                'ruou|nhau'
-            ),
-            yogurt: group('sữa chua|yogurt|yaourt|yakult', 'sua chua'),
-            curedMeat: group(
-                'thịt xông khói|xông khói|giăm bông|dăm bông|thịt hun khói|thịt nguội|jambon|ham|bacon|salami',
-                'thit xong khoi|xong khoi|giam bong|dam bong|thit hun khoi|thit nguoi'
-            ),
-            energyDrink: group(
-                'bò húc|red bull|redbull|sting|monster|nước tăng lực|energy drink',
-                'bo huc|nuoc tang luc'
-            ),
-            cola: group(
-                'coca-cola|coca cola|coca|cola|coke|pepsi|7up|7-up|sprite|fanta|mirinda|nước ngọt có ga|nước ngọt|nước có ga',
-                'nuoc ngot co ga|nuoc ngot|nuoc co ga'
-            ),
-            inkCapMushroom: group('nấm mực|coprinus|ink cap', 'nam muc'),
-            honey: group('mật ong', 'mat ong'),
-            infant: group(
-                'sơ sinh|em bé|(?:bé|trẻ)\\s*(?:[1-9]|1[01])\\s*tháng|(?:[1-9]|1[01])\\s*tháng tuổi|dưới 1 tuổi|dưới 12 tháng',
-                'so sinh|em be|(?:be|tre)\\s*(?:[1-9]|1[01])\\s*thang|(?:[1-9]|1[01])\\s*thang tuoi|duoi 1 tuoi|duoi 12 thang'
-            ),
-
-            // ----- Medicines -----
-            drugAny: group(
-                'thuốc(?!\\s+(?:lá|lào|tẩy|trừ|diệt|xịt|nổ|súng|nam))|kháng sinh|paracetamol|acetaminophen|panadol|ibuprofen|aspirin|statin|insulin',
-                'thuoc(?!\\s+(?:la|lao|tay|tru|diet|xit|no|sung|nam))|khang sinh'
-            ),
-            sedative: group(
-                'thuốc ngủ|thuốc an thần|diazepam|seduxen|alprazolam|xanax|zolpidem|clonazepam|lorazepam|tramadol|morphin|morphine|codein|codeine|opioid|gardenal|phenobarbital',
-                'thuoc ngu|thuoc an than'
-            ),
-            nitroimidazole: group('metronidazole|flagyl|tinidazole|secnidazole|cefoperazone|cefotetan|disulfiram|antabuse'),
-            paracetamol: group(
-                'paracetamol|acetaminophen|panadol|efferalgan|hapacol|tylenol|thuốc hạ sốt|thuốc giảm đau',
-                'thuoc ha sot|thuoc giam dau'
-            ),
-            grapefruit: group('bưởi chùm|grapefruit|nước bưởi|nước ép bưởi|bưởi', 'buoi chum|nuoc buoi|nuoc ep buoi|buoi'),
-
-            // ----- Household chemicals -----
-            bleach: group(
-                'thuốc tẩy(?!\\s+giun)|nước tẩy(?!\\s+(?:trang|bồn|rửa|rỉ))|nước javen|javen|javel|clorox|bleach|natri hypoclorit|sodium hypochlorite|cloramin',
-                'nuoc javen|natri hypoclorit'
-            ),
-            acid: group(
-                'giấm|dấm|axit|acid|hcl|tẩy bồn cầu|tẩy rỉ|chanh|tắc|quất',
-                'giam an|giam gao|giam tao|giam nho|axit|tay bon cau|chanh'
-            ),
-            ammonia: group(
-                'amoniac|amonia|ammonia|nước lau kính|nước rửa kính|nước tẩy rửa kính',
-                'nuoc lau kinh|nuoc rua kinh'
-            ),
-            chemAlcohol: group(
-                'rượu|cồn|ethanol|isopropanol|isopropyl|acetone|axeton|nước rửa tay khô|nước sát khuẩn tay',
-                'ruou|con y te|con 70|con 90|nuoc rua tay kho'
-            ),
-            cleaner: group(
-                'nước rửa chén|nước rửa bát|nước lau sàn|nước lau nhà|nước tẩy rửa|nước xả vải|bột giặt|nước giặt|nước tẩy dầu mỡ',
-                'nuoc rua chen|nuoc rua bat|nuoc lau san|nuoc lau nha|bot giat|nuoc giat'
-            ),
-            peroxide: group('oxy già|hydrogen peroxide|h2o2|hydro peroxit', 'oxy gia'),
-            vinegar: group('giấm|dấm', 'giam an|giam gao|giam tao|giam nho'),
-
-            // ----- Not food at all / banned additives -----
-            nonFood: group(
-                'xăng|dầu hỏa|dầu hoả|thuốc trừ sâu|thuốc diệt chuột|thuốc diệt cỏ|thuốc diệt côn trùng|thuốc xịt muỗi|nước rửa chén|nước rửa bát|nước lau sàn|nước lau nhà|nước tẩy rửa|nước lau kính|bột giặt|nước giặt|nước xả vải|sơn tường|sơn dầu|sơn móng tay|nước sơn|keo dán|keo 502|thủy ngân|thạch tín|asen|xyanua|cyanide|acetone|axeton|nước rửa tay khô|cồn công nghiệp|methanol|metanol|hóa chất|dung môi|thinner|ammonia|amoniac|amonia|thuốc tẩy(?!\\s+giun)|nước tẩy(?!\\s+(?:trang|bồn|rửa|rỉ))|nước javen|javen|javel|bleach|axit sulfuric|nước xút|xút|naoh|soda ăn da|oxy già|hàn the|borax|formol|formalin|phoóc môn|sudan|melamine|chất tạo nạc|clenbuterol|salbutamol|phẩm màu công nghiệp',
-                'xang|dau hoa|thuoc tru sau|thuoc diet chuot|thuoc diet co|thuoc diet con trung|thuoc xit muoi|nuoc rua chen|nuoc rua bat|nuoc lau san|nuoc lau nha|nuoc lau kinh|bot giat|nuoc giat|nuoc xa vai|son tuong|son dau|son mong tay|nuoc son|keo dan|thuy ngan|thach tin|xyanua|con cong nghiep|hoa chat|dung moi|nuoc javen|axit sulfuric|nuoc xut|soda an da|oxy gia|han the|phoc mon|chat tao nac|pham mau cong nghiep'
-            ),
-            deadlyFood: group(
-                'cá nóc|trứng cá nóc|gan cá nóc|nấm lạ|nấm dại|nấm độc|nấm rừng lạ|mật cá|mật cá trắm',
-                'ca noc|trung ca noc|gan ca noc|nam la|nam dai|nam doc|mat ca|mat ca tram'
-            ),
-            rawToxicFood: group(
-                'mầm khoai tây|khoai tây mọc mầm|khoai tây xanh|sắn sống|khoai mì sống|củ sắn sống|đậu tây sống|đậu đỏ sống|đậu thận sống|đậu ván sống|măng sống|măng tươi sống|hạnh nhân đắng|hạt mơ',
-                'mam khoai tay|khoai tay moc mam|khoai tay xanh|san song|khoai mi song|dau tay song|dau do song|dau than song|dau van song|mang song|mang tuoi song|hanh nhan dang|hat mo'
-            ),
-            spoiled: group(
-                'thiu|ôi thiu|ươn|nấm mốc|bị mốc|mốc|hết hạn|quá hạn|thịt ôi|cá ươn',
-                'thiu|oi thiu|uon|nam moc|bi moc|het han|qua han'
-            ),
-            rawRisk: group(
-                'tiết canh|thịt sống|cá sống|gỏi sống|hải sản sống|trứng(?:\\s+(?:gà|vịt|cút))?\\s+sống|sữa sống',
-                'tiet canh|thit song|ca song|goi song|hai san song|trung(?:\\s+(?:ga|vit|cut))?\\s+song|sua song'
-            )
-        };
-
-        const DANGER_LEVELS = {
-            critical: {
-                short: 'CỰC NGUY HIỂM',
-                badge: 'KHÔNG AN TOÀN • TUYỆT ĐỐI KHÔNG ĂN UỐNG',
-                rank: 4,
-                cap: 0,
-                box: 'bg-[#B84239]/15 border-[#B84239]',
-                pill: 'bg-[#8F2A23] text-[#FAF8F5]',
-                icon: 'text-[#B84239] dark:text-[#E07A72]'
-            },
-            high: {
-                short: 'NGUY CƠ CAO',
-                badge: 'CẢNH BÁO • NÊN TRÁNH HẲN',
-                rank: 3,
-                cap: 8,
-                box: 'bg-[#B84239]/10 border-[#B84239]/50',
-                pill: 'bg-[#B84239] text-[#FAF8F5]',
-                icon: 'text-[#B84239] dark:text-[#E07A72]'
-            },
-            medium: {
-                short: 'KỴ NHAU',
-                badge: 'CẢNH BÁO • KỴ NHAU',
-                rank: 2,
-                cap: 20,
-                box: 'bg-[#C86D51]/10 border-[#C86D51]/50',
-                pill: 'bg-[#C86D51] text-[#FAF8F5]',
-                icon: 'text-[#C86D51] dark:text-[#DF8266]'
-            },
-            low: {
-                short: 'CẦN THẬN TRỌNG',
-                badge: 'CẢNH BÁO • CẦN THẬN TRỌNG',
-                rank: 1,
-                cap: 35,
-                box: 'bg-[#B87D32]/10 border-[#B87D32]/50',
-                pill: 'bg-[#B87D32] text-[#FAF8F5]',
-                icon: 'text-[#B87D32] dark:text-[#D99B4E]'
-            }
-        };
-
-        const CHEM_IDS = ['bleach-acid', 'bleach-ammonia', 'bleach-alcohol', 'bleach-cleaner', 'peroxide-vinegar'];
-        const ALCOHOL_DRUG_IDS = ['drug-sedative-alcohol', 'drug-nitroimidazole-alcohol', 'drug-paracetamol-alcohol'];
-
-        const DANGER_COMBOS = [
-            // ===== Chemical hazards =====
-            {
-                id: 'bleach-acid', a: G.bleach, b: G.acid, level: 'critical',
-                title: 'Thuốc tẩy (javen) + Giấm / Chanh / Chất tẩy axit',
-                headline: 'Trộn thuốc tẩy với axit sinh ra khí clo độc, có thể gây bỏng đường hô hấp.',
-                why: 'Hypoclorit trong thuốc tẩy gặp axit (giấm, chanh, nước tẩy bồn cầu) sẽ giải phóng khí clo: gây cay mắt, ho, khó thở, đau ngực, nặng thì phù phổi.',
-                evidence: 'Phản ứng hóa học đã được xác lập rõ ràng, có nhiều ca ngộ độc khi vệ sinh nhà cửa. Thuốc tẩy cũng không phải thực phẩm và không được ăn uống.',
-                advice: 'Tuyệt đối không trộn và không cho vào thực phẩm, đồ uống. Dùng riêng từng loại, mở cửa thoáng, xả sạch nước giữa các lần dùng. Nếu đã trộn và ngửi thấy mùi hắc: rời khỏi khu vực ngay, ra nơi thoáng khí, gọi 115 nếu ho nhiều hoặc khó thở.'
-            },
-            {
-                id: 'bleach-ammonia', a: G.bleach, b: G.ammonia, level: 'critical',
-                title: 'Thuốc tẩy (javen) + Amoniac / Nước lau kính',
-                headline: 'Trộn thuốc tẩy với amoniac tạo khí cloramin độc, rất dễ gây ngộ độc hô hấp.',
-                why: 'Hypoclorit phản ứng với amoniac tạo cloramin: gây ho, khó thở, đau ngực, buồn nôn, tổn thương phổi, kể cả khi hít trong thời gian ngắn ở không gian kín.',
-                evidence: 'Là cảnh báo an toàn hóa chất phổ biến, đã được ghi nhận rõ ràng.',
-                advice: 'Không trộn các chất tẩy rửa với nhau và không dùng để nấu nướng, pha chế. Nếu đã hít phải: ra nơi thoáng khí ngay và gọi 115 khi có khó thở, đau ngực.'
-            },
-            {
-                id: 'bleach-alcohol', a: G.bleach, b: G.chemAlcohol, level: 'critical',
-                title: 'Thuốc tẩy (javen) + Cồn / Rượu / Acetone',
-                headline: 'Trộn thuốc tẩy với cồn hoặc acetone có thể tạo cloroform và các hợp chất độc, gây chóng mặt, ngất, tổn thương gan.',
-                why: 'Hypoclorit phản ứng với etanol, isopropanol hoặc acetone tạo cloroform và các hợp chất clo hữu cơ, độc khi hít và khi tiếp xúc da.',
-                evidence: 'Phản ứng hóa học đã được xác lập. Thuốc tẩy tuyệt đối không dùng trong đồ ăn thức uống.',
-                advice: 'Không trộn và không dùng cồn, rượu lau chùi cùng lúc với thuốc tẩy. Nếu chóng mặt, buồn nôn hoặc khó thở sau khi trộn: ra nơi thoáng khí và gọi 115.'
-            },
-            {
-                id: 'bleach-cleaner', a: G.bleach, b: G.cleaner, level: 'critical',
-                title: 'Thuốc tẩy (javen) + Nước rửa chén / Nước lau sàn / Chất tẩy rửa khác',
-                headline: 'Nhiều chất tẩy rửa chứa amoniac hoặc axit; trộn với thuốc tẩy có thể tạo khí độc.',
-                why: 'Thành phần chất tẩy rất khác nhau và thường không ghi rõ trên nhãn, nên trộn hai loại với nhau có thể tạo khí clo hoặc cloramin.',
-                evidence: 'Khuyến cáo an toàn của các cơ quan y tế: không bao giờ trộn các sản phẩm tẩy rửa.',
-                advice: 'Dùng riêng từng sản phẩm, xả sạch bằng nước giữa các lần dùng, mở cửa thoáng khi lau dọn. Không dùng bất kỳ chất tẩy rửa nào trong thực phẩm.'
-            },
-            {
-                id: 'peroxide-vinegar', a: G.peroxide, b: G.vinegar, level: 'high',
-                title: 'Oxy già + Giấm',
-                headline: 'Trộn oxy già với giấm tạo axit peracetic, chất ăn mòn gây bỏng da, mắt và đường hô hấp.',
-                why: 'Hydrogen peroxide và axit axetic phản ứng tạo axit peracetic: kích ứng mạnh, gây bỏng da, tổn thương mắt và phổi nếu hít phải.',
-                evidence: 'Cảnh báo an toàn hóa chất đã được ghi nhận. Oxy già không phải thực phẩm.',
-                advice: 'Không trộn trong cùng một dụng cụ. Dùng riêng, tráng sạch nước giữa các lần. Nếu dính vào da hoặc mắt: rửa nước sạch nhiều phút và đến cơ sở y tế.'
-            },
-
-            // ===== Not food / toxic foods =====
-            {
-                id: 'non-food', a: G.nonFood, level: 'critical',
-                title: 'Hóa chất / chất không phải thực phẩm',
-                headline: 'Nguyên liệu này không phải thực phẩm (hóa chất, chất tẩy rửa hoặc phụ gia bị cấm), tuyệt đối không ăn uống hay cho vào món.',
-                why: 'Hóa chất gia dụng, dung môi, thuốc trừ sâu hay phụ gia cấm như hàn the, formol, chất tạo nạc có thể gây bỏng, ngộ độc cấp, tổn thương gan, thận, thần kinh, thậm chí tử vong.',
-                evidence: 'Không có mức an toàn khi đưa các chất này vào thực phẩm.',
-                advice: 'Không dùng. Nếu đã nuốt hoặc hít phải: gọi 115 hoặc đến cơ sở y tế gần nhất ngay, mang theo bao bì sản phẩm và không tự gây nôn.',
-                unlessAny: CHEM_IDS
-            },
-            {
-                id: 'deadly-food', a: G.deadlyFood, level: 'critical',
-                title: 'Thực phẩm có độc tố nguy hiểm',
-                headline: 'Cá nóc, nấm lạ/nấm dại hoặc mật cá có thể gây ngộ độc nặng, liệt cơ, suy gan thận và tử vong.',
-                why: 'Cá nóc chứa tetrodotoxin (không bị phá hủy khi nấu chín), nấm dại có thể chứa độc tố gan thận, mật cá (đặc biệt cá trắm) có thể gây suy thận cấp.',
-                evidence: 'Đây là các nguyên nhân ngộ độc thực phẩm nặng đã được ghi nhận nhiều lần.',
-                advice: 'Không ăn nếu không phải người có chuyên môn chế biến được cấp phép. Nếu đã ăn và thấy tê môi lưỡi, chóng mặt, nôn, yếu cơ, khó thở: gọi 115 ngay.'
-            },
-            {
-                id: 'raw-toxic-food', a: G.rawToxicFood, level: 'high',
-                title: 'Nguyên liệu chứa độc tố nếu chưa sơ chế đúng cách',
-                headline: 'Mầm khoai tây, sắn/đậu/măng ăn sống hoặc hạt mơ, hạnh nhân đắng có thể gây ngộ độc.',
-                why: 'Khoai tây mọc mầm hoặc xanh chứa solanin; sắn, măng, hạt mơ chứa glycoside sinh xyanua; đậu tây, đậu đỏ sống chứa lectin gây nôn, tiêu chảy dữ dội.',
-                evidence: 'Các độc tố này đã được ghi nhận, phần lớn giảm mạnh khi gọt bỏ, ngâm và nấu chín kỹ.',
-                advice: 'Gọt bỏ mầm và phần xanh, ngâm rồi nấu chín kỹ (đậu cần luộc sôi đủ lâu), không ăn sống. Thấy nôn, đau bụng dữ dội, chóng mặt thì đến cơ sở y tế.'
-            },
-            {
-                id: 'spoiled-food', a: G.spoiled, level: 'high',
-                title: 'Thực phẩm hỏng / ôi thiu / mốc',
-                headline: 'Đồ ăn đã ôi thiu, ươn, mốc hoặc hết hạn có thể chứa vi khuẩn và độc tố nấm mốc, nấu chín cũng không loại bỏ hết.',
-                why: 'Vi khuẩn và nấm mốc sinh độc tố (như aflatoxin ở lạc, ngô mốc) chịu được nhiệt, gây ngộ độc, tiêu chảy, tổn thương gan lâu dài.',
-                evidence: 'Là nguyên tắc an toàn thực phẩm cơ bản đã được xác lập.',
-                advice: 'Bỏ đi, không cố gọt phần mốc hay nấu lại. Không trộn vào món để át mùi.'
-            },
-            {
-                id: 'raw-risk', a: G.rawRisk, level: 'low',
-                title: 'Thực phẩm sống / chưa nấu chín',
-                headline: 'Tiết canh, thịt cá trứng sống có nguy cơ nhiễm khuẩn và ký sinh trùng (Salmonella, liên cầu lợn, sán...).',
-                why: 'Nhiệt độ nấu chín là bước diệt khuẩn quan trọng; ăn sống bỏ qua bước này.',
-                evidence: 'Nguy cơ được ghi nhận, cao hơn ở trẻ nhỏ, người già, phụ nữ mang thai và người suy giảm miễn dịch.',
-                advice: 'Nấu chín kỹ. Nếu vẫn dùng món sống, chọn nguyên liệu rất tươi, bảo quản lạnh và những nhóm nguy cơ cao nên tránh hẳn.'
-            },
-            {
-                id: 'honey-infant', a: G.honey, b: G.infant, level: 'critical',
-                title: 'Mật ong + Trẻ dưới 12 tháng tuổi',
-                headline: 'Không cho trẻ dưới 1 tuổi ăn mật ong vì nguy cơ ngộ độc botulinum ở trẻ sơ sinh.',
-                why: 'Mật ong có thể chứa bào tử Clostridium botulinum; ruột của trẻ nhỏ chưa đủ khả năng ngăn chúng phát triển, gây yếu cơ, bú kém, khó thở.',
-                evidence: 'Khuyến cáo chính thức của nhiều cơ quan y tế. Người lớn và trẻ trên 1 tuổi nhìn chung không có nguy cơ này.',
-                advice: 'Không cho trẻ dưới 12 tháng dùng mật ong dưới mọi hình thức (kể cả nấu chín hoặc pha nước). Nếu bé đã ăn và có dấu hiệu yếu, táo bón nặng, khóc yếu: đưa đi khám ngay.'
-            },
-
-            // ===== Medicines + alcohol / food =====
-            {
-                id: 'drug-sedative-alcohol', a: G.sedative, b: G.alcohol, level: 'high',
-                title: 'Thuốc ngủ / An thần / Giảm đau mạnh + Rượu bia',
-                headline: 'Phối hợp có thể ức chế hô hấp, gây ngủ li bì, ngưng thở.',
-                why: 'Cả rượu và các thuốc này đều ức chế hệ thần kinh trung ương; khi dùng chung tác dụng cộng hưởng, tăng nguy cơ ngất, tai nạn, suy hô hấp.',
-                evidence: 'Tương tác thuốc đã được ghi nhận rõ ràng, có trong hướng dẫn sử dụng của các thuốc này.',
-                advice: 'Không uống rượu bia khi đang dùng các thuốc này. Hỏi bác sĩ hoặc dược sĩ về khoảng cách an toàn.'
-            },
-            {
-                id: 'drug-nitroimidazole-alcohol', a: G.nitroimidazole, b: G.alcohol, level: 'high',
-                title: 'Metronidazole / Kháng sinh nhóm nitroimidazole / Cefoperazone + Rượu bia',
-                headline: 'Gây phản ứng giống disulfiram: đỏ bừng mặt, nôn ói, tim đập nhanh, tụt huyết áp.',
-                why: 'Các thuốc này ức chế enzym phân giải acetaldehyde, khiến chất này tích tụ khi uống rượu bia.',
-                evidence: 'Đã được ghi nhận trong hướng dẫn sử dụng thuốc.',
-                advice: 'Không uống rượu bia (kể cả thực phẩm có cồn) trong thời gian dùng thuốc và ít nhất 48–72 giờ sau liều cuối, hoặc theo hướng dẫn của bác sĩ.'
-            },
-            {
-                id: 'drug-paracetamol-alcohol', a: G.paracetamol, b: G.alcohol, level: 'medium',
-                title: 'Paracetamol / Thuốc hạ sốt giảm đau + Rượu bia',
-                headline: 'Rượu làm tăng nguy cơ tổn thương gan khi dùng paracetamol.',
-                why: 'Gan chuyển hóa cả rượu và paracetamol; dùng chung làm tăng sản phẩm độc cho gan, đặc biệt khi uống nhiều rượu hoặc dùng paracetamol liều cao.',
-                evidence: 'Khuyến cáo y khoa đã được xác lập, rủi ro tăng theo liều lượng.',
-                advice: 'Tránh rượu bia khi đang dùng thuốc, không vượt liều tối đa ghi trên nhãn. Người nghiện rượu, bệnh gan nên hỏi bác sĩ trước.'
-            },
-            {
-                id: 'drug-alcohol', a: G.drugAny, b: G.alcohol, level: 'medium',
-                title: 'Thuốc + Rượu bia',
-                headline: 'Nhiều loại thuốc (kháng sinh, giảm đau, huyết áp, tiểu đường...) tương tác xấu với rượu bia.',
-                why: 'Rượu có thể làm thuốc mất tác dụng, tăng độc tính lên gan, dạ dày, hoặc gây buồn ngủ, tụt đường huyết, tụt huyết áp.',
-                evidence: 'Mức độ tùy từng loại thuốc; nhãn thuốc thường có cảnh báo.',
-                advice: 'Đọc hướng dẫn sử dụng, hỏi bác sĩ hoặc dược sĩ trước khi uống rượu bia khi đang dùng thuốc.',
-                unlessAny: ALCOHOL_DRUG_IDS
-            },
-            {
-                id: 'grapefruit-drug', a: G.grapefruit, b: G.drugAny, level: 'medium',
-                title: 'Bưởi / Nước bưởi + Thuốc',
-                headline: 'Bưởi có thể làm tăng nồng độ một số thuốc trong máu (statin, thuốc huyết áp, thuốc ức chế miễn dịch...).',
-                why: 'Hợp chất furanocoumarin trong bưởi ức chế enzym CYP3A4 ở ruột, khiến thuốc được hấp thu nhiều hơn dự kiến.',
-                evidence: 'Tương tác mạnh được ghi nhận rõ ở bưởi chùm; bưởi ta cũng chứa hợp chất tương tự nên nên hỏi dược sĩ.',
-                advice: 'Đọc nhãn thuốc, nếu có cảnh báo về bưởi thì tránh hẳn hoặc hỏi bác sĩ về khoảng cách thời gian.'
-            },
-            {
-                id: 'alcohol-energy', a: G.alcohol, b: G.energyDrink, level: 'medium',
-                title: 'Rượu bia + Nước tăng lực',
-                headline: 'Caffeine che lấp cảm giác say khiến bạn uống nhiều hơn, đồng thời tăng gánh nặng cho tim.',
-                why: 'Chất kích thích trong nước tăng lực làm tim đập nhanh, huyết áp tăng; kết hợp với rượu dễ gây hồi hộp, rối loạn nhịp, mất nước.',
-                evidence: 'Có nhiều nghiên cứu quan sát và khuyến cáo của cơ quan y tế.',
-                advice: 'Tránh pha trộn hoặc uống liền nhau. Nếu thấy tim đập mạnh, khó thở, đau ngực: nghỉ ngơi và đến cơ sở y tế.'
-            },
-            {
-                id: 'inkcap-alcohol', a: G.inkCapMushroom, b: G.alcohol, level: 'high',
-                title: 'Nấm mực + Rượu bia',
-                headline: 'Nấm mực chứa coprine, gây phản ứng đỏ bừng mặt, tim đập nhanh, buồn nôn khi uống rượu.',
-                why: 'Coprine ức chế enzym phân giải acetaldehyde giống thuốc cai rượu; phản ứng có thể xảy ra nếu uống rượu trong vài ngày sau khi ăn nấm.',
-                evidence: 'Hiện tượng đã được ghi nhận rõ trong y văn về ngộ độc nấm.',
-                advice: 'Không uống rượu bia trong ít nhất 2–3 ngày trước và sau khi ăn nấm mực. Triệu chứng nặng thì đến cơ sở y tế.'
-            },
-
-            // ===== Classic food combinations =====
-            {
-                id: 'milk-citrus', a: G.milk, b: G.citrus, level: 'medium',
-                title: 'Sữa bò + Cam / Quýt / Chanh',
-                headline: 'Axit trái cây làm đạm sữa (casein) vón cục ngay trong ly và cả trong dạ dày.',
-                why: 'Axit citric làm giảm độ pH, khiến đạm casein của sữa kết tủa thành cặn lợn cợn. Người bụng yếu hoặc không dung nạp lactose dễ bị đầy bụng, buồn nôn, đi ngoài.',
-                evidence: 'Hiện tượng vón cục là có thật và nhìn thấy được. Tác hại thường ở mức khó tiêu, không gây ngộ độc ở người khỏe mạnh.',
-                advice: 'Uống cách nhau ít nhất 30–60 phút. Muốn vị chua béo thì dùng sữa chua thay vì vắt chanh hay cam thẳng vào sữa tươi.'
-            },
-            {
-                id: 'milk-cola', a: G.milk, b: G.cola, level: 'medium',
-                title: 'Sữa / Trà sữa + Nước ngọt có ga (Pepsi, Coca, Sprite...)',
-                headline: 'Axit và gas trong nước ngọt làm đạm sữa vón cục, ly nước tách lớp lợn cợn, uống rất khó chịu và dễ đầy hơi.',
-                why: 'Nước ngọt có ga có độ pH rất thấp (axit photphoric hoặc citric), làm đạm casein trong sữa kết tủa thành cặn. Khí CO2 cộng với sữa còn dễ gây ợ hơi, đầy bụng, và lượng đường rất cao khi cộng hai loại đồ uống ngọt.',
-                evidence: 'Hiện tượng vón cục là có thật và nhìn thấy được. Không gây ngộ độc ở người khỏe mạnh, chủ yếu là khó uống, khó tiêu và rất nhiều đường.',
-                advice: 'Không trộn chung. Uống riêng từng loại, cách nhau ít nhất 30 phút. Nếu thích vị cola béo, hãy thử món float (kem vani thả vào cola) thay vì đổ sữa vào.'
-            },
-            {
-                id: 'seafood-vitc', a: G.seafood, b: G.vitaminCFruit, level: 'low',
-                title: 'Hải sản + Trái cây giàu Vitamin C',
-                headline: 'Dân gian kiêng ăn hải sản cùng trái cây nhiều vitamin C vì lo sinh ra chất độc asen.',
-                why: 'Lo ngại là tôm, cua chứa asen hóa trị 5 (ít độc) và vitamin C liều cao bị cho là khử thành asen hóa trị 3 (độc hơn).',
-                evidence: 'Chưa có bằng chứng cho thấy gây hại ở lượng ăn uống thông thường; nhiều món truyền thống vẫn chấm chanh. Cần thận trọng hơn nếu bạn uống viên vitamin C liều cao, ăn hải sản không tươi hoặc dễ dị ứng.',
-                advice: 'Chọn hải sản tươi, nấu chín, ăn vừa phải. Không uống viên vitamin C liều cao cùng bữa hải sản; muốn yên tâm thì ăn trái cây cách bữa 1–2 giờ.'
-            },
-            {
-                id: 'persimmon-seafood', a: G.persimmon, b: G.seafood, level: 'high',
-                title: 'Quả hồng + Hải sản / Cua',
-                headline: 'Tannin trong quả hồng gặp đạm của cua, hải sản dễ kết thành khối khó tiêu trong dạ dày.',
-                why: 'Tannin (chất chát) kết hợp với protein và axit dạ dày có thể tạo khối cứng (sỏi dạ dày do hồng), gây đau bụng, đầy trướng, buồn nôn, nôn. Hải sản vốn dễ gây lạnh bụng, đi ngoài nên càng dễ khó chịu hơn.',
-                evidence: 'Sỏi dạ dày do hồng là có thật, nhất là khi ăn nhiều hồng chát hoặc ăn lúc đói. Riêng việc kết hợp với hải sản chủ yếu là kinh nghiệm dân gian, nhưng cơ chế tannin – protein là hợp lý nên nên tránh.',
-                advice: 'Không ăn hồng ngay sau bữa hải sản; cách ít nhất 2–3 giờ. Không ăn hồng lúc đói, bỏ vỏ và không ăn hồng chưa chín.'
-            },
-            {
-                id: 'soymilk-egg', a: G.soyMilk, b: G.egg, level: 'low',
-                title: 'Sữa đậu nành + Trứng gà',
-                headline: 'Dân gian cho rằng ăn chung làm giảm hấp thu đạm và gây đầy bụng.',
-                why: 'Lo ngại đến từ chất ức chế trypsin trong đậu nành, có thể cản trở tiêu hóa đạm của trứng.',
-                evidence: 'Sữa đậu nành nấu chín kỹ đã vô hiệu hóa gần hết chất này nên ăn cùng trứng chín thường vẫn ổn. Rủi ro thật nằm ở sữa đậu nành chưa đun sôi kỹ (đầy bụng, buồn nôn, có thể ngộ độc).',
-                advice: 'Đun sôi sữa đậu nành đủ kỹ trước khi uống và ăn trứng chín hẳn. Nếu muốn chắc ăn, uống cách bữa trứng khoảng 1 giờ.'
-            },
-            {
-                id: 'durian-alcohol', a: G.durian, b: G.alcohol, level: 'high',
-                title: 'Sầu riêng + Rượu / Bia',
-                headline: 'Cặp bị cảnh báo nhiều nhất: có thể gây tim đập nhanh, tăng huyết áp, khó thở, buồn nôn.',
-                why: 'Hợp chất lưu huỳnh trong sầu riêng được cho là ức chế enzym phân giải cồn (ALDH), làm cồn và acetaldehyde tích tụ lâu hơn trong cơ thể. Sầu riêng nhiều năng lượng, đường, chất béo nên gan càng phải làm việc nặng.',
-                evidence: 'Có nghiên cứu phòng thí nghiệm và nhiều ca ghi nhận triệu chứng, nhưng chưa có thử nghiệm lớn trên người. Vẫn nên tránh, đặc biệt nếu bạn có bệnh tim mạch, huyết áp hoặc tiểu đường.',
-                advice: 'Không ăn sầu riêng khi uống rượu bia; cách nhau ít nhất vài giờ, tốt nhất là cả ngày. Nếu thấy tim đập mạnh, khó thở hoặc đau ngực, hãy đến cơ sở y tế ngay.'
-            },
-            {
-                id: 'yogurt-curedmeat', a: G.yogurt, b: G.curedMeat, level: 'low',
-                title: 'Sữa chua + Thịt xông khói / Giăm bông',
-                headline: 'Thịt chế biến chứa nitrit; ăn cùng sữa chua bị khuyến cáo hạn chế vì lo tạo chất nitrosamine.',
-                why: 'Thịt xông khói, giăm bông ướp muối chứa nitrit/nitrat. Khi gặp amin (có trong thực phẩm lên men như sữa chua) và nhiệt độ cao, có thể hình thành nitrosamine, nhóm chất bị nghi gây ung thư nếu ăn thường xuyên. Vị chua của sữa chua cũng dễ gây khó tiêu với món nhiều muối mỡ.',
-                evidence: 'Rủi ro chủ yếu là tích lũy lâu dài khi ăn thường xuyên; thỉnh thoảng một bữa thì thấp. Cơ chế được biết ở thịt chế biến nói chung, riêng cặp này chưa có nghiên cứu cụ thể.',
-                advice: 'Chỉ ăn thỉnh thoảng, không chiên cháy cạnh thịt, ăn kèm rau tươi và tách sữa chua ra thành bữa phụ.'
-            }
-        ];
-
-        function detectDangerCombos(tags) {
-            const list = (tags || [])
-                .map(t => String(t).normalize('NFC').toLowerCase().trim())
-                .filter(Boolean);
-            if (!list.length) return [];
-
-            let found = [];
-            DANGER_COMBOS.forEach(combo => {
-                const aMatched = list.filter(t => combo.a.test(t));
-                if (!aMatched.length) return;
-                if (combo.b) {
-                    const bMatched = list.filter(t => combo.b.test(t));
-                    if (!bMatched.length) return;
-                    found.push({ ...combo, aMatched, bMatched });
-                } else {
-                    found.push({ ...combo, aMatched, bMatched: [] });
-                }
-            });
-
-            // Drop generic warnings when a more specific one already covers the same case
-            const ids = new Set(found.map(d => d.id));
-            found = found.filter(d => !(d.unlessAny && d.unlessAny.some(id => ids.has(id))));
-
-            return found.sort((x, y) => DANGER_LEVELS[y.level].rank - DANGER_LEVELS[x.level].rank);
-        }
-
         function updateLiveDanger() {
-            const box = document.getElementById('liveDangerWarning');
-            if (!box) return;
-            const input = document.getElementById('ingredientInput');
-            const pending = input ? parseRawIngredientText(input.value) : [];
-            const all = [...activeTags, ...pending.filter(p => !activeTags.includes(p))];
-            const dangers = detectDangerCombos(all);
-            if (!dangers.length) {
-                box.classList.add('hidden');
-                box.innerHTML = '';
-                return;
+            const warningEl = document.getElementById('liveDangerWarning');
+            if (!warningEl) return;
+            const allIngredients = activeTags.concat(parseRawIngredientText(document.getElementById('ingredientInput').value));
+            const ingredients = allIngredients.filter(Boolean);
+
+            warningEl.classList.add('hidden');
+            warningEl.innerHTML = '';
+
+            if (!ingredients.length) return;
+
+            const warnings = [];
+            if (ingredients.some(item => /sữa chua|yogurt|sua chua/i.test(item)) && ingredients.some(item => /cà phê|coffee|ca phe/i.test(item)) {
+                warnings.push('Cà phê + sữa chua có thể dễ gây xót dạ dày và nặng bụng nếu uống lúc đói.');
             }
-            box.innerHTML = dangers.map(d => {
-                const lv = DANGER_LEVELS[d.level];
-                return `
-                    <div class="flex items-start gap-2.5 p-3 rounded-xl border ${lv.box} text-xs sm:text-sm leading-relaxed">
-                        <i class="ph-fill ph-warning-octagon text-lg shrink-0 ${lv.icon}"></i>
-                        <div><strong>${lv.short}: ${escapeHtml(d.title)}</strong> — ${escapeHtml(d.headline)}</div>
-                    </div>`;
-            }).join('');
-            box.classList.remove('hidden');
-        }
-
-        function renderDangerPanel(dangers) {
-            const panel = document.getElementById('dangerPanel');
-            if (!panel) return;
-            if (!dangers || !dangers.length) {
-                panel.classList.add('hidden');
-                panel.innerHTML = '';
-                return;
-            }
-            const hasSevere = dangers.some(d => d.level === 'critical' || d.level === 'high');
-            const cards = dangers.map(d => {
-                const lv = DANGER_LEVELS[d.level];
-                const mixed = d.bMatched && d.bMatched.length
-                    ? `${d.aMatched.join(', ')} + ${d.bMatched.join(', ')}`
-                    : d.aMatched.join(', ');
-                const label = d.bMatched && d.bMatched.length ? 'Bạn đang trộn' : 'Phát hiện';
-                return `
-                    <div class="culinary-card rounded-2xl p-5 border-2 ${lv.box}">
-                        <div class="flex flex-wrap items-center gap-2.5 mb-2">
-                            <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide ${lv.pill}">${lv.short}</span>
-                            <span class="text-xs font-medium px-2.5 py-1 rounded-lg culinary-subtle text-muted-custom">${label}: ${escapeHtml(mixed)}</span>
-                        </div>
-                        <h3 class="font-display text-lg sm:text-xl font-bold flex items-start gap-2 mb-1.5">
-                            <i class="ph-fill ph-warning-octagon shrink-0 mt-0.5 ${lv.icon}"></i>
-                            <span>${escapeHtml(d.title)}</span>
-                        </h3>
-                        <p class="text-sm sm:text-base leading-relaxed font-medium mb-3">${escapeHtml(d.headline)}</p>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-2.5 text-xs sm:text-sm leading-relaxed">
-                            <div class="culinary-subtle p-3 rounded-xl">
-                                <span class="block text-[11px] font-semibold text-muted-custom mb-1">Vì sao nguy hiểm?</span>
-                                ${escapeHtml(d.why)}
-                            </div>
-                            <div class="culinary-subtle p-3 rounded-xl">
-                                <span class="block text-[11px] font-semibold text-muted-custom mb-1">Mức bằng chứng</span>
-                                ${escapeHtml(d.evidence)}
-                            </div>
-                            <div class="culinary-subtle p-3 rounded-xl">
-                                <span class="block text-[11px] font-semibold text-muted-custom mb-1">Nên làm gì?</span>
-                                ${escapeHtml(d.advice)}
-                            </div>
-                        </div>
-                    </div>`;
-            }).join('');
-
-            panel.innerHTML = `
-                <div class="flex items-center gap-2 text-sm font-bold text-[#B84239] dark:text-[#E07A72]">
-                    <i class="ph-fill ph-warning-octagon text-lg"></i>
-                    <span>CẢNH BÁO AN TOÀN (${dangers.length})</span>
-                </div>
-                ${cards}
-                ${hasSevere ? `<p class="text-xs sm:text-sm leading-relaxed font-semibold text-[#B84239] dark:text-[#E07A72]">
-                    Nếu đã nuốt hoặc hít phải hóa chất, hoặc có triệu chứng nặng (khó thở, đau ngực, nôn nhiều, lơ mơ, co giật): gọi 115 hoặc đến cơ sở y tế gần nhất ngay.
-                </p>` : ''}
-                <p class="text-[11px] text-muted-custom leading-relaxed">
-                    Thông tin mang tính tham khảo, không thay thế tư vấn của bác sĩ hay dược sĩ. Người có bệnh nền, dị ứng, phụ nữ mang thai, người già và trẻ nhỏ nên thận trọng hơn.
-                </p>`;
-            panel.classList.remove('hidden');
-        }
-
-        function applyDangerToReport(report, dangers) {
-            const top = dangers[0];
-            const lv = DANGER_LEVELS[top.level];
-
-            // Critical: do not grade taste at all, this must never be eaten or drunk
-            if (top.level === 'critical') {
-                const skip = 'Không đánh giá chỉ số này vì hỗn hợp không an toàn để ăn uống.';
-                return {
-                    title: `Cảnh báo an toàn: ${top.title}`,
-                    categoryBadge: lv.badge,
-                    badgeTone: 'red',
-                    compatibilityScore: 0,
-                    physicalState: 'Không xác định (không an toàn)',
-                    visualRating: 'Không đánh giá',
-                    phaseStability: 'Không đánh giá',
-                    executiveSummary: top.headline,
-                    appearance: 'Không mô tả vì hỗn hợp này không được phép ăn uống hay pha chế.',
-                    textureDetail: 'Không đánh giá kết cấu.',
-                    tasteProfile: 'Không đánh giá mùi vị. Tuyệt đối không nếm, ngửi sát, ăn hoặc uống hỗn hợp này.',
-                    meters: { sweet: 0, sour: 0, salty: 0, bitter: 0, pungent: 0, fat: 0 },
-                    meterExplanations: { sweet: skip, sour: skip, salty: skip, bitter: skip, pungent: skip, fat: skip },
-                    benefits: ['Không có điểm cộng nào: hỗn hợp này không dùng để ăn uống.'],
-                    risks: dangers.map(d => `${d.title}: ${d.headline}`),
-                    protocol: top.advice
-                };
+            if (ingredients.some(item => /tỏi|ớt|toi|ot/i.test(item)) && ingredients.some(item => /sữa|milk|sua/i.test(item)) {
+                warnings.push('Tỏi ớt trong sữa có thể làm cảm giác nóng rát và khó tiêu hơn.');
             }
 
-            const r = { ...report };
-            r.compatibilityScore = Math.min(Number(r.compatibilityScore) || 0, lv.cap);
-            r.badgeTone = top.level === 'low' ? 'amber' : 'red';
-            r.categoryBadge = lv.badge;
-            r.executiveSummary = `Cảnh báo: ${top.headline} ${r.executiveSummary || ''}`.trim();
-            r.risks = [
-                ...dangers.map(d => `${d.title}: ${d.headline}`),
-                ...(r.risks || [])
-            ];
-            r.protocol = top.advice;
-            return r;
-        }
-
-        // --- Core Analysis Runner ---
-        async function runCulinaryAnalysis() {
-            const inputEl = document.getElementById('ingredientInput');
-            const rawInput = inputEl ? inputEl.value.trim() : '';
-            if (rawInput) {
-                const parsed = parseRawIngredientText(rawInput);
-                parsed.forEach(t => {
-                    if (!activeTags.includes(t)) activeTags.push(t);
+            if (warnings.length) {
+                warningEl.classList.remove('hidden');
+                warnings.forEach(msg => {
+                    const p = document.createElement('div');
+                    p.className = 'rounded-xl border border-[#B84239]/40 bg-[#B84239]/10 px-3 py-2 text-xs text-[#B84239]';
+                    p.textContent = msg;
+                    warningEl.appendChild(p);
                 });
-                inputEl.value = '';
-                renderTags();
             }
+        }
 
-            if (activeTags.length === 0) {
-                showAlert('Bạn chưa nhập nguyên liệu nào cả. Hãy gõ các món định kết hợp vào ô nhé!');
-                if (inputEl) inputEl.focus();
+        function runCulinaryAnalysis() {
+            const ingredients = activeTags.length ? activeTags : parseRawIngredientText(document.getElementById('ingredientInput').value);
+            if (!ingredients.length) {
+                showAlert('Bạn hãy nhập nguyên liệu trước khi phân tích.');
                 return;
             }
 
-            const queryString = activeTags.join(' + ');
-            const analyzeBtn = document.getElementById('analyzeBtn');
-            const loadingPanel = document.getElementById('loadingPanel');
-            const resultDashboard = document.getElementById('resultDashboard');
-            const emptyStatePanel = document.getElementById('emptyStatePanel');
+            const normalized = ingredients.map(item => item.toLowerCase().trim());
+            const key = Object.keys(CULINARY_CASES).find(candidate => {
+                const parts = candidate.split('|');
+                return parts.every(part => normalized.some(item => item.includes(part.toLowerCase())));
+            });
 
-            hideAlert();
-            if (analyzeBtn) {
-                analyzeBtn.disabled = true;
-                analyzeBtn.classList.add('opacity-60');
-            }
-            if (emptyStatePanel) emptyStatePanel.classList.add('hidden');
-            if (resultDashboard) resultDashboard.classList.add('hidden');
-            if (loadingPanel) loadingPanel.classList.remove('hidden');
-
-            let finalReport = null;
-            try {
-                const verifiedMatch = matchVerifiedCase(queryString);
-                if (verifiedMatch) {
-                    await new Promise(r => setTimeout(r, 220));
-                    finalReport = verifiedMatch;
-                } else {
-                    // Instant local engine calculation first, or try Gemini API if key is configured
-                    finalReport = await fetchGeminiCulinaryAnalysis(queryString);
-                }
-            } catch (err) {
-                finalReport = computeLocalCulinaryFallback(activeTags, queryString);
-            }
-
-            if (!finalReport) {
-                finalReport = computeLocalCulinaryFallback(activeTags, queryString);
-            }
-
-            // Check for dangerous food combinations and override the verdict if found
-            const dangers = detectDangerCombos(activeTags);
-            if (dangers.length) {
-                finalReport = applyDangerToReport(finalReport, dangers);
-            }
-
-            if (loadingPanel) loadingPanel.classList.add('hidden');
-            if (resultDashboard) resultDashboard.classList.remove('hidden');
-            if (analyzeBtn) {
-                analyzeBtn.disabled = false;
-                analyzeBtn.classList.remove('opacity-60');
-            }
-
-            renderDangerPanel(dangers);
-            renderCulinaryReport(finalReport, queryString);
-        }
-
-        function matchVerifiedCase(query) {
-            const q = query.toLowerCase();
-            const hasOnly = (keywords, maxCount = 2) => keywords.every(k => q.includes(k)) && activeTags.length <= maxCount;
-
-            if (hasOnly(['sữa chua', 'cà phê']) || hasOnly(['sữa chua', 'cafe'])) return CULINARY_CASES['cà phê|sữa chua'];
-            if (hasOnly(['tỏi', 'ớt'])) return CULINARY_CASES['tỏi|ớt'];
-            if (hasOnly(['sữa', 'chanh']) && !q.includes('sữa chua') && !q.includes('sả')) return CULINARY_CASES['chanh|sữa'];
-            if (hasOnly(['bơ', 'mắm'], 3)) return CULINARY_CASES['bơ|nước mắm|đường'];
-            if (hasOnly(['dừa', 'matcha']) || hasOnly(['dừa', 'trà xanh'])) return CULINARY_CASES['dừa|matcha'];
-            return null;
-        }
-
-        // --- Gemini API Call (Strict 0-100% Accuracy + Detailed Explanations for Each Bar) ---
-        async function fetchGeminiCulinaryAnalysis(ingredientsQuery) {
-            const apiKey = "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";
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
-
-            const systemPrompt = `Bạn là Đầu bếp kiêm Chuyên gia Phân tích Ẩm thực thực tế tại "Masulu Mix Lab".
-NHIỆM VỤ CỐT LÕI:
-1. NGÔN NGỮ ẨM THỰC GẦN GŨI, THỰC TẾ: Dùng từ ngữ nấu ăn, pha chế đời thường dễ hiểu. Không dùng từ học thuật xa vời, không văn hoa sáo rỗng.
-2. ĐÁNH GIÁ THẲNG THẮN 100%:
-   - Món nào hợp vị thì khen hợp và nói rõ vì sao ngon.
-   - Món nào kết tủa vón cục, tách lớp xấu xí, mùi vị xung đột khó nuốt, hoặc chỉ là gia vị sống (như tỏi + ớt, muối + tiêu) không thể ăn vã thì PHẢI NÓI THẲNG và chấm điểm hợp vị thấp.
-3. CHỈ SỐ VỊ GIÁC CHÍNH XÁC TUYỆT ĐỐI (0 - 100%) VÀ CÓ GIẢI THÍCH CỤ THỂ CHO TỪNG THANH:
-   - Tuyệt đối KHÔNG cộng điểm ảo.
-   - Nếu các nguyên liệu không chứa chất béo/kem/dầu/sữa/bơ (ví dụ: tỏi, ớt, chanh, nước lọc, trà đá, nước mắm, đường, rau luộc...), thì chỉ số "fat" (Độ béo & Sánh ngậy) BẮT BUỘC PHẢI BẰNG 0.
-   - Nếu không có ớt, tiêu, gừng, tỏi, mù tạt, sả, riềng... thì "pungent" (Độ cay & Nồng hăng) BẮT BUỘC BẰNG 0.
-   - Nếu không có muối, mắm, xì dầu, bột canh, phô mai mặn... thì "salty" (Độ mặn & Đậm đà) từ 0 đến 5.
-   - Nếu không có vị chua (chanh, giấm, me, sữa chua, trái cây chua...) thì "sour" (Độ chua) BẮT BUỘC BẰNG 0.
-   - Trong phần "meterExplanations", giải thích rõ ràng 1-2 câu cho TỪNG thanh chỉ số: nguyên liệu nào tạo ra vị đó, khi trộn/nấu chúng làm tăng hay giảm vị của nhau, hoặc vì sao chỉ số đó bằng 0%.`;
-
-            const payload = {
-                contents: [{
-                    parts: [{ text: `Phân tích thực tế sự kết hợp nguyên liệu sau: ${ingredientsQuery}` }]
-                }],
-                systemInstruction: {
-                    parts: [{ text: systemPrompt }]
-                },
-                generationConfig: {
-                    responseMimeType: "application/json",
-                    responseSchema: {
-                        type: "OBJECT",
-                        properties: {
-                            title: { type: "STRING" },
-                            categoryBadge: { type: "STRING" },
-                            badgeTone: { type: "STRING" },
-                            compatibilityScore: { type: "INTEGER" },
-                            physicalState: { type: "STRING" },
-                            visualRating: { type: "STRING" },
-                            phaseStability: { type: "STRING" },
-                            executiveSummary: { type: "STRING" },
-                            appearance: { type: "STRING" },
-                            textureDetail: { type: "STRING" },
-                            tasteProfile: { type: "STRING" },
-                            meters: {
-                                type: "OBJECT",
-                                properties: {
-                                    sweet: { type: "INTEGER" },
-                                    sour: { type: "INTEGER" },
-                                    salty: { type: "INTEGER" },
-                                    bitter: { type: "INTEGER" },
-                                    pungent: { type: "INTEGER" },
-                                    fat: { type: "INTEGER" }
-                                },
-                                required: ["sweet", "sour", "salty", "bitter", "pungent", "fat"]
-                            },
-                            meterExplanations: {
-                                type: "OBJECT",
-                                properties: {
-                                    sweet: { type: "STRING" },
-                                    sour: { type: "STRING" },
-                                    salty: { type: "STRING" },
-                                    bitter: { type: "STRING" },
-                                    pungent: { type: "STRING" },
-                                    fat: { type: "STRING" }
-                                },
-                                required: ["sweet", "sour", "salty", "bitter", "pungent", "fat"]
-                            },
-                            benefits: { type: "ARRAY", items: { type: "STRING" } },
-                            risks: { type: "ARRAY", items: { type: "STRING" } },
-                            protocol: { type: "STRING" }
-                        },
-                        required: [
-                            "title", "categoryBadge", "badgeTone", "compatibilityScore",
-                            "physicalState", "visualRating", "phaseStability", "executiveSummary",
-                            "appearance", "textureDetail", "tasteProfile", "meters",
-                            "meterExplanations", "benefits", "risks", "protocol"
-                        ]
-                    }
-                }
+            const selectedCase = key ? CULINARY_CASES[key] : {
+                title: 'Món Hỗn Hợp Tự Do',
+                categoryBadge: 'ĐÁNH GIÁ TỔNG QUÁT',
+                compatibilityScore: 60,
+                physicalState: 'Ổn định cơ bản',
+                visualRating: 'Chưa rõ đặc thù',
+                phaseStability: 'Cần quan sát thêm',
+                executiveSummary: 'Hỗn hợp này chưa khớp với mẫu dữ liệu có sẵn, nhưng có thể vẫn còn hợp vị nếu được điều chỉnh kỹ thuật điều chế.',
+                appearance: 'Phần nhìn tổng thể có thể ổn định hoặc tách lớp tùy theo lượng và nhiệt độ.',
+                textureDetail: 'Nên kiểm tra kết cấu trước khi ăn để tránh cảm giác lạ hoặc quá đặc.',
+                tasteProfile: 'Vị sẽ rất phụ thuộc vào tỷ lệ và cách pha trộn từng nguyên liệu.',
+                meters: { sweet: 35, sour: 25, salty: 20, bitter: 25, pungent: 30, fat: 25 },
+                meterExplanations: { sweet: 'Độ ngọt phụ thuộc lượng đường hoặc nguyên liệu có vị ngọt tự nhiên.', sour: 'Độ chua phụ thuộc chanh, giấm, sữa chua hoặc trái cây chua.', salty: 'Độ mặn phụ thuộc muối, nước mắm, xốt và món nhúng.', bitter: 'Độ đắng có thể tăng nếu có cà phê, trà hoặc nguyên liệu khô.', pungent: 'Độ cay sẽ tăng nếu có ớt, tỏi, gừng hoặc gia vị khô.', fat: 'Độ béo tùy vào dầu, sữa, bơ, hoặc chất béo từ nguyên liệu.' },
+                benefits: ['Có thể điều chế để cân bằng vị hơn nữa.', 'Còn nhiều room để thử nghiệm với lượng nhỏ.'],
+                risks: ['Cần theo dõi cảm giác sau khi ăn.', 'Nếu có nguyên liệu gây nóng, nên dùng lượng nhỏ.'],
+                protocol: 'Thử với lượng nhỏ trước khi chuẩn bị cho nhiều người, rồi điều chỉnh rõ ràng theo độ chua, mặn và độ cay.'
             };
 
-            const delays = [1000, 2000];
-            let lastErr;
-            for (let i = 0; i <= delays.length; i++) {
-                try {
-                    const res = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-                    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-                    const data = await res.json();
-                    const rawJson = data?.candidates?.[0]?.content?.parts?.[0]?.text;
-                    if (!rawJson) throw new Error("Empty AI response");
-                    return JSON.parse(rawJson);
-                } catch (e) {
-                    lastErr = e;
-                    if (i < delays.length) await new Promise(r => setTimeout(r, delays[i]));
-                }
-            }
-            throw lastErr;
-        }
+            document.getElementById('emptyStatePanel').classList.add('hidden');
+            document.getElementById('loadingPanel').classList.remove('hidden');
+            document.getElementById('resultDashboard').classList.add('hidden');
 
-        // --- High-Accuracy Ingredient Profiling Fallback Engine ---
-        function computeLocalCulinaryFallback(tags, queryString) {
-            const q = queryString.toLowerCase();
-            const normalizedTags = tags.map(t => t.toLowerCase());
+            setTimeout(() => {
+                document.getElementById('loadingPanel').classList.add('hidden');
+                document.getElementById('resultDashboard').classList.remove('hidden');
 
-            // Rich Dictionary of 120+ Vietnamese Culinary Ingredients with Accurate Profiles
-            const INGREDIENT_DB = [
-                { pattern: /(đường|mật ong|sữa đặc|kẹo|caramel|mứt|siro|syrup)/, sweet: 88, sour: 0, salty: 0, bitter: 0, pungent: 0, fat: 8 },
-                { pattern: /(sữa đặc)/, sweet: 85, sour: 0, salty: 5, bitter: 0, pungent: 0, fat: 45 },
-                { pattern: /(sữa chua|yogurt|yakult)/, sweet: 36, sour: 54, salty: 4, bitter: 0, pungent: 0, fat: 32 },
-                { pattern: /(sữa tươi|sữa bịch|sữa hộp|sữa)/, sweet: 24, sour: 0, salty: 5, bitter: 0, pungent: 0, fat: 42 },
-                { pattern: /(kem|whipping|phô mai|cheese|bơ lạt|bơ thực vật|mayonnaise|cốt dừa)/, sweet: 20, sour: 4, salty: 22, bitter: 0, pungent: 0, fat: 84 },
-                { pattern: /(bơ sáp|quả bơ|trái bơ|\bbơ\b)/, sweet: 16, sour: 0, salty: 0, bitter: 0, pungent: 0, fat: 76 },
-                { pattern: /(cà phê|cafe|espresso|bạc xỉu)/, sweet: 5, sour: 14, salty: 0, bitter: 82, pungent: 0, fat: 4 },
-                { pattern: /(trà xanh|matcha|trà đặc|trà đen|trà ô long|\btrà\b)/, sweet: 0, sour: 0, salty: 0, bitter: 64, pungent: 0, fat: 0 },
-                { pattern: /(cacao|socola đen|chocolate đen)/, sweet: 22, sour: 4, salty: 0, bitter: 72, pungent: 0, fat: 38 },
-                { pattern: /(socola|chocolate|milo|ovaltine)/, sweet: 68, sour: 0, salty: 5, bitter: 28, pungent: 0, fat: 48 },
-                { pattern: /(chanh dây|chanh leo|chanh|tắc|quất|giấm|me|khế|sấu|xoài xanh|cóc)/, sweet: 10, sour: 88, salty: 0, bitter: 6, pungent: 0, fat: 0 },
-                { pattern: /(cam|bưởi|quýt|dứa|thơm|dâu|kiwi|cà chua|dưa chua|kim chi)/, sweet: 42, sour: 52, salty: 6, bitter: 0, pungent: 0, fat: 0 },
-                { pattern: /(dừa|nước dừa)/, sweet: 44, sour: 4, salty: 8, bitter: 0, pungent: 0, fat: 6 },
-                { pattern: /(chuối|xoài chín|sầu riêng|mít|nhãn|vải|dưa hấu|táo|nho|đu đủ|thanh long)/, sweet: 66, sour: 8, salty: 0, bitter: 0, pungent: 0, fat: 6 },
-                { pattern: /(sầu riêng)/, sweet: 74, sour: 0, salty: 0, bitter: 5, pungent: 15, fat: 68 },
-                { pattern: /(ớt|sa tế|mù tạt|wasabi|tiêu)/, sweet: 0, sour: 0, salty: 4, bitter: 6, pungent: 94, fat: 0 },
-                { pattern: /(tỏi|hành tím|hành tây|hành lá|gừng|riềng|sả|củ kiệu|lá chanh|rau răm)/, sweet: 4, sour: 0, salty: 0, bitter: 6, pungent: 82, fat: 0 },
-                { pattern: /(muối|nước mắm|mắm tôm|mắm ruốc|mắm nêm|bột canh|hạt nêm|xì dầu|nước tương|chao)/, sweet: 6, sour: 0, salty: 90, bitter: 0, pungent: 8, fat: 0 },
-                { pattern: /(tương ớt)/, sweet: 32, sour: 15, salty: 38, bitter: 0, pungent: 68, fat: 0 },
-                { pattern: /(tương cà|ketchup)/, sweet: 46, sour: 38, salty: 32, bitter: 0, pungent: 0, fat: 0 },
-                { pattern: /(mì tôm|mì gói|phở|bún|cơm|bánh mì)/, sweet: 18, sour: 0, salty: 48, bitter: 0, pungent: 10, fat: 26 },
-                { pattern: /(trứng|trứng gà|trứng vịt|trứng muối)/, sweet: 4, sour: 0, salty: 28, bitter: 0, pungent: 0, fat: 54 },
-                { pattern: /(thịt|ba chỉ|xúc xích|lạp xưởng|chà bông|pate|cá|tôm|mực|bò khô|khô gà)/, sweet: 14, sour: 0, salty: 52, bitter: 0, pungent: 8, fat: 48 },
-                { pattern: /(dầu ăn|dầu hào|dầu mè|mỡ|đậu phộng|lạc|vừng|mè|hạt điều)/, sweet: 10, sour: 0, salty: 15, bitter: 0, pungent: 0, fat: 85 },
-                { pattern: /(khổ qua|mướp đắng|rau đắng|ngải cứu|nghệ)/, sweet: 0, sour: 0, salty: 0, bitter: 86, pungent: 12, fat: 0 },
-                { pattern: /(coca|pepsi|7up|sprite|nước ngọt|soda|redbull|bò húc)/, sweet: 78, sour: 18, salty: 4, bitter: 0, pungent: 0, fat: 0 },
-                { pattern: /(bia|rượu|soju|vodka)/, sweet: 12, sour: 8, salty: 0, bitter: 58, pungent: 46, fat: 0 }
-            ];
+                document.getElementById('resCategoryBadge').textContent = selectedCase.categoryBadge;
+                document.getElementById('resSampleFormula').textContent = 'Nguyên liệu: ' + ingredients.join(', ');
+                document.getElementById('resTitle').textContent = selectedCase.title;
+                document.getElementById('resExecutiveSummary').textContent = selectedCase.executiveSummary;
+                document.getElementById('resCompatibilityScore').textContent = selectedCase.compatibilityScore;
+                document.getElementById('resVisualRatingBadge').textContent = selectedCase.visualRating;
+                document.getElementById('resAppearance').textContent = selectedCase.appearance;
+                document.getElementById('resTextureDetail').textContent = selectedCase.textureDetail;
+                document.getElementById('resPhysicalState').textContent = selectedCase.physicalState;
+                document.getElementById('resPhaseStability').textContent = selectedCase.phaseStability;
+                document.getElementById('resTasteProfile').textContent = selectedCase.tasteProfile;
+                document.getElementById('resProtocol').textContent = selectedCase.protocol;
 
-            // Track contributing ingredients per taste dimension
-            const sweetSources = [];
-            const sourSources = [];
-            const saltySources = [];
-            const bitterSources = [];
-            const pungentSources = [];
-            const fatSources = [];
-
-            let sweetMax = 0, sourMax = 0, saltyMax = 0, bitterMax = 0, pungentMax = 0, fatMax = 0;
-            let sweetSum = 0, sourSum = 0, saltySum = 0, bitterSum = 0, pungentSum = 0, fatSum = 0;
-
-            tags.forEach(rawTag => {
-                const t = rawTag.toLowerCase();
-                let matched = false;
-                INGREDIENT_DB.forEach(entry => {
-                    if (entry.pattern.test(t)) {
-                        matched = true;
-                        if (entry.sweet >= 15) { sweetSources.push(rawTag); sweetMax = Math.max(sweetMax, entry.sweet); sweetSum += entry.sweet; }
-                        if (entry.sour >= 12) { sourSources.push(rawTag); sourMax = Math.max(sourMax, entry.sour); sourSum += entry.sour; }
-                        if (entry.salty >= 12) { saltySources.push(rawTag); saltyMax = Math.max(saltyMax, entry.salty); saltySum += entry.salty; }
-                        if (entry.bitter >= 12) { bitterSources.push(rawTag); bitterMax = Math.max(bitterMax, entry.bitter); bitterSum += entry.bitter; }
-                        if (entry.pungent >= 12) { pungentSources.push(rawTag); pungentMax = Math.max(pungentMax, entry.pungent); pungentSum += entry.pungent; }
-                        if (entry.fat >= 15) { fatSources.push(rawTag); fatMax = Math.max(fatMax, entry.fat); fatSum += entry.fat; }
-                    }
+                Object.entries(selectedCase.meters).forEach(([metric, value]) => {
+                    const keyMap = {
+                        sweet: 'Sweet',
+                        sour: 'Sour',
+                        salty: 'Salty',
+                        bitter: 'Bitter',
+                        pungent: 'Pungent',
+                        fat: 'Fat'
+                    };
+                    setMetricBar(keyMap[metric], value, selectedCase.meterExplanations[metric]);
                 });
 
-                // If an ingredient isn't in the DB, infer gently from keywords without adding fake fat/spicy
-                if (!matched) {
-                    if (/(ngọt|bánh|chữ|kem|táo|lê|hồng)/.test(t)) { sweetSources.push(rawTag); sweetMax = Math.max(sweetMax, 45); }
-                    if (/(chua|ngâm)/.test(t)) { sourSources.push(rawTag); sourMax = Math.max(sourMax, 50); }
-                    if (/(mặn|kho|rim|chiên|xào|nướng)/.test(t)) { saltySources.push(rawTag); saltyMax = Math.max(saltyMax, 42); }
-                }
-            });
+                const benefitsList = document.getElementById('resBenefitsList');
+                benefitsList.innerHTML = selectedCase.benefits.map(item => `<li class="flex items-start gap-2"><span class="text-[#4A6B53]">✓</span><span>${item}</span></li>`).join('');
 
-            const unique = arr => [...new Set(arr)];
-            const uSweet = unique(sweetSources);
-            const uSour = unique(sourSources);
-            const uSalty = unique(saltySources);
-            const uBitter = unique(bitterSources);
-            const uPungent = unique(pungentSources);
-            const uFat = unique(fatSources);
-
-            // Blend scores realistically: dominant ingredient sets the base, additional matching ingredients boost slightly
-            let sweet = uSweet.length > 0 ? Math.min(95, Math.round(sweetMax * 0.85 + Math.min(20, (sweetSum - sweetMax) * 0.25))) : 0;
-            let sour = uSour.length > 0 ? Math.min(95, Math.round(sourMax * 0.88 + Math.min(18, (sourSum - sourMax) * 0.25))) : 0;
-            let salty = uSalty.length > 0 ? Math.min(95, Math.round(saltyMax * 0.88 + Math.min(18, (saltySum - saltyMax) * 0.25))) : 0;
-            let bitter = uBitter.length > 0 ? Math.min(92, Math.round(bitterMax * 0.85 + Math.min(15, (bitterSum - bitterMax) * 0.2))) : 0;
-            let pungent = uPungent.length > 0 ? Math.min(96, Math.round(pungentMax * 0.92 + Math.min(15, (pungentSum - pungentMax) * 0.25))) : 0;
-            let fat = uFat.length > 0 ? Math.min(92, Math.round(fatMax * 0.85 + Math.min(20, (fatSum - fatMax) * 0.25))) : 0;
-
-            // Culinary interaction adjustments (e.g., sweetness/fat tempers bitterness & sourness slightly)
-            if (bitter > 0 && (sweet >= 40 || fat >= 40)) {
-                bitter = Math.max(18, bitter - 14);
-            }
-            if (sour > 0 && sweet >= 50) {
-                sour = Math.max(20, sour - 10);
-            }
-
-            // Detect culinary interactions (curdling, condiment-only, weird clashes, or harmonious pairing)
-            const hasFreshMilk = /(sữa tươi|sữa bịch|sữa không đường|sữa có đường)/.test(q) || (q.includes('sữa') && !q.includes('sữa chua') && !q.includes('sữa đặc'));
-            const isCurdled = hasFreshMilk && sour >= 48;
-            const isFishSauceClash = /(nước mắm|mắm tôm|mắm ruốc)/.test(q) && /(sữa|cà phê|cafe|socola|chocolate|trà sữa|matcha|coca|pepsi)/.test(q);
-            const isSavorySweetClash = (salty >= 55 && sweet >= 55 && (bitter >= 45 || /(mì tôm|mì gói|thịt|cá|tôm|trứng)/.test(q)) && !/(bơ|xoài|cóc|ổi|nước mắm)/.test(q));
-            const isPureCondiment = (pungent >= 60 || salty >= 65) && fat === 0 && sweet <= 10 && tags.length <= 3 && !/(thịt|cá|mì|cơm|bún|phở|trứng|rau|bơ|xoài|cóc)/.test(q);
-
-            let compatibilityScore = 76;
-            let categoryBadge = "HỢP VỊ • CÓ THỂ THỬ";
-            let badgeTone = "green";
-            let visualRating = "Hài hòa, tự nhiên";
-            let physicalState = fat >= 35 ? "Hỗn hợp sánh ngậy" : "Hỗn hợp đồng nhất";
-
-            if (isPureCondiment) {
-                compatibilityScore = 24;
-                categoryBadge = "CHỈ DÙNG LÀM GIA VỊ • KHÔNG ĂN VÃ";
-                badgeTone = "amber";
-                visualRating = "Thô mộc (Gia vị bếp)";
-                physicalState = "Gia vị thô, 0% béo ngậy";
-            } else if (isCurdled || isFishSauceClash || isSavorySweetClash) {
-                compatibilityScore = 16;
-                categoryBadge = "XUNG ĐỘT VỊ GIÁC • KHÔNG NÊN THỬ";
-                badgeTone = "red";
-                visualRating = isCurdled ? "Vón cục lợn cợn như sữa hỏng" : "Màu đục ngầu, kém bắt mắt";
-                physicalState = isCurdled ? "Tách nước và đóng cặn" : "Hỗn hợp xung đột mùi vị";
-            } else if ((sweet > 0 && (sour > 0 || fat > 0 || bitter > 0)) || (salty > 0 && (pungent > 0 || sweet > 0))) {
-                compatibilityScore = 84;
-                categoryBadge = "HỢP VỊ ĐÁNG THỬ";
-                badgeTone = "green";
-                visualRating = "Bắt mắt, hấp dẫn";
-            } else {
-                compatibilityScore = 68;
-                categoryBadge = "KÉN NGƯỜI ĂN • CẦN NÊM THÊM";
-                badgeTone = "amber";
-            }
-
-            return {
-                title: `Món Kết Hợp: ${queryString}`,
-                categoryBadge,
-                badgeTone,
-                compatibilityScore,
-                physicalState,
-                visualRating,
-                phaseStability: (isCurdled || isFishSauceClash || isSavorySweetClash) ? "Dễ tách lớp hoặc vón cục" : "Ổn định sau khi trộn",
-                executiveSummary: isPureCondiment
-                    ? `Tổ hợp (${queryString}) thuần túy là nhóm gia vị đậm đặc, hoàn toàn không có chất béo hay độ sánh ngậy (${fat}%). Chỉ nên dùng để pha nước chấm hoặc ướp đồ ăn chứ không ăn vã trực tiếp.`
-                    : isCurdled
-                    ? `Khi trộn (${queryString}), axit chua sẽ làm đạm sữa vón cục và tách nước ngay lập tức. Ngoại hình lợn cợn như sữa thiu và rất khó uống trực tiếp.`
-                    : (isFishSauceClash || isSavorySweetClash)
-                    ? `Sự kết hợp giữa (${queryString}) gây xung đột mạnh giữa mùi tanh/mặn và vị ngọt/béo, tạo cảm giác ngang cổ và rất kén người nuốt nổi.`
-                    : `Tổ hợp (${queryString}) có sự bù trừ hương vị khá tốt. Nếu canh chỉnh tỷ lệ vừa phải sẽ tạo ra món ăn/thức uống hợp miệng và dễ thưởng thức.`,
-                appearance: isPureCondiment
-                    ? `Giữ nguyên xác nguyên liệu (${queryString}) băm hoặc giã thô, rời rạc, khô ráo và không có độ sánh quyện.`
-                    : (isCurdled || isFishSauceClash || isSavorySweetClash)
-                    ? `Màu sắc sau khi trộn bị đục ngầu, tách lớp hoặc nổi váng lợn cợn, nhìn bằng mắt thường không mấy ngon miệng.`
-                    : `Màu sắc tự nhiên của (${queryString}) hòa quyện bắt mắt, trình bày ra ly hoặc đĩa trông gọn gàng và sạch sẽ.`,
-                textureDetail: fat === 0
-                    ? `Hoàn toàn không có độ béo hay sánh ngậy (0%). Giữ nguyên kết cấu lỏng, giòn hoặc xơ tự nhiên của ${queryString}.`
-                    : `Có độ sánh mịn và béo ngậy (${fat}%) bao phủ đầu lưỡi nhờ thành phần từ ${uFat.join(', ')}.`,
-                tasteProfile: `Khi thưởng thức sẽ cảm nhận trực diện: ${[
-                    sweet > 0 ? `độ ngọt (${sweet}%)` : '',
-                    sour > 0 ? `độ chua (${sour}%)` : '',
-                    salty > 0 ? `độ mặn đậm (${salty}%)` : '',
-                    bitter > 0 ? `vị đắng/chát (${bitter}%)` : '',
-                    pungent > 0 ? `độ cay nồng (${pungent}%)` : ''
-                ].filter(Boolean).join(', ') || 'vị thanh nhạt tự nhiên'}.${fat === 0 ? ' Hậu vị khô/thanh, hoàn toàn 0% béo.' : ` Hậu vị béo mượt từ ${uFat.join(', ')}.`}`,
-                meters: { sweet, sour, salty, bitter, pungent, fat },
-                meterExplanations: {
-                    sweet: sweet > 0
-                        ? `Độ ngọt (${sweet}%) hình thành trực tiếp từ lượng đường tự nhiên/pha chế có trong [${uSweet.join(', ')}], giúp làm dịu các vị gắt khác trong món.`
-                        : `Độ ngọt (0% tuyệt đối) vì các nguyên liệu [${queryString}] hoàn toàn không chứa đường, sữa đặc hay trái cây ngọt.`,
-                    sour: sour > 0
-                        ? `Độ chua (${sour}%) đến từ axit hữu cơ tự nhiên trong [${uSour.join(', ')}], kích thích tiết nước bọt ngay khi chạm đầu lưỡi.`
-                        : `Độ chua (0% tuyệt đối) vì trong [${queryString}] không có chanh, giấm, sữa chua hay nguyên liệu tạo chua nào.`,
-                    salty: salty > 0
-                        ? `Độ mặn & đậm đà (${salty}%) được tạo nên bởi lượng muối khoáng và đạm umami trong [${uSalty.join(', ')}], giúp món ăn dậy vị đậm đà.`
-                        : `Độ mặn & đậm đà (0%) vì bạn chưa thêm muối, nước mắm hay bất kỳ nguyên liệu mặn nào vào [${queryString}].`,
-                    bitter: bitter > 0
-                        ? `Độ đắng & chát (${bitter}%) xuất phát từ hợp chất tự nhiên (như caffeine, tannin hoặc tinh dầu) trong [${uBitter.join(', ')}]${(sweet >= 40 || fat >= 40) ? ', nhưng đã được vị ngọt/béo làm dịu bớt' : ''}.`
-                        : `Độ đắng & chát (0%) vì các nguyên liệu [${queryString}] hoàn toàn không chứa thành phần gây đắng hay chát.`,
-                    pungent: pungent > 0
-                        ? `Độ cay & nồng hăng (${pungent}%) bùng lên rõ rệt do hoạt chất cay nóng (Capsaicin/Allicin/Tinh dầu) từ [${uPungent.join(', ')}] tiết ra khi cắt giã.`
-                        : `Độ cay & nồng hăng (0% tuyệt đối) vì công thức [${queryString}] không có ớt, tiêu, tỏi, gừng hay gia vị cay nóng nào.`,
-                    fat: fat > 0
-                        ? `Độ béo & sánh ngậy (${fat}%) có được nhờ cấu trúc chất béo/kem sữa từ [${uFat.join(', ')}], tạo độ sánh mượt và lưu hương lâu trong miệng.`
-                        : `Độ béo & sánh ngậy (0% tuyệt đối) vì tất cả nguyên liệu [${queryString}] đều không chứa dầu mỡ, bơ, sữa hay chất tạo độ béo sánh nào.`
-                },
-                benefits: [
-                    `Cung cấp trực tiếp các vitamin, khoáng chất và năng lượng tự nhiên từ ${queryString}.`,
-                    pungent > 0
-                        ? `Nhóm nguyên liệu cay nồng (${uPungent.join(', ')}) hỗ trợ làm ấm bụng, kháng khuẩn tự nhiên và kích thích vị giác.`
-                        : `Giúp đổi gió khẩu vị với sự kết hợp nguyên liệu sẵn có trong bếp.`
-                ],
-                risks: [
-                    (pungent >= 50 || sour >= 55)
-                        ? `Do độ cay hoặc độ chua cao, tuyệt đối không dùng khi bụng đang đói rỗng vì rất dễ gây xót dạ dày và trào ngược.`
-                        : `Nếu lỡ tay cho quá nhiều một thành phần sẽ dễ làm món ăn bị gắt vị hoặc nhanh ngán.`,
-                    (isCurdled || isFishSauceClash || isSavorySweetClash)
-                        ? `Hỗn hợp này rất dễ gây đầy bụng, khó tiêu hoặc buồn nôn với những người có hệ tiêu hóa nhạy cảm.`
-                        : `Nên dùng ngay sau khi pha trộn để giữ độ tươi ngon, tránh để lâu ngoài không khí.`
-                ],
-                protocol: isPureCondiment
-                    ? `Hãy thêm nước mắm, đường, nước lọc hoặc nước cốt chanh theo tỷ lệ cân bằng để làm nước chấm/sốt ướp thay vì ăn không.`
-                    : (isCurdled || isFishSauceClash || isSavorySweetClash)
-                    ? `Lời khuyên chân thành từ đầu bếp: bạn nên thưởng thức riêng từng món cách nhau 30 phút thay vì trộn chung vào một bát.`
-                    : `Hãy cho từ từ từng nguyên liệu vào, vừa trộn vừa nếm thử để gia giảm tỷ lệ hợp với khẩu vị của bạn nhất.`
-            };
-        }
-
-        // --- Normalize Meter Keys from AI or Local Engine ---
-        function normalizeMetersAndExplanations(data) {
-            const rawM = data.meters || {};
-            const rawE = data.meterExplanations || {};
-
-            const getNum = (...keys) => {
-                for (const k of keys) {
-                    if (rawM[k] !== undefined && rawM[k] !== null && !isNaN(Number(rawM[k]))) {
-                        return Math.max(0, Math.min(100, Math.round(Number(rawM[k]))));
-                    }
-                }
-                return 0;
-            };
-
-            const getStr = (...keys) => {
-                for (const k of keys) {
-                    if (rawE[k] && typeof rawE[k] === 'string' && rawE[k].trim()) {
-                        return rawE[k].trim();
-                    }
-                }
-                return '';
-            };
-
-            return {
-                meters: {
-                    sweet: getNum('sweet', 'do_ngot'),
-                    sour: getNum('sour', 'do_chua'),
-                    salty: getNum('salty', 'salty_umami', 'do_man'),
-                    bitter: getNum('bitter', 'do_dang'),
-                    pungent: getNum('pungent', 'spicy_pungent', 'spicy', 'do_cay'),
-                    fat: getNum('fat', 'fatty_creamy', 'fatty', 'do_beo')
-                },
-                explanations: {
-                    sweet: getStr('sweet', 'do_ngot'),
-                    sour: getStr('sour', 'do_chua'),
-                    salty: getStr('salty', 'salty_umami', 'do_man'),
-                    bitter: getStr('bitter', 'do_dang'),
-                    pungent: getStr('pungent', 'spicy_pungent', 'spicy', 'do_cay'),
-                    fat: getStr('fat', 'fatty_creamy', 'fatty', 'do_beo')
-                }
-            };
-        }
-
-        // --- Render Output to Culinary Cards (Null-Safe & Guaranteed Bar Animation) ---
-        function renderCulinaryReport(data, queryString) {
-            const setText = (id, val) => {
-                const el = document.getElementById(id);
-                if (el) el.textContent = val ?? '--';
-            };
-
-            setText('resSampleFormula', `Nguyên liệu: ${queryString}`);
-            setText('resTitle', data.title);
-            setText('resExecutiveSummary', data.executiveSummary);
-            setText('resCompatibilityScore', data.compatibilityScore);
-            setText('resPhysicalState', data.physicalState);
-            setText('resVisualRatingBadge', data.visualRating);
-            setText('resPhaseStability', data.phaseStability);
-            setText('resAppearance', data.appearance);
-            setText('resTextureDetail', data.textureDetail);
-            setText('resTasteProfile', data.tasteProfile);
-            setText('resProtocol', data.protocol);
-
-            // Badge & Score Color Coding
-            const badgeEl = document.getElementById('resCategoryBadge');
-            const scoreEl = document.getElementById('resCompatibilityScore');
-            if (badgeEl) badgeEl.textContent = data.categoryBadge || 'ĐÁNH GIÁ';
-
-            if (badgeEl && scoreEl) {
-                if (data.badgeTone === 'green') {
-                    badgeEl.className = 'px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-[#4A6B53]/15 text-[#4A6B53] dark:bg-[#699676]/20 dark:text-[#86B895] border border-[#4A6B53]/30';
-                    scoreEl.className = 'font-display text-4xl font-bold text-[#4A6B53] dark:text-[#7BA888]';
-                } else if (data.badgeTone === 'red') {
-                    badgeEl.className = 'px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-[#B84239]/15 text-[#B84239] dark:bg-[#D9655B]/20 dark:text-[#E88980] border border-[#B84239]/30';
-                    scoreEl.className = 'font-display text-4xl font-bold text-[#B84239] dark:text-[#E07A72]';
-                } else {
-                    badgeEl.className = 'px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-[#B87D32]/15 text-[#B87D32] dark:bg-[#D99B4E]/20 dark:text-[#E5B26D] border border-[#B87D32]/30';
-                    scoreEl.className = 'font-display text-4xl font-bold text-[#B87D32] dark:text-[#D99B4E]';
-                }
-            }
-
-            // Normalize and Update all 6 Culinary Metric Bars & Explanations
-            const normalized = normalizeMetersAndExplanations(data);
-            const m = normalized.meters;
-            const exp = normalized.explanations;
-
-            // Update values and explanations immediately, then animate bar widths
-            const barOrder = [
-                { suffix: 'Sweet', val: m.sweet, exp: exp.sweet },
-                { suffix: 'Sour', val: m.sour, exp: exp.sour },
-                { suffix: 'Salty', val: m.salty, exp: exp.salty },
-                { suffix: 'Bitter', val: m.bitter, exp: exp.bitter },
-                { suffix: 'Pungent', val: m.pungent, exp: exp.pungent },
-                { suffix: 'Fat', val: m.fat, exp: exp.fat }
-            ];
-
-            // Reset bars to 0 width briefly so smooth CSS transition is always visible
-            barOrder.forEach(item => {
-                const barEl = document.getElementById(`bar${item.suffix}`);
-                if (barEl) barEl.style.width = '0%';
-            });
-
-            // Auto-expand the highest-scoring taste bar so the user immediately sees the explanation working
-            let highestIdx = 0;
-            let highestVal = -1;
-            barOrder.forEach((item, idx) => {
-                if (item.val > highestVal) {
-                    highestVal = item.val;
-                    highestIdx = idx;
-                }
-            });
-
-            const items = document.querySelectorAll('#metersGrid .meter-item');
-            items.forEach((item, index) => {
-                if (index === highestIdx) item.classList.add('expanded');
-                else item.classList.remove('expanded');
-            });
-            updateToggleAllButtonLabel();
-
-            requestAnimationFrame(() => {
-                setTimeout(() => {
-                    barOrder.forEach(item => {
-                        setMetricBar(item.suffix, item.val, item.exp);
-                    });
-                }, 40);
-            });
-
-            // Render Benefits List
-            const benefitsUl = document.getElementById('resBenefitsList');
-            if (benefitsUl) {
-                benefitsUl.innerHTML = '';
-                (data.benefits || []).forEach(item => {
-                    const li = document.createElement('li');
-                    li.className = 'flex items-start gap-2.5';
-                    li.innerHTML = `
-                        <i class="ph-fill ph-check-circle text-base text-[#4A6B53] dark:text-[#7BA888] mt-0.5 shrink-0"></i>
-                        <span>${escapeHtml(item)}</span>
-                    `;
-                    benefitsUl.appendChild(li);
-                });
-            }
-
-            // Render Risks List
-            const risksUl = document.getElementById('resRisksList');
-            if (risksUl) {
-                risksUl.innerHTML = '';
-                (data.risks || []).forEach(item => {
-                    const li = document.createElement('li');
-                    li.className = 'flex items-start gap-2.5';
-                    li.innerHTML = `
-                        <i class="ph-fill ph-warning-circle text-base text-[#B84239] dark:text-[#E07A72] mt-0.5 shrink-0"></i>
-                        <span>${escapeHtml(item)}</span>
-                    `;
-                    risksUl.appendChild(li);
-                });
-            }
-        }
-
-        function escapeHtml(str) {
-            if (!str) return '';
-            return String(str)
-                .replace(/&/g, '&amp;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;')
-                .replace(/"/g, '&quot;');
+                const risksList = document.getElementById('resRisksList');
+                risksList.innerHTML = selectedCase.risks.map(item => `<li class="flex items-start gap-2"><span class="text-[#B84239]">⚠</span><span>${item}</span></li>`).join('');
+            }, 800);
         }
     </script>
+
+    <script src="masulu-ai.js"></script>
 </body>
 </html>
